@@ -1,0 +1,1836 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Spring</title>
+  <link rel="alternate" href="https://spring.io/blog" />
+  <link rel="self" href="https://spring.io/blog.atom" />
+  <id>http://spring.io/blog.atom</id>
+  <icon>https://spring.io/favicon.ico</icon>
+  <updated>2016-06-01T09:45:00Z</updated>
+  <entry>
+    <title>Spring AMQP 1.6 RELEASE available</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/01/spring-amqp-1-6-release-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Artem Bilan</name>
+    </author>
+    <id>tag:spring.io,2016-05-31:2515</id>
+    <updated>2016-06-01T09:45:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;We are pleased to announce that the Spring AMQP 1.6 GA (&lt;code&gt;1.6.0.RELEASE&lt;/code&gt;) is now available in the &lt;a href="https://repo.spring.io/release"&gt;spring release repo&lt;/a&gt;, as well as in the &lt;a href="http://search.maven.org/#search|ga|1|spring-rabbit"&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;First of all, thanks to everyone who contributed to the project any way: JIRAs, GitHub issues, Pull Requests, blog posts &amp;amp; articles and even just with simple StackOverflow questions!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;You can find the full feature pack in the previous &lt;a href="https://spring.io/blog/2016/05/06/spring-amqp-1-6-0-release-candidate-and-1-5-6-available"&gt;Spring AMQP 1.6 RC1&lt;/a&gt; blog post.
+You can refer to the &lt;a href="http://docs.spring.io/spring-amqp/docs/1.6.0.RC1/reference/html/_introduction.html#whats-new"&gt;what&amp;#8217;s new&lt;/a&gt; in the reference documentation as well as &lt;a href="https://jira.spring.io/issues/?jql=project%20%3D%20AMQP%20AND%20status%20%3D%20Closed%20AND%20fixVersion%20in%20%28%221.6%20M1%22%2C%20%221.6%20M2%22%2C%20%221.6%20RC1%22%2C%20%221.6%20GA%22%29%20%20ORDER%20BY%20fixVersion%2C%20priority%20DESC"&gt;the closed JIRA Issues for the entire 1.6 version&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Nevertheless we encountered with the couple last minute features which we would like to share here as well:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;a href="https://www.rabbitmq.com/validated-user-id.html"&gt;User Id&lt;/a&gt; message property can now be populated in the &lt;code&gt;RabbitTemplate&lt;/code&gt; via &lt;code&gt;userIdExpression&lt;/code&gt;.
+Typically we can use &lt;code&gt;username&lt;/code&gt; from the &lt;code&gt;ConnectionFactory&lt;/code&gt;:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-xml" data-lang="xml"&gt;&amp;lt;rabbit:template id="rabbitTemplate"
+                 connection-factory="connectionFactory"
+                 user-id-expression="@connectionFactory.username" /&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Another community contribution feature is &lt;code&gt;Builder&lt;/code&gt; fluent API for &lt;code&gt;Queue&lt;/code&gt; and &lt;code&gt;Exchange&lt;/code&gt; definitions:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@Bean
+public Queue fooQueue() {
+    return QueueBuilder.nonDurable("foo")
+                  .autoDelete()
+                  .exclusive()
+                  .withArgument("foo", "bar")
+                  .build();
+}
+...
+@Bean
+public Exchange fooExchange() {
+    return ExchangeBuilder.directExchange("foo")
+                  .autoDelete()
+                  .delayed()
+                  .durable()
+                  .internal()
+                  .withArgument("foo", "bar")
+                  .build();;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This is the last &lt;code&gt;1.x&lt;/code&gt; line release, although any maintain &lt;code&gt;1.6.x&lt;/code&gt; releases are possible, but as just bug fixes and minor improvements.
+Next up (2017) is &lt;code&gt;2.0&lt;/code&gt; which will may require Spring 5 and include some Reactive Streams effort and Java 8 code base.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;As usual, we welcome any feedback, questions, or help, using the usual mechanisms:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-amqp/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/AMQP"&gt;JIRA&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-amqp/blob/master/CONTRIBUTING.adoc"&gt;Contribution&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-amqp"&gt;Help&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - May 31, 2016</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/31/this-week-in-spring-may-31-2016" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2016-05-31:2516</id>
+    <updated>2016-05-31T23:14:53Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This last week was a bit crazy, though after a long restful weekend there&amp;rsquo;s a lot of intersting content to invigorate us for the week ahead. I&amp;rsquo;ll be speaking &lt;a href="http://www.jdriven.nl/events"&gt;at a meetup on the 16th June&lt;/a&gt;, for those near Amsterdam that&amp;rsquo;d care to join us! As usual, we&amp;rsquo;ve got a lot to cover so let&amp;rsquo;s get into it.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Remember, the goal of microservices is, ultimately, to go faster and to get to production. To do continuous delivery. A huge part of that has to be moving code from integration and testing to production, automatically, and ideally with no downtime. I&amp;rsquo;d recommend this excellent blog by Spring Cloud team member Marcin Grzejszczak &lt;a href="https://spring.io/blog/2016/05/31/zero-downtime-deployment-with-a-database"&gt;on zero-dotime deployments with a database&lt;/a&gt;. This is an &lt;em&gt;excellent&lt;/em&gt; resource!&lt;/li&gt;
+  &lt;li&gt;speaking of micrservices and Spring, there&amp;rsquo;s a &lt;a href="https://dzone.com/articles/microservices-spring-boot-way"&gt;neat introduction to doing microservices &amp;ldquo;Spring Boot way&amp;rdquo; (is there any other way? :D)&lt;/a&gt; on DZone by Santosh Singh&lt;/li&gt;
+  &lt;li&gt;want to learn more about Kotlin and Spring? Want to see why large &lt;a href="https://roundtown.com/event/51574362/Kotlin-for-Spring-Cloud-live-stream-Los-Gatos-CA"&gt;organizations (like Netflix) are using Spring Cloud along with Kotlin&lt;/a&gt;? check our &lt;a href="https://github.com/sdeleuze/spring-kotlin"&gt;Spring team member Sébastien Deleuze&amp;rsquo;s &lt;code&gt;spring-kotlin&lt;/code&gt;&lt;/a&gt; project introducing some of the cavaets and workarounds, along with useful extensions.&lt;/li&gt;
+  &lt;li&gt;Spring RESTDocs lead &lt;a href="https://spring.io/blog/2016/05/31/spring-rest-docs-1-1-0-release"&gt;Andy Wilkinson just announced Spring REST Docs 1.1.0 RELEASE&lt;/a&gt;. This release is &lt;em&gt;packed&lt;/em&gt; with cool stuff including REST Assured integration, Markdown support, TestNG support, &amp;ldquo;reusable&amp;rdquo; and &amp;ldquo;relaxed&amp;rdquo; snippets, and so much more from the Spring REST Docs team and community. Get the bits and win.&lt;/li&gt;
+  &lt;li&gt;Spring Data ninja and Spring Stateflow lead Janne Valkealahti just announced that &lt;a href="https://spring.io/blog/2016/05/26/spring-statemachine-1-1-0-released"&gt;Spring Statemachine 1.1.0.RELEASE is available&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring REST Docs lead Andy Wilkinson, not a slouch, &lt;em&gt;also&lt;/em&gt; &lt;a href="https://spring.io/blog/2016/05/25/spring-rest-docs-1-0-2-release"&gt;just released Spring REST Docs 1.0.2, which includes lots of maintenace updates&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I&amp;rsquo;m really digging Jenkins 2.0 and it&amp;rsquo;s making central &lt;a href="https://jenkins.io/projects/blueocean/"&gt;the notion of a continuous delivery pipeline&lt;/a&gt;. Naturally, this new Blue Ocean theme revisits the interface conventions and makes things even better!&lt;/li&gt;
+  &lt;li&gt;Interesting blog on how &lt;a href="http://stytex.de/blog/2016/03/25/jhipster3-microservice-tutorial/"&gt;to use the Spring Cloud bits in JHipster 3&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;A critical component in building edge services is routing. In Cloud Foundry you have many options, you can use client-side load-balancing or build smarter routing heuristics and the edge and let that &lt;a href="http://docs.cloudfoundry.org/services/route-services.html"&gt;handle the routing with Cloud Foundry route services&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I dig &lt;a href="https://www.youtube.com/watch?v=04zZ9WM-L5U"&gt;this French language talk on microservices with Spring Cloud&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring REST Docs 1.1.0.RELEASE</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/31/spring-rest-docs-1-1-0-release" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Andy Wilkinson</name>
+    </author>
+    <id>tag:spring.io,2016-05-31:2514</id>
+    <updated>2016-05-31T13:57:37Z</updated>
+    <content type="html">&lt;p&gt;It&amp;rsquo;s my pleasure to announce the release of Spring REST Docs 1.1.0.RELEASE which is now available for Maven Central, JCenter and our &lt;a href="https://repo.spring.io/libs-release"&gt;release repository&lt;/a&gt;.&lt;/p&gt;&lt;h1&gt;&lt;a href="#highlights" class="anchor" name="highlights"&gt;&lt;/a&gt;Highlights&lt;/h1&gt;&lt;h2&gt;&lt;a href="#rest-assured" class="anchor" name="rest-assured"&gt;&lt;/a&gt;REST Assured&lt;/h2&gt;
+&lt;p&gt;As an alternative to the lightweight server-less documentation generation offered by Spring Framework&amp;rsquo;s &lt;code&gt;MockMvc&lt;/code&gt;, you can now use &lt;a href="http://rest-assured.io"&gt;REST Assured&lt;/a&gt; to test and document your RESTful services. This opens up Spring REST Docs to all four corners of the JVM and beyond, allowing you to document anything that you can access via HTTP.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://github.com/spring-projects/spring-restdocs/tree/v1.1.0.RELEASE/samples"&gt;samples&lt;/a&gt; now include &lt;a href="https://github.com/spring-projects/spring-restdocs/tree/v1.1.0.RELEASE/samples/rest-notes-grails"&gt;an app&lt;/a&gt; that is documented using REST Docs, built using Grails, and tested using Spock. A third-party sample that uses REST Docs to document an API implemented using Ratpack is also &lt;a href="https://github.com/ratpack/example-books"&gt;available&lt;/a&gt;. My thanks to &lt;a href="https://github.com/jlstrater"&gt;Jenn Strater&lt;/a&gt; who wrote both samples.&lt;/p&gt;&lt;h2&gt;&lt;a href="#markdown" class="anchor" name="markdown"&gt;&lt;/a&gt;Markdown&lt;/h2&gt;
+&lt;p&gt;Support has been added for generating Markdown snippets. On its own, Markdown isn&amp;rsquo;t as capable as Asciidoctor, but can work very well when combined with existing documentation toolchains such as &lt;a href="https://github.com/tripit/slate"&gt;Slate&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#testng" class="anchor" name="testng"&gt;&lt;/a&gt;TestNG&lt;/h2&gt;
+&lt;p&gt;In addition to the existing support for using JUnit, you can now use Spring REST Docs with &lt;a href="http://testng.org"&gt;TestNG&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#reusable-snippets" class="anchor" name="reusable-snippets"&gt;&lt;/a&gt;Reusable snippets&lt;/h2&gt;
+&lt;p&gt;Snippets can now be created once with some common configuration and then &lt;a href="http://docs.spring.io/spring-restdocs/docs/1.1.0.RELEASE/reference/html5/#documenting-your-api-reusing-snippets"&gt;reused&lt;/a&gt;. This reduces repetition when documenting common parts on an API, such as &lt;code&gt;self&lt;/code&gt; links. My thanks to &lt;a href="https://github.com/marceloverdijk"&gt;Marcel Overdijk&lt;/a&gt; whose feedback and pull requests have significantly improved this new feature.&lt;/p&gt;&lt;h2&gt;&lt;a href="#relaxed-snippets" class="anchor" name="relaxed-snippets"&gt;&lt;/a&gt;Relaxed snippets&lt;/h2&gt;
+&lt;p&gt;By default, Spring REST Docs will cause your tests to fail if you&amp;rsquo;ve neglected to document something or if you&amp;rsquo;ve attempted to document something that doesn&amp;rsquo;t exist. This is great for detailed API documentation, but can be restrictive when documenting a scenario where you want to focus on a specific part of a request or response. Rather than having to explicitly ignore everything that you don&amp;rsquo;t want to document, you can now use relaxed snippets for documenting links, request and response fields, and request and path parameters.&lt;/p&gt;&lt;h1&gt;&lt;a href="#thank-you" class="anchor" name="thank-you"&gt;&lt;/a&gt;Thank you&lt;/h1&gt;
+&lt;p&gt;Thank you to everyone who has contributed to Spring REST Docs and helped to shape the 1.1 release. I&amp;rsquo;m looking forward to your feedback here, &lt;a href="https://github.com/spring-projects/spring-restdocs/issues"&gt;on GitHub&lt;/a&gt;, &lt;a href="https://stackoverflow.com/tags/spring-restdocs"&gt;Stack Overflow&lt;/a&gt;, and &lt;a href="https://twitter.com/ankinson"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-restdocs"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-restdocs"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-restdocs/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-restdocs/docs/1.1.0.RELEASE/"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Zero Downtime Deployment with a Database</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/31/zero-downtime-deployment-with-a-database" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Marcin Grzejszczak</name>
+    </author>
+    <id>tag:spring.io,2016-05-31:2513</id>
+    <updated>2016-05-31T09:09:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;This article will explain in depth how to tackle issues related to database compatibility and the deployment process.
+We will present what can happen with your production applications if you try to perform
+such a deployment unprepared. We will then walk through the steps in the lifecycle of an application that are necessary
+to have zero downtime. The result of our operations will be applying a backward incompatible database change in a backward compatible way.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;If you want to work through the code samples below, you will find everything you need in &lt;a href="https://github.com/spring-cloud-samples/zero-downtime-deployment"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="_introduction"&gt;Introduction&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_zero_downtime_deployment"&gt;Zero downtime deployment&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;What is this mythical &lt;strong&gt;zero downtime deployment&lt;/strong&gt;? You can say that your application is deployed that way if you can
+successfully introduce a new version of your application to production without making the user see that the application
+went down in the meantime. From the user&amp;#8217;s and the company&amp;#8217;s point of view it&amp;#8217;s the best possible scenario of deployment
+since new features can be introduced and bugs can be eliminated without any outage.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;How can you achieve that? There are number of ways but one of them is just to:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;deploy version 1 of your service&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;migrate your database to a new version&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;deploy version 2 of your service in parallel to the version 1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;once you see that version 2 works like a charm just bring down version 1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;you&amp;#8217;re done!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Easy, isn&amp;#8217;t it? Unfortunately, it&amp;#8217;s not that easy and we&amp;#8217;ll focus on that later on. Right now let&amp;#8217;s check another
+common deployment process which is the blue green deployment.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Have you ever heard of &lt;a href="http://martinfowler.com/bliki/BlueGreenDeployment.html"&gt;blue green deployment&lt;/a&gt;? With Cloud Foundry it&amp;#8217;s
+ extremely easy to do. Just check out &lt;a href="https://spring.io/blog/2014/04/04/project-sagan-zero-downtime-deployments"&gt;this article&lt;/a&gt; where
+ we describe it in more depth. To quickly recap, doing blue green deployment is as simple as:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="quoteblock"&gt;
+&lt;blockquote&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;maintain two copies of your production environment (“blue” and “green”);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;route all traffic to the the blue environment by mapping production URLs to it;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;deploy and test any changes to the application in the green environment;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;“flip the switch” by mapping URLs onto green and unmapping them from blue.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Blue green deployment is an approach that gives you ease of introducing new features without the stress that
+something will completely blow up on production. That&amp;#8217;s due to the fact that even if that would be the case,
+you can easily rollback your router to point to a previous environment just by "flipping the switch".&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;After reading all of the above you could ask yourself a question: &lt;em&gt;What does zero downtime deployment have to do with Blue green deployment?&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Well, they have quite a lot in common since maintaining two copies of the same environment leads to doubling the effort
+required to support it. That&amp;#8217;s why some teams, as &lt;a href="http://martinfowler.com/bliki/BlueGreenDeployment.html"&gt;Martin Fowler states it&lt;/a&gt;,
+tend to perform a variation of that approach:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="quoteblock"&gt;
+&lt;blockquote&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Another variation would be to use the same database, making the blue-green switches for web and domain layers.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Databases can often be a challenge with this technique, particularly when you need to change the schema to support a new version of the software.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;And here we arrive at the main problem that we will touch in this article. &lt;strong&gt;The database&lt;/strong&gt;. Let&amp;#8217;s have another glimpse on this phrase:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="quoteblock"&gt;
+&lt;blockquote&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;migrate your database to a new version&lt;/p&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Now you should ask yourself a question - what if the database change is backward incompatible? Won&amp;#8217;t my version 1 of the application
+ just blow up? Actually, it will&amp;#8230;&amp;#8203;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;So even though the benefits of zero downtime / blue green deployment are gigantic, companies tend to follow such a safer process
+ of deploying their apps:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;prepare a package with the new version of the application&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;shut down the running application&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;run the database migration scripts&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;deploy and run the new version of the application&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In this article we&amp;#8217;ll describe in more depth how you can work with your database and your code so that you can profit from the
+benefits of the zero downtime deployment.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_database_issues"&gt;Database issues&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;If you have a stateless application that doesn&amp;#8217;t store any data in the database then you can start doing zero downtime deployment
+right now. Unfortunately, most software has to store the data somewhere. That&amp;#8217;s why you have to think twice before doing any sort
+of schema changes. Before we go into the details of how to change the schema in such a way that zero downtime deployment is possible
+let&amp;#8217;s focus on schema versioning first.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_schema_versioning"&gt;Schema versioning&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In this article we will use &lt;a href="http://flywaydb.org"&gt;Flyway&lt;/a&gt; as a schema versioning tool. Naturally we&amp;#8217;re also writing a Spring Boot application
+that has native support for Flyway and will execute the schema migration upon application context setup. When using Flyway
+ you can store the migration scripts inside your projects folder (by default under &lt;code&gt;classpath:db/migration&lt;/code&gt;). Here you can see an example
+ of such migration files&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-bash" data-lang="bash"&gt;??? db
+ ??? migration
+     ??? V1__init.sql
+     ??? V2__Add_surname.sql
+     ??? V3__Final_migration.sql
+     ??? V4__Remove_lastname.sql&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In this example we can see 4 migration scripts that, if not executed previously, will be executed one after another when the application
+starts. Let&amp;#8217;s take a look at one of the files (&lt;code&gt;V1__init.sql&lt;/code&gt;) as an example.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-sql" data-lang="sql"&gt;CREATE TABLE PERSON (
+	id BIGINT GENERATED BY DEFAULT AS IDENTITY,
+	first_name varchar(255) not null,
+	last_name varchar(255) not null
+);
+
+insert into PERSON (first_name, last_name) values ('Dave', 'Syer');&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;It&amp;#8217;s pretty self-explanatory: you can use SQL to define how your database should be changed. For more information about Spring Boot
+and Flyway &lt;a href="http://docs.spring.io/spring-boot/docs/1.3.5.RELEASE/reference/html/howto-database-initialization.html#howto-execute-flyway-database-migrations-on-startup"&gt;check the Spring Boot Docs&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Using a schema versioning tool with Spring Boot, you receive 2 great benefits.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;you decouple database changes from the code changes&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;database migration happens together with your application deployment - your deployment process gets simplified&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="_solving_the_database_issue"&gt;Solving the database issue&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In the following section of the article we will focus on presenting two approaches to database changes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;backward incompatible&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;backward compatible&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The first one will be shown as a warning to not to try to do zero downtime deployment without some preparations.
+The second one will present a suggested solution of how one can perform zero downtime deployment and maintain
+backward compatibility at the same time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Our project that we will work on will be a simple Spring Boot Flyway application in which we have a &lt;code&gt;Person&lt;/code&gt;
+that has a &lt;code&gt;first_name&lt;/code&gt; and a &lt;code&gt;last_name&lt;/code&gt; in the database. We want to rename the &lt;code&gt;last_name&lt;/code&gt; column into &lt;code&gt;surname&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_assumptions"&gt;Assumptions&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Before we go into details we need to define a couple of assumptions towards our applications. The key result that we
+would like to obtain is to have a fairly simple process.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock tip"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Tip&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+Business PRO-TIP. Simplifying processes can save you a lot of money on support (the more people work in your company the more money you can save)!
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;We don&amp;#8217;t want to do database rollbacks&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Not doing them simplifies the deployment process (some database rollbacks are close to impossible like rolling back a delete).
+We prefer to rollback only the applications. That way even if you have different databases (e.g. SQL and NoSQL) then your
+deployment pipeline will look the same.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;We want ALWAYS to be able to rollback the application one version back (not more)&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We want to rollback only as a necessity. If there is a bug in the current version that can&amp;#8217;t be solved easily we want to be
+ able to bring back the last working version. We assume that this last working version is the previous one. Maintaining code and database
+ compatibility for more than a single deployment would be extremely difficult and costly.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock tip"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Tip&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+For readability purposes we will be versioning the applications in this article with major increments.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_step_1_initial_situation"&gt;Step 1: Initial situation&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Version of the app: &lt;code&gt;1.0.0&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Version of the DB: &lt;code&gt;v1&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_comment"&gt;Comment&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This will be the initial state of the application that we will take into consideration.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_db_changes"&gt;DB changes&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The db contains a column called &lt;code&gt;last_name&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-sql" data-lang="sql"&gt;CREATE TABLE PERSON (
+	id BIGINT GENERATED BY DEFAULT AS IDENTITY,
+	first_name varchar(255) not null,
+	last_name varchar(255) not null
+);
+
+insert into PERSON (first_name, last_name) values ('Dave', 'Syer');&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_code_changes"&gt;Code changes&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The app stores the Person data into a column called &lt;code&gt;last_name&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;/*
+ * Copyright 2012-2016 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package sample.flyway;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Person {
+	@Id
+	@GeneratedValue
+	private Long id;
+	private String firstName;
+	private String lastName;
+
+	public String getFirstName() {
+		return this.firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return this.lastName;
+	}
+
+	public void setLastName(String lastname) {
+		this.lastName = lastname;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [firstName=" + this.firstName + ", lastName=" + this.lastName
+				+ "]";
+	}
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_renaming_a_column_in_backward_incompatible_way"&gt;Renaming a column in backward-incompatible way&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Let&amp;#8217;s take a look at the following example if you want to change the column name:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock warning"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Warning&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+The following example is deliberately done in such a way that it will break. We&amp;#8217;re showing it to depict the problem of database
+compatibility.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Version of the app: &lt;code&gt;2.0.0.BAD&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Version of the DB: &lt;code&gt;v2bad&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_comment_2"&gt;Comment&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Current changes DO NOT allow us to run two instances (old and new) at the same time. Thus zero down time
+deployment will be difficult to achieve (if we take into consideration out assumptions it&amp;#8217;s actually impossible).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect4"&gt;
+&lt;h5 id="_a_b_testing"&gt;A/B testing&lt;/h5&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The current situation is that we have an app deployed to production in version &lt;code&gt;1.0.0&lt;/code&gt; and db in &lt;code&gt;v1&lt;/code&gt;. We want to deploy the second
+instance of the app that will be in version &lt;code&gt;2.0.0.BAD&lt;/code&gt; and update the db to &lt;code&gt;v2bad&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Steps:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;a new instance is deployed in version &lt;code&gt;2.0.0.BAD&lt;/code&gt; that updates the db to &lt;code&gt;v2bad&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;in &lt;code&gt;v2bad&lt;/code&gt; of the database the column &lt;code&gt;last_name&lt;/code&gt; is no longer existing - it got changed to &lt;code&gt;surname&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;the db and app upgrade is successful and you have some instances working in &lt;code&gt;1.0.0&lt;/code&gt;, others in &lt;code&gt;2.0.0.BAD&lt;/code&gt;. All are talking to db
+in &lt;code&gt;v2bad&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;all instances of version &lt;code&gt;1.0.0&lt;/code&gt; will start producing exceptions cause they will try to insert data to &lt;code&gt;last_name&lt;/code&gt; column which is
+no longer there&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;all instances of version &lt;code&gt;2.0.0.BAD&lt;/code&gt; will work without any issues&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;As you can if we do backward incompatible changes of the DB and the application, A/B testing is impossible.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect4"&gt;
+&lt;h5 id="_rolling_back_the_application"&gt;Rolling back the application&lt;/h5&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Let&amp;#8217;s assume that after trying to do A/B deployment we&amp;#8217;ve decided that we need to rollback the app back to version &lt;code&gt;1.0.0&lt;/code&gt;. We assumed
+that we don&amp;#8217;t want to roll back the database.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Steps:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;we shut down the instance that was running with version &lt;code&gt;2.0.0.BAD&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;the database is still in &lt;code&gt;v2bad&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;since version &lt;code&gt;1.0.0&lt;/code&gt; doesn&amp;#8217;t understand what &lt;code&gt;surname&lt;/code&gt; column is it will produce exceptions&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;hell broke loose and we can&amp;#8217;t go back&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;As you can if we do backward incompatible changes of the DB and the application, we can&amp;#8217;t roll back to a previous version.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect4"&gt;
+&lt;h5 id="_logs_from_script_execution"&gt;Logs from script execution&lt;/h5&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-bash" data-lang="bash"&gt;Backward incompatible scenario:
+
+01) Run 1.0.0
+02) Wait for the app (1.0.0) to boot
+03) Generate a person by calling POST localhost:9991/person to version 1.0.0
+04) Run 2.0.0.BAD
+05) Wait for the app (2.0.0.BAD) to boot
+06) Generate a person by calling POST localhost:9991/person to version 1.0.0 &amp;lt;-- this should fail
+07) Generate a person by calling POST localhost:9992/person to version 2.0.0.BAD &amp;lt;-- this should pass
+
+Starting app in version 1.0.0
+Generate a person in version 1.0.0
+Sending a post to 127.0.0.1:9991/person. This is the response:
+
+{"firstName":"b73f639f-e176-4463-bf26-1135aace2f57","lastName":"b73f639f-e176-4463-bf26-1135aace2f57"}
+
+Starting app in version 2.0.0.BAD
+Generate a person in version 1.0.0
+Sending a post to 127.0.0.1:9991/person. This is the response:
+
+curl: (22) The requested URL returned error: 500 Internal Server Error
+
+Generate a person in version 2.0.0.BAD
+Sending a post to 127.0.0.1:9995/person. This is the response:
+
+{"firstName":"e156be2e-06b6-4730-9c43-6e14cfcda125","surname":"e156be2e-06b6-4730-9c43-6e14cfcda125"}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_db_changes_2"&gt;DB changes&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The migration script renames the column from &lt;code&gt;last_name&lt;/code&gt; to &lt;code&gt;surname&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Initial Flyway script:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-sql" data-lang="sql"&gt;CREATE TABLE PERSON (
+	id BIGINT GENERATED BY DEFAULT AS IDENTITY,
+	first_name varchar(255) not null,
+	last_name varchar(255) not null
+);
+
+insert into PERSON (first_name, last_name) values ('Dave', 'Syer');&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Script renaming &lt;code&gt;last_name&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-sql" data-lang="sql"&gt;-- This change is backward incompatible - you can't do A/B testing
+ALTER TABLE PERSON CHANGE last_name surname VARCHAR;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_code_changes_2"&gt;Code changes&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We have changed the field name from &lt;code&gt;lastName&lt;/code&gt; to &lt;code&gt;surname&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_renaming_a_column_in_backward_compatible_way"&gt;Renaming a column in backward-compatible way&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This is the most frequent situation that we can encounter. We need to perform backward incompatible changes. We have already
+proven that to do zero downtime deployment we must not simply apply the database migration without extra work. In this
+section of the article we will go through 3 deployments of the application together with the database migrations to achieve
+the desired effect and at the same time be backward compatible.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock tip"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Tip&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+As a reminder - Let&amp;#8217;s assume that we have the DB in version &lt;code&gt;v1&lt;/code&gt;. It contains the columns &lt;code&gt;first_name&lt;/code&gt; and &lt;code&gt;last_name&lt;/code&gt;.
+We want to change the &lt;code&gt;last_name&lt;/code&gt; into &lt;code&gt;surname&lt;/code&gt;. We also have the app in version &lt;code&gt;1.0.0&lt;/code&gt; which doesn&amp;#8217;t use the &lt;code&gt;surname&lt;/code&gt; column just yet.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_step_2_adding_surname"&gt;Step 2: Adding surname&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Version of the app: &lt;code&gt;2.0.0&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Version of the DB: &lt;code&gt;v2&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_comment_3"&gt;Comment&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;By adding a new column and copying its contents we have created backward compatible changes of the db. ATM if we
+rollback the JAR / have an old JAR working at the same tame it won&amp;#8217;t break at runtime.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect4"&gt;
+&lt;h5 id="_rolling_a_new_version"&gt;Rolling a new version&lt;/h5&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Steps:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;migrate your db to create the new column called &lt;code&gt;surname&lt;/code&gt;. Now your db is in &lt;code&gt;v2&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;copy the data from the &lt;code&gt;last_name&lt;/code&gt; column to &lt;code&gt;surname&lt;/code&gt;. &lt;strong&gt;NOTE&lt;/strong&gt; that if you have a lot of this data then you should consider batch
+migration!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;write the code to use &lt;strong&gt;BOTH&lt;/strong&gt; the &lt;strong&gt;new&lt;/strong&gt; and the &lt;strong&gt;old&lt;/strong&gt; column. Now your app is in version &lt;code&gt;2.0.0&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;read the surname value from &lt;code&gt;surname&lt;/code&gt; column if it&amp;#8217;s not null and from &lt;code&gt;last_name&lt;/code&gt; if &lt;code&gt;surname&lt;/code&gt; wasn&amp;#8217;t set.
+You can remove the &lt;code&gt;getLastName()&lt;/code&gt; from the code since it will produce nulls when your app is rolled back from &lt;code&gt;3.0.0&lt;/code&gt; to &lt;code&gt;2.0.0&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;If you&amp;#8217;re using Spring Boot Flyway those two steps will be performed upon booting the version &lt;code&gt;2.0.0&lt;/code&gt; of the app.  If you&amp;#8217;re running
+database versioning tool manually then you&amp;#8217;d have to do it in separate processes (first manually upgrade the db version and then deploy
+the new app).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock important"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Important&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+Remember that the newly created column &lt;strong&gt;MUST NOT&lt;/strong&gt; be &lt;strong&gt;NOT NULL&lt;/strong&gt;. If you rollback, the old app has no knowledge of the new
+column and won&amp;#8217;t set it upon &lt;code&gt;Insert&lt;/code&gt;. But if you add that constraint and your db is in &lt;code&gt;v2&lt;/code&gt; it would require the value of the new
+column to be set. That would result in constraint violations.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock important"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Important&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+You should remove the &lt;code&gt;getLastName()&lt;/code&gt; method because in version &lt;code&gt;3.0.0&lt;/code&gt; there is no notion of &lt;code&gt;last_name&lt;/code&gt; column in the code.
+ That means that nulls will be set there. You can leave the method and add null-checks but a much better solution would be to ensure
+ that in the logic of &lt;code&gt;getSurname()&lt;/code&gt; you pick the proper, non-null value.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect4"&gt;
+&lt;h5 id="_a_b_testing_2"&gt;A/B testing&lt;/h5&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The current situation is that we have an app deployed to production in version &lt;code&gt;1.0.0&lt;/code&gt; and db in &lt;code&gt;v1&lt;/code&gt;. We want to deploy the second
+instance of the app that will be in version &lt;code&gt;2.0.0&lt;/code&gt; and update the db to &lt;code&gt;v2&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Steps:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;a new instance is deployed in version &lt;code&gt;2.0.0&lt;/code&gt; that updates the db to &lt;code&gt;v2&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;in the meantime some requests got processed by instances being in version &lt;code&gt;1.0.0&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;the upgrade is successful and you have some instances working in &lt;code&gt;1.0.0&lt;/code&gt;, others in &lt;code&gt;2.0.0&lt;/code&gt;. All are talking to db in &lt;code&gt;v2&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;version &lt;code&gt;1.0.0&lt;/code&gt; is not using the database&amp;#8217;s column &lt;code&gt;surname&lt;/code&gt; and version &lt;code&gt;2.0.0&lt;/code&gt; is. They don&amp;#8217;t interfere each other, no exceptions
+should be thrown.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;version &lt;code&gt;2.0.0&lt;/code&gt; is saving data to both old and new column thus it&amp;#8217;s backward compatible&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock important"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Important&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+If you have any queries that count items basing on values from old / new column you have to remember that now you have
+duplicate values (most likely still being migrated). E.g. if you want to count the number of users whose last name (however you call it)
+starts with a letter &lt;code&gt;A&lt;/code&gt; then until the data migration (&lt;code&gt;old&lt;/code&gt; &amp;#8594; &lt;code&gt;new&lt;/code&gt; column) is done you might have inconsistent data if you
+perform the query against the new column.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect4"&gt;
+&lt;h5 id="_rolling_back_the_application_2"&gt;Rolling back the application&lt;/h5&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The current situation is that we have app in version &lt;code&gt;2.0.0&lt;/code&gt; and db in &lt;code&gt;v2&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Steps:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;roll back your app to version &lt;code&gt;1.0.0&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;version &lt;code&gt;1.0.0&lt;/code&gt; is not using the database&amp;#8217;s column &lt;code&gt;surname&lt;/code&gt; thus rollback should be successful&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_db_changes_3"&gt;DB changes&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The db contains a column called &lt;code&gt;last_name&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Initial Flyway script:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-sql" data-lang="sql"&gt;CREATE TABLE PERSON (
+	id BIGINT GENERATED BY DEFAULT AS IDENTITY,
+	first_name varchar(255) not null,
+	last_name varchar(255) not null
+);
+
+insert into PERSON (first_name, last_name) values ('Dave', 'Syer');&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Script adding &lt;code&gt;surname&lt;/code&gt; column.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock warning"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Warning&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+Remember NOT TO ADD any NOT NULL constraints to the added column. Cause if you rollback the JAR
+ the old version doesn&amp;#8217;t have the notion of the added column and automatically a NULL value will be set. In case
+ of having a constraint the old application will blow up.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-sql" data-lang="sql"&gt;-- NOTE: This field can't have the NOT NULL constraint cause if you rollback, the old version won't know about this field
+-- and will always set it to NULL
+ALTER TABLE PERSON ADD surname varchar(255);
+
+-- WE'RE ASSUMING THAT IT'S A FAST MIGRATION - OTHERWISE WE WOULD HAVE TO MIGRATE IN BATCHES
+UPDATE PERSON SET PERSON.surname = PERSON.last_name&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_code_changes_3"&gt;Code changes&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We are storing data in both &lt;code&gt;last_name&lt;/code&gt; and &lt;code&gt;surname&lt;/code&gt;. Also, we are reading from the &lt;code&gt;last_name&lt;/code&gt; column cause
+it is most up to date. During the deployment process some requests might have been processed by the instance that
+hasn&amp;#8217;t yet been upgraded.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;/*
+ * Copyright 2012-2016 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package sample.flyway;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Person {
+	@Id
+	@GeneratedValue
+	private Long id;
+	private String firstName;
+	private String lastName;
+	private String surname;
+
+	public String getFirstName() {
+		return this.firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	/**
+	 * Reading from the new column if it's set. If not the from the old one.
+	 *
+	 * When migrating from version 1.0.0 -&amp;gt; 2.0.0 this can lead to a possibility that some data in
+	 * the surname column is not up to date (during the migration process lastName could have been updated).
+	 * In this case one can run yet another migration script after all applications have been deployed in the
+	 * new version to ensure that the surname field is updated.
+	 *
+	 * However it makes sense since when looking at the migration from 2.0.0 -&amp;gt; 3.0.0. In 3.0.0 we no longer
+	 * have a notion of lastName at all - so we don't update that column. If we rollback from 3.0.0 -&amp;gt; 2.0.0 if we
+	 * would be reading from lastName, then we would have very old data (since not a single datum was inserted
+	 * to lastName in version 3.0.0).
+	 */
+	public String getSurname() {
+		return this.surname != null ? this.surname : this.lastName;
+	}
+
+	/**
+	 * Storing both FIRST_NAME and SURNAME entries
+	 */
+	public void setSurname(String surname) {
+		this.lastName = surname;
+		this.surname = surname;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [firstName=" + this.firstName + ", lastName=" + this.lastName + ", surname=" + this.surname
+				+ "]";
+	}
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_step_3_removing_last_name_from_code"&gt;Step 3: Removing last name from code&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Version of the app: &lt;code&gt;3.0.0&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Version of the DB: &lt;code&gt;v3&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_comment_4"&gt;Comment&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;By adding a new column and copying its contents we have created backward compatible changes of the db. ATM if we
+rollback the JAR / have an old JAR working at the same time it won&amp;#8217;t break at runtime.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect4"&gt;
+&lt;h5 id="_rolling_back_the_application_3"&gt;Rolling back the application&lt;/h5&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The current situation is that we have app in version &lt;code&gt;3.0.0&lt;/code&gt; and db in &lt;code&gt;v3&lt;/code&gt;. Version &lt;code&gt;3.0.0&lt;/code&gt; is not storing data
+into the &lt;code&gt;last_name&lt;/code&gt; column. That means that most up to date information is stored in the &lt;code&gt;surname&lt;/code&gt; column.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Steps:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;roll back your app to version &lt;code&gt;2.0.0&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;version &lt;code&gt;2.0.0&lt;/code&gt; is using both &lt;code&gt;last_name&lt;/code&gt; and &lt;code&gt;surname&lt;/code&gt; column.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;version &lt;code&gt;2.0.0&lt;/code&gt; will pick first &lt;code&gt;surname&lt;/code&gt; column if it&amp;#8217;s not null and if that&amp;#8217;s not the case then it will pick &lt;code&gt;last_name&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_db_changes_4"&gt;DB changes&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;There are no structure changes in the DB. The following script is executed that performs the final migration of old data:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-sql" data-lang="sql"&gt;-- WE'RE ASSUMING THAT IT'S A FAST MIGRATION - OTHERWISE WE WOULD HAVE TO MIGRATE IN BATCHES
+-- ALSO WE'RE NOT CHECKING IF WE'RE NOT OVERRIDING EXISTING ENTRIES. WE WOULD HAVE TO COMPARE
+-- ENTRY VERSIONS TO ENSURE THAT IF THERE IS ALREADY AN ENTRY WITH A HIGHER VERSION NUMBER
+-- WE WILL NOT OVERRIDE IT.
+UPDATE PERSON SET PERSON.surname = PERSON.last_name;
+
+-- DROPPING THE NOT NULL CONSTRAINT; OTHERWISE YOU WILL TRY TO INSERT NULL VALUE OF THE LAST_NAME
+-- WITH A NOT_NULL CONSTRAINT.
+ALTER TABLE PERSON MODIFY COLUMN last_name varchar(255) NULL DEFAULT NULL;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_code_changes_4"&gt;Code changes&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We are storing data in both &lt;code&gt;last_name&lt;/code&gt; and &lt;code&gt;surname&lt;/code&gt;. Also, we are reading from the &lt;code&gt;last_name&lt;/code&gt; column cause
+it is most up to date. During the deployment process some requests might have been processed by the instance that
+hasn&amp;#8217;t yet been upgraded.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;/*
+ * Copyright 2012-2016 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package sample.flyway;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Person {
+	@Id
+	@GeneratedValue
+	private Long id;
+	private String firstName;
+	private String surname;
+
+	public String getFirstName() {
+		return this.firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getSurname() {
+		return this.surname;
+	}
+
+	public void setSurname(String lastname) {
+		this.surname = lastname;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [firstName=" + this.firstName + ", surname=" + this.surname
+				+ "]";
+	}
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_step_4_removing_last_name_from_db"&gt;Step 4: Removing last name from db&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Version of the app: &lt;code&gt;4.0.0&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Version of the DB: &lt;code&gt;v4&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_comment_5"&gt;Comment&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Since the code of version &lt;code&gt;3.0.0&lt;/code&gt; wasn&amp;#8217;t using &lt;code&gt;last_name&lt;/code&gt; column, if we roll back to &lt;code&gt;3.0.0&lt;/code&gt; after removing the
+column from the database then nothing bad will happen at runtime.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect4"&gt;
+&lt;h5 id="_logs_from_script_execution_2"&gt;Logs from script execution&lt;/h5&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-bash" data-lang="bash"&gt;We will do it in the following way:
+
+01) Run 1.0.0
+02) Wait for the app (1.0.0) to boot
+03) Generate a person by calling POST localhost:9991/person to version 1.0.0
+04) Run 2.0.0
+05) Wait for the app (2.0.0) to boot
+06) Generate a person by calling POST localhost:9991/person to version 1.0.0
+07) Generate a person by calling POST localhost:9992/person to version 2.0.0
+08) Kill app (1.0.0)
+09) Run 3.0.0
+10) Wait for the app (3.0.0) to boot
+11) Generate a person by calling POST localhost:9992/person to version 2.0.0
+12) Generate a person by calling POST localhost:9993/person to version 3.0.0
+13) Kill app (3.0.0)
+14) Run 4.0.0
+15) Wait for the app (4.0.0) to boot
+16) Generate a person by calling POST localhost:9993/person to version 3.0.0
+17) Generate a person by calling POST localhost:9994/person to version 4.0.0
+
+
+Starting app in version 1.0.0
+Generate a person in version 1.0.0
+Sending a post to 127.0.0.1:9991/person. This is the response:
+
+{"firstName":"52b6e125-4a5c-429b-a47a-ef18bbc639d2","lastName":"52b6e125-4a5c-429b-a47a-ef18bbc639d2"}
+
+Starting app in version 2.0.0
+
+Generate a person in version 1.0.0
+Sending a post to 127.0.0.1:9991/person. This is the response:
+
+{"firstName":"e41ee756-4fa7-4737-b832-e28827a00deb","lastName":"e41ee756-4fa7-4737-b832-e28827a00deb"}
+
+Generate a person in version 2.0.0
+Sending a post to 127.0.0.1:9992/person. This is the response:
+
+{"firstName":"0c1240f5-649a-4bc5-8aa9-cff855f3927f","lastName":"0c1240f5-649a-4bc5-8aa9-cff855f3927f","surname":"0c1240f5-649a-4bc5-8aa9-cff855f3927f"}
+
+Killing app 1.0.0
+
+Starting app in version 3.0.0
+
+Generate a person in version 2.0.0
+Sending a post to 127.0.0.1:9992/person. This is the response:
+{"firstName":"74d84a9e-5f44-43b8-907c-148c6d26a71b","lastName":"74d84a9e-5f44-43b8-907c-148c6d26a71b","surname":"74d84a9e-5f44-43b8-907c-148c6d26a71b"}
+
+Generate a person in version 3.0.0
+Sending a post to 127.0.0.1:9993/person. This is the response:
+{"firstName":"c6564dbe-9ab5-40ae-9077-8ae6668d5862","surname":"c6564dbe-9ab5-40ae-9077-8ae6668d5862"}
+
+Killing app 2.0.0
+
+Starting app in version 4.0.0
+
+Generate a person in version 3.0.0
+Sending a post to 127.0.0.1:9993/person. This is the response:
+
+{"firstName":"cbe942fc-832e-45e9-a838-0fae25c10a51","surname":"cbe942fc-832e-45e9-a838-0fae25c10a51"}
+
+Generate a person in version 4.0.0
+Sending a post to 127.0.0.1:9994/person. This is the response:
+
+{"firstName":"ff6857ce-9c41-413a-863e-358e2719bf88","surname":"ff6857ce-9c41-413a-863e-358e2719bf88"}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_db_changes_5"&gt;DB changes&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In comparison to &lt;code&gt;v3&lt;/code&gt; we&amp;#8217;re just removing the &lt;code&gt;last_name&lt;/code&gt; column and add missing constraints.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-sql" data-lang="sql"&gt;-- REMOVE THE COLUMN
+ALTER TABLE PERSON DROP last_name;
+
+-- ADD CONSTRAINTS
+UPDATE PERSON SET surname='' WHERE surname IS NULL;
+ALTER TABLE PERSON ALTER COLUMN surname VARCHAR NOT NULL;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_code_changes_5"&gt;Code changes&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;There are no code changes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_recap"&gt;Recap&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We have successfully applied the backward incompatible change of renaming the column by doing a couple of
+ backward compatible deploys. Here you can find the summary of the performed actions:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;deploy version &lt;code&gt;1.0.0&lt;/code&gt; of the application with &lt;code&gt;v1&lt;/code&gt; of db schema (column name = &lt;code&gt;last_name&lt;/code&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;deploy version &lt;code&gt;2.0.0&lt;/code&gt; of the application that saves data to &lt;code&gt;last_name&lt;/code&gt; and &lt;code&gt;surname&lt;/code&gt; columns.
+The app reads from &lt;code&gt;last_name&lt;/code&gt; column. Db is in version &lt;code&gt;v2&lt;/code&gt; containing both &lt;code&gt;last_name&lt;/code&gt; and &lt;code&gt;surname&lt;/code&gt; columns. The &lt;code&gt;surname&lt;/code&gt; column is
+a copy of the &lt;code&gt;last_name&lt;/code&gt; column. (NOTE: this column must not have the not null constraint)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;deploy version &lt;code&gt;3.0.0&lt;/code&gt; of the application that saves data only to &lt;code&gt;surname&lt;/code&gt; and reads from &lt;code&gt;surname&lt;/code&gt;. As for the db the final
+migration of &lt;code&gt;last_name&lt;/code&gt; to &lt;code&gt;surname&lt;/code&gt; takes place. Also the &lt;strong&gt;NOT NULL&lt;/strong&gt; constraint is dropped from &lt;code&gt;last_name&lt;/code&gt;. Db is now in version &lt;code&gt;v3&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;deploy version &lt;code&gt;4.0.0&lt;/code&gt; of the application - there are no changes in the code. Deploy db in &lt;code&gt;v4&lt;/code&gt; that first
+preforms a final migration of &lt;code&gt;last_name&lt;/code&gt; to &lt;code&gt;surname&lt;/code&gt; and removes the &lt;code&gt;last_name&lt;/code&gt; column. Here you can add any missing constraints&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;By following this approach you can always rollback one version back without breaking the database / application compatibility.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="_code"&gt;Code&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;All the code used in this article is available at &lt;a href="https://github.com/spring-cloud-samples/zero-downtime-deployment"&gt;Github&lt;/a&gt;. Below you can find some additional description.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_projects"&gt;Projects&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Once you clone the repo you&amp;#8217;ll see the following folder structure.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-bash" data-lang="bash"&gt;??? boot-flyway-v1              - 1.0.0 version of the app with v1 of the schema
+??? boot-flyway-v2              - 2.0.0 version of the app with v2 of the schema (backward-compatible - app can be rolled back)
+??? boot-flyway-v2-bad          - 2.0.0.BAD version of the app with v2bad of the schema (backward-incompatible - app cannot be rolled back)
+??? boot-flyway-v3              - 3.0.0 version of the app with v3 of the schema (app can be rolled back)
+??? boot-flyway-v4              - 4.0.0 version of the app with v4 of the schema (app can be rolled back)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_scripts"&gt;Scripts&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;You can run the scripts to execute the scenario that shows the backward compatible and incompatible changes applied to the db.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To check the &lt;strong&gt;backward compatible&lt;/strong&gt; case just run:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-bash" data-lang="bash"&gt;./scripts/scenario_backward_compatible.sh&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To check the &lt;strong&gt;backward incompatible&lt;/strong&gt; case just run:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-bash" data-lang="bash"&gt;./scripts/scenario_backward_incompatible.sh&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_spring_boot_sample_flyway"&gt;Spring Boot Sample Flyway&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;All samples are clones of the &lt;code&gt;Spring Boot Sample Flyway&lt;/code&gt; project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;You can look at &lt;code&gt;&lt;a href="http://localhost:8080/flyway" class="bare"&gt;http://localhost:8080/flyway&lt;/a&gt;&lt;/code&gt; to review the list of scripts.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The sample also enables the H2 console (at &lt;code&gt;&lt;a href="http://localhost:8080/h2-console" class="bare"&gt;http://localhost:8080/h2-console&lt;/a&gt;&lt;/code&gt;)
+so that you can review the state of the database (the default jdbc url is
+&lt;code&gt;jdbc:h2:mem:testdb&lt;/code&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="_additional_reading"&gt;Additional Reading&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://databaserefactoring.com"&gt;Database Refactoring patterns&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://martinfowler.com/bliki/ContinuousDelivery.html"&gt;Continuous Delivery&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Statemachine 1.1.0 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/26/spring-statemachine-1-1-0-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Janne Valkealahti</name>
+    </author>
+    <id>tag:spring.io,2016-05-26:2511</id>
+    <updated>2016-05-26T09:03:01Z</updated>
+    <content type="html">&lt;p&gt;We’re pleased to announce a release of &lt;a href="http://projects.spring.io/spring-statemachine"&gt;Spring Statemachine 1.1.0&lt;/a&gt;. I&amp;rsquo;d like to start by saying thank you for all who contributed in any way to make this happen. Artifacts are available either from &lt;a href="http://repo1.maven.org/maven2/org/springframework/statemachine/"&gt;Maven Central&lt;/a&gt; or from &lt;a href="http://repo.spring.io/libs-release/org/springframework/statemachine/"&gt;Spring Repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;What we got into this release(compared to 1.0.x):&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Comprehensive support for Spring Security.&lt;/li&gt;
+  &lt;li&gt;Context integration with `@WithStateMachine&amp;rsquo; has been greatly enhanced.&lt;/li&gt;
+  &lt;li&gt;StateContext is now a first class citizen with how user can interact with a State Machine.&lt;/li&gt;
+  &lt;li&gt;Features around persistence has been enhanced with a build-in support for redis.&lt;/li&gt;
+  &lt;li&gt;New feature helping with persist operations.&lt;/li&gt;
+  &lt;li&gt;Configuration model classes are now a public API.&lt;/li&gt;
+  &lt;li&gt;New features in timer based events.&lt;/li&gt;
+  &lt;li&gt;New Junction pseudostate.&lt;/li&gt;
+  &lt;li&gt;New Exit Point and Entry Point pseudostates.&lt;/li&gt;
+  &lt;li&gt;Configuration model verifier.&lt;/li&gt;
+  &lt;li&gt;New samples.&lt;/li&gt;
+  &lt;li&gt;UI modeling support using Eclipse Papyrus.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Full changes as usual is available from &lt;a href="https://github.com/spring-projects/spring-statemachine/blob/master/docs/src/info/changelog.txt"&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;While native way of configuring a state machine is always done via configurer and builder interfaces, this design task may become difficult to understand if you&amp;rsquo;re unable to see a &amp;ldquo;big picture&amp;rdquo;. Below state chart is from new sample which demonstrated more complex scenarios what a state machine can do. Based on Papyrus uml designer, it is relatively easy to understand what a machine does when you&amp;rsquo;re able to see it as an proper state chart. Its usage is optional but allows user to import uml model into a machine configuration.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://docs.spring.io/spring-statemachine/docs/1.1.0.RELEASE/reference/htmlsingle/images/sm-ordershipping-1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Thank you for all who have contributed in any way either via Stack Overflow, GitHub Issues or other channels. Driving force for changes really has been a community and requests from it.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring REST Docs 1.0.2.RELEASE</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/25/spring-rest-docs-1-0-2-release" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Andy Wilkinson</name>
+    </author>
+    <id>tag:spring.io,2016-05-25:2508</id>
+    <updated>2016-05-25T13:07:37Z</updated>
+    <content type="html">&lt;p&gt;I&amp;rsquo;m delighted to announce that &lt;a href="https://github.com/spring-projects/spring-restdocs"&gt;Spring REST Docs&lt;/a&gt; 1.0.2.RELEASE is available from Maven Central, JCenter, and our &lt;a href="https://repo.spring.io/release"&gt;release repository&lt;/a&gt;. My thanks to everyone who contributed to this release by reporting bugs and opening pull requests.&lt;/p&gt;
+&lt;p&gt;This maintenance release includes a &lt;a href="https://github.com/spring-projects/spring-restdocs/issues?q=milestone%3A1.0.2.RELEASE"&gt;number of bug fixes&lt;/a&gt; and an immediate upgrade is recommended for all Spring REST Docs users. &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-restdocs"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-restdocs"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-restdocs/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-restdocs/docs/1.0.2.RELEASE"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - May 24th, 2016</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/25/this-week-in-spring-may-24th-2016" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2016-05-25:2507</id>
+    <updated>2016-05-25T01:25:00Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installation of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week&amp;rsquo;s already off to a crazy start. Sunday evening I returned from Kiev, Ukraine, where I spoke at JEEConf. Yesterday, Monday, I gave a talk &lt;a href="http://twitter.com/jbaruch"&gt;with my friend Baruch&lt;/a&gt; from JFrog at yesterday&amp;rsquo;s JFrog Swampup conference event in Napa, California. Today I&amp;rsquo;m off to Denver, Colorado for Gluecon, and then off to GOTO Chicago in Chicago, Illinois and I&amp;rsquo;ll finish out the week in Washington DC for customer visits. I can&amp;rsquo;t wait to see you all along the way!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;I hope you&amp;rsquo;ll register for this &lt;a href="https://spring.io/blog/2016/05/24/webinar-understanding-microservice-latency-an-introduction-to-distributed-tracing-and-zipkin"&gt;upcoming webinar on distributed tracing with the Spring Cloud team&amp;rsquo;s very own Adrian Cole and Marcin Grzejszczak&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Wow! &lt;a href="https://spring.io/blog/2016/05/18/spring-roo-2-0-0m2-released"&gt;Spring Roo 2.0M2 is &lt;em&gt;packed&lt;/em&gt;&lt;/a&gt; with lots of cool looking features supporting Spring Boot and removing the older ActiveRecord-style support in favor of proper Spring Data repositories&lt;/li&gt;
+  &lt;li&gt;I really liked Stormpath founder and CTO Les Hazlewood&amp;rsquo;s post on how &lt;a href="https://stormpath.com/blog/spring-boot-migration"&gt;they moved their entire backend API to Spring Boot in a matter of three weeks&lt;/a&gt; &lt;em&gt;while&lt;/em&gt; embracing Spring Boot&amp;rsquo;s autoconfiguration to solve a few problems of their own, like a Samza auto-configuration.&lt;/li&gt;
+  &lt;li&gt;the Udemy &lt;a href="https://www.udemy.com/microservices-with-spring-cloud/"&gt;Spring Cloud workshop online looks pretty cool&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;Hey, this looks interesting: a framework &lt;a href="https://bitbucket.org/atlassian/atlassian-connect-spring-boot"&gt;to use Spring Boot to build Atlassian Connect modules&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;this is a cool (Portugues language) &lt;a href="http://www.devall.com.br/blog/show/899"&gt;post on externalizing configuration with Spring Cloud Config&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I dig Dr. Xinyu Liu&amp;rsquo;s post on how &lt;a href="http://www.javaworld.com/article/3062899/big-data/lightning-fast-nosql-with-spring-data-redis.html"&gt;to build lightning fast NoSQL solutions with Spring Data Redis&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Did you miss Spring I/O in sunny Barcelona, Spain? The replays will be online shortly but in the meantime, check out the slides to Spring Cloud Stream-lead Marius Bogoevici&amp;rsquo;s talk &lt;a href="https://speakerdeck.com/mbogoevici/cloud-native-streaming-and-event-driven-microservices"&gt;on streaming- and event-driven microservices&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://www.cnblogs.com/lazio10000/p/5510852.html"&gt;I dig this Chinese-language translation&lt;/a&gt; of our own Paul Chapman&amp;rsquo;s &lt;a href="https://spring.io/blog/2015/07/14/microservices-with-spring"&gt;post on building microservices with Spring Cloud&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Interesting (I&amp;rsquo;m pretty sure, at least!) &lt;a href="http://dev.classmethod.jp/server-side/java/spring-data-dynamodb/"&gt;Japanese-language post on Spring Data DynamoDB&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;this looks to be a nice &lt;a href="https://speakerdeck.com/sinsengumi/spring-boot-application-infrastructure"&gt;Japanese-language slidedeck on using Spring Boot for application infrastructure&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>Webinar: Understanding microservice latency: An introduction to Distributed Tracing and Zipkin</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/24/webinar-understanding-microservice-latency-an-introduction-to-distributed-tracing-and-zipkin" />
+    <category term="news" label="News and Events" />
+    <author>
+      <name>Pieter Humphrey</name>
+    </author>
+    <id>tag:spring.io,2016-05-24:2506</id>
+    <updated>2016-05-24T07:51:00Z</updated>
+    <content type="html">&lt;p&gt;Speakers: Adrian Cole &amp;amp; Marcin Grzejszczak, Pivotal&lt;/p&gt;
+&lt;p&gt;Latency analysis is the act of blaming components for causing user perceptible delay. In today&amp;rsquo;s world of microservices, this can be tricky as requests can fan out across polyglot components and even data-centers. In many cases, the root source of latency isn&amp;rsquo;t a component, but rather a link between components. This session will overview how to debug latency problems, using call graphs created by Zipkin. We&amp;rsquo;ll use trace zipkin itself, setting up from scratch using docker.&lt;/p&gt;
+&lt;p&gt;While we&amp;rsquo;re at it, we&amp;rsquo;ll discuss how the model works, and how to safely trace production. Finally, we&amp;rsquo;ll overview the ecosystem, including tools to trace ruby, c#, java and spring boot apps. When you leave, you&amp;rsquo;ll at least know something about distributed tracing, and hopefully be on your way to blaming things for causing latency!&lt;/p&gt;
+&lt;p&gt;Thursday, June 30th, 2016 3:00PM London GMT &lt;a href="http://connect.pivotal.io/OSS_Webinar_7AMMicroserviceLatency_ZipkinDistributedTracing_Q216_Register.html"&gt;Register&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Thursday, June 30th, 2016 10:00AM PST (San Francisco GMT-08:00) &lt;a href="http://connect.pivotal.io/OSS_Webinar_10AMMicroserviceLatency_ZipkinDistributedTracing_Q216_Register.html"&gt;Register&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Roo 2.0.0M2 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/18/spring-roo-2-0-0m2-released" />
+    <category term="news" label="News and Events" />
+    <author>
+      <name>Pieter Humphrey</name>
+    </author>
+    <id>tag:spring.io,2016-05-19:2505</id>
+    <updated>2016-05-18T22:28:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf on the Spring Roo team at DISID Corporation, I&amp;rsquo;m pleased to announce that Spring Roo 2.0.0.M2 has been released!&lt;/p&gt;
+&lt;p&gt;The main goal of this Spring Roo version was to update code generation to use latest Spring technologies:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Use Spring IO Platform to manage dependency versions and be able to use latest Spring technologies.&lt;/li&gt;
+  &lt;li&gt;Update code generation to use the latest Spring framework versions (4.x)&lt;/li&gt;
+  &lt;li&gt;Update code generation to include Spring Boot on generated projects.&lt;/li&gt;
+  &lt;li&gt;Remove all generated configuration based on XML files and use Spring Boot auto-configuration.&lt;/li&gt;
+  &lt;li&gt;Remove Active Record data model in favor of the Repository (Spring Data) based one.&lt;/li&gt;
+  &lt;li&gt;Generate application architecture based on service layer pattern by default&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Also, the Spring Roo shell has improved its usability:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;More intuitive commands that provides only the necessary parameters.&lt;/li&gt;
+  &lt;li&gt;New commands to configure Spring Roo behavior.&lt;/li&gt;
+  &lt;li&gt;Multi-module projects improvement.&lt;/li&gt;
+  &lt;li&gt;Push-in operations using Spring Roo Shell.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Finally, the presentation layer generation engine has been refactored:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Different response types are allowed in the same controller (JSON, THYMELEAF, etc&amp;hellip;)&lt;/li&gt;
+  &lt;li&gt;Views could be generated using THYMELEAF.&lt;/li&gt;
+  &lt;li&gt;View layer generation engine is based on FreeMarker templates that could be installed and customized by developers.&lt;/li&gt;
+  &lt;li&gt;Dojo has been replaced with HTML5, CSS3, Bootstrap and jQuery components. (Datatables, Select2, etc&amp;hellip;)&lt;/li&gt;
+  &lt;li&gt;New amazing Spring Roo Responsive Theme!&lt;/li&gt;
+  &lt;li&gt;&amp;hellip; and much more!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As always, new version of Spring Roo, includes some bug fixes and improvements reported by the community.&lt;/p&gt;
+&lt;p&gt;For full details on the changes made in the new Spring Roo version, please refer to the&lt;br/&gt;&lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10340&amp;version=15212"&gt;Spring Roo 2.0.0.M2 Release Notes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Additionally Spring Tool Suite (STS) team is working in releasing the STS 3.8.x which will include the Spring IDE Roo Support for Roo 2.0.0.M2.&lt;/p&gt;
+&lt;p&gt;If you want to install the updated Roo components before, you would do it manually via the Spring IDE nightly update site, but remember that you will get an unstable version of STS that could contains errors.&lt;/p&gt;
+&lt;p&gt;Thanks to all awesome users who came up with useful bug reports and suggestions.&lt;/p&gt;
+&lt;p&gt;For more specific information about Spring Roo project please see the&lt;br/&gt;&lt;a href="http://projects.spring.io/spring-roo/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-roo"&gt;GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;As always, you&amp;rsquo;ll also find Roo on Twitter - either follow &lt;a href="http://www.twitter.com/springroo"&gt;@SpringRoo&lt;/a&gt; or just include #SpringRoo in your tweets.&lt;/p&gt;
+&lt;p&gt;Stay tuned to Spring Roo news!&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - May 17th, 2016</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/17/this-week-in-spring-may-17th-2016" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2016-05-17:2504</id>
+    <updated>2016-05-17T19:12:07Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of This Week in Spring! As I write this, I&amp;rsquo;m in Chennai, India, en route to Bangalore, India for a day of exciting customer meetings and then I&amp;rsquo;m off to sunny Barcelona, Spain, &lt;a href="http://www.springio.net/"&gt;for the epic Spring IO event&lt;/a&gt;! Then, this Friday, I&amp;rsquo;m off to Kiev, Ukraine, &lt;a href="http://jeeconf.com/"&gt;for JEEConf&lt;/a&gt;. If you&amp;rsquo;re around, as always, &lt;a href="http://twitter.com/starbuxman"&gt;don&amp;rsquo;t be shy and say hi!&lt;/a&gt;. That said, let&amp;rsquo;s get into it!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The BIG news: &lt;a href="https://spring.io/blog/2016/05/11/spring-cloud-brixton-release-is-available"&gt;&lt;strong&gt;Spring Cloud Brixton is now available&lt;/strong&gt;&lt;/a&gt;! Get &lt;a href="http://start.spring.io"&gt;the bits from the Spring Initializr&lt;/a&gt;. If you&amp;rsquo;ll permit a little back-patting, I submit that you might get a good feel for what concerns a technology like Spring Cloud addresses by &lt;a href="https://dzone.com/articles/the-power-patterns-and-pains-of-microservices"&gt;reading this article I wrote&lt;/a&gt; and you&amp;rsquo;ll learn how Spring Boot and Spring Cloud &lt;a href="https://www.youtube.com/watch?v=SFDYdslOvu8"&gt;are used in this video&lt;/a&gt;. That said, grab the bits and go!&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2016/05/10/spring-cloud-stream-1-0-0-release-is-available"&gt;Spring Cloud Stream 1.0.0 is here, at long last!&lt;/a&gt; Spring Cloud stream makes it simple to build collaborating messaging-based microservices.&lt;/li&gt;
+  &lt;li&gt;Spring Boot co-lead &lt;a href="https://spring.io/blog/2016/05/17/spring-boot-1-4-0-m3-available-now"&gt;Phil Webb just announced that Spring Boot 1.4.0.M3 is now available&lt;/a&gt;, &lt;em&gt;just in time&lt;/em&gt; for the Spring I/O event in Barcelona! There are a lot of great new features in 1.4, so make sure to try the bits early and often.&lt;/li&gt;
+  &lt;li&gt;Spring Security and Spring &lt;a href="https://spring.io/blog/2016/05/12/spring-session-1-2-0-released"&gt;Session lead Rob Winch has just announced Spring Session 1.2.0.RELEASE&lt;/a&gt;. This release &lt;a href="http://docs.spring.io/spring-session/docs/current/reference/html5/#what-s-new-in-1-2"&gt;includes &lt;em&gt;loads&lt;/em&gt; of cool stuff&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Spring Integration lead Gary Russell just announced &lt;a href="https://spring.io/blog/2016/05/12/spring-integration-4-3-0-release-candidate-available"&gt;Spring Integration 4.3.0.RC1&lt;/a&gt; (the last RC! so get the bits and kick the tires!)&lt;/li&gt;
+  &lt;li&gt;Spring IO Platform &lt;a href="https://spring.io/blog/2016/05/13/spring-io-platform-2-0-5-release"&gt;lead Andy Wilkinson has just announced Spring IO Platform 2.0.5&lt;/a&gt;. This release includes a few interesting library updates, including Spring Boot 1.3.5.RELEASE and Spring AMQP 1.5.6.RELEASE.&lt;/li&gt;
+  &lt;li&gt;Not one to rest on their laurels, &lt;a href="https://spring.io/blog/2016/05/17/spring-ldap-2-1-0-released"&gt;the Spring Security team just announced Spring LDAP 2.1.0&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;I really enjoyed this &lt;a href="http://blog.altoros.com/concourse-ci-architecture-features-and-usage.html"&gt;blog on using Pivotal&amp;rsquo;s Concourse CI pipeline tool with Cloud Foundry&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Pivotal&amp;rsquo;s very own Richard Seroter did a nice (albeit .NET-colored) &lt;a href="https://seroter.wordpress.com/2016/05/16/modern-open-source-messaging-apache-kafka-rabbitmq-and-nats-in-action/"&gt;comparison of messaging technologies RabbitMQ, NATS, and Apache Kafka&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;This post on using &lt;a href="http://groovy-coder.com/?p=111"&gt;the Groovy-language Spock with Spring Boot 1.4&amp;rsquo;s new testing features is boss-sauce!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The folks at &lt;a href="http://blog.takipi.com/the-top-100-java-libraries-in-2016-after-analyzing-47251-dependencies/"&gt;Takipi released an interesting post wherein they compared and discovered the top 100 most widely used Java projects&lt;/a&gt;. Naturally, Spring and the various Spring modules featured &lt;em&gt;very&lt;/em&gt; prominently, accounting for 44 of the top 100!&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Boot 1.4.0.M3 Available Now</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/17/spring-boot-1-4-0-m3-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Phil Webb</name>
+    </author>
+    <id>tag:spring.io,2016-05-17:2503</id>
+    <updated>2016-05-17T18:49:13Z</updated>
+    <content type="html">&lt;p&gt;Spring Boot v1.4.0.M3 is available now from the &lt;a href="http://repo.spring.io/milestone/"&gt;Spring milestone repository&lt;/a&gt;. This release closes over &lt;a href="https://github.com/spring-projects/spring-boot/issues?q=milestone%3A1.4.0.M3+is%3Aclosed"&gt;150 issues&lt;/a&gt; and introduces a number of new features.&lt;/p&gt;
+&lt;p&gt;Highlights include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Lots of bug fixes and improvements over M2 (thanks to everyone for trying the milestones).&lt;/li&gt;
+  &lt;li&gt;Convention based error pages (want a custom 404, just add &lt;code&gt;src/main/resources/public/error/404.html&lt;/code&gt;).&lt;/li&gt;
+  &lt;li&gt;Improved ErrorPage registration support.&lt;/li&gt;
+  &lt;li&gt;Support for pluggable OAuth2 Principal extraction.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For a complete list of changes, and upgrade instructions, see the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-1.4-Release-Notes"&gt;Spring Boot 1.4 Release Notes&lt;/a&gt; on the WIKI and the updated &lt;a href="http://docs.spring.io/spring-boot/docs/1.4.0.M3/reference/htmlsingle/"&gt;reference documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As always, thanks to all our contributors and please continue to provide feedback and &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;bug reports&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Hopefully we&amp;rsquo;ll see a few of you at the &lt;a href="http://springio.net/"&gt;Spring I/O conference&lt;/a&gt; in Barcelona this week, or at &lt;a href="https://springoneplatform.io/"&gt;SpringOne Platform in August&lt;/a&gt;!&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring LDAP 2.1.0 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/17/spring-ldap-2-1-0-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Rob Winch</name>
+    </author>
+    <id>tag:spring.io,2016-05-17:2502</id>
+    <updated>2016-05-17T14:03:54Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the community, I&amp;rsquo;m pleased to announce the release of Spring LDAP 2.1.0.RELEASE. The highlights of this release include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/issues/380"&gt;#380&lt;/a&gt; - Support for Spring Data Hopper&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/issues/384"&gt;#384&lt;/a&gt; - Early support for Spring IO Platform 2.1&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/issues/351"&gt;#351&lt;/a&gt; - Support for commons-pool2&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/issues/370"&gt;#370&lt;/a&gt; - Support property placeholders in XML Namespace&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/pull/392"&gt;#392&lt;/a&gt; - Document Testing Support&lt;/li&gt;
+  &lt;li&gt;Migrated from JIRA to &lt;a href="https://github.com/spring-projects/spring-ldap/issues"&gt;GitHub Issues&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Added &lt;a href="https://gitter.im/spring-projects/spring-ldap"&gt;Gitter Chat&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For complete details of 2.1 refer to the changelog for &lt;a href="https://github.com/spring-projects/spring-ldap/issues?q=milestone%3A2.1.0.RC1"&gt;2.1.0.RC1&lt;/a&gt; and &lt;a href="https://github.com/spring-projects/spring-ldap/issues?utf8=%E2%9C%93&amp;q=milestone%3A2.1.0"&gt;2.1.0.RELEASE&lt;/a&gt;&lt;/p&gt;&lt;h1&gt;&lt;a href="#feedback-please" class="anchor" name="feedback-please"&gt;&lt;/a&gt;Feedback Please&lt;/h1&gt;
+&lt;p&gt;If you have feedback on this release, I encourage you to reach out via &lt;a href="http://stackoverflow.com/questions/tagged/spring-ldap"&gt;StackOverflow&lt;/a&gt;, &lt;a href="https://github.com/spring-projects/spring-ldap/issues"&gt;GitHub Issues&lt;/a&gt;, or via the comments section. You can also ping me &lt;a href="https://twitter.com/rob_winch"&gt;@rob_winch&lt;/a&gt; or Joe (our latest full time Spring Security team member) &lt;a href="https://twitter.com/joe_grandja"&gt;@joe_grandja&lt;/a&gt; on Twitter.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-ldap/"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-ldap/docs/2.1.0.RELEASE/reference/"&gt;Reference&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-ldap/issues"&gt;Issues&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring IO Platform 2.0.5.RELEASE</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/13/spring-io-platform-2-0-5-release" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Andy Wilkinson</name>
+    </author>
+    <id>tag:spring.io,2016-05-13:2501</id>
+    <updated>2016-05-13T13:51:00Z</updated>
+    <content type="html">&lt;p&gt;Following on from Spring Boot 1.3.5.RELEASE &lt;a href="https://spring.io/blog/2016/05/10/spring-boot-1-3-5-released"&gt;which fixed a regression&lt;/a&gt;, &lt;a href="http://platform.spring.io/platform"&gt;Spring IO Platform&lt;/a&gt; 2.0.5.RELEASE is now available from both &lt;a href="http://repo.spring.io/release"&gt;repo.spring.io&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3Aio.spring.platform"&gt;Maven Central&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;This maintenance release upgrades the versions of a number of the projects in the Platform to pick up their latest maintenance releases:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring AMQP 1.5.6.RELEASE&lt;/li&gt;
+  &lt;li&gt;Spring Boot 1.3.5.RELEASE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="http://platform.spring.io/platform"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-io/platform"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-io/platform/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/platform/docs/2.0.5.RELEASE/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Integration 4.3.0 Release Candidate Available</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/12/spring-integration-4-3-0-release-candidate-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Gary Russell</name>
+    </author>
+    <id>tag:spring.io,2016-05-11:2499</id>
+    <updated>2016-05-12T12:24:00Z</updated>
+    <content type="html">&lt;p&gt;I am pleased to announce the availability of Spring Integration 4.3.0.RC1 - the first (and final) release candidate; it is available from the &lt;a href="https://repo.spring.io/milestone"&gt;spring milestone repo&lt;/a&gt; The GA release should follow shortly after the GA release of Spring Framework 4.3.&lt;/p&gt;
+&lt;p&gt;4.2.6.RELEASE is also available in the &lt;a href="https://repo.spring.io/release"&gt;spring release repo&lt;/a&gt; as well as maven central. This release includes a few &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10121&amp;version=15498"&gt;important bug fixes&lt;/a&gt; and all users are encouraged to upgrade to it.&lt;/p&gt;
+&lt;p&gt;4.3 is only a minor release with a few new features and improvements over 4.2 and will close out the 4.x line. Meanwhile we are looking forward to embrace the &lt;a href="https://spring.io/blog/2016/02/16/reactor-2-5-a-second-generation-reactive-foundation-for-the-jvm"&gt;Reactive Foundation for the JVM&lt;/a&gt; in Spring Integration 5.0. We have yet to determine exactly what that means, so stay tuned! In addition, 5.0 (2017) will include the (currently separate) &lt;a href="https://github.com/spring-projects/spring-integration-java-dsl"&gt;Spring Integration Java DSL&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here are some highlights of the release (some of which were previously announced in earlier milestones):&lt;/p&gt;
+&lt;p&gt;Previously announced:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+  &lt;p&gt;A &lt;code&gt;negate&lt;/code&gt; option for &lt;code&gt;HeaderMapper&lt;/code&gt;s to allow the exclusion of request and/or reply headers with logical NOT &lt;code&gt;!&lt;/code&gt;. (e.g. &lt;code&gt;!foo,*&lt;/code&gt; - map all headers except &lt;code&gt;foo&lt;/code&gt;).&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;
+  &lt;p&gt;&lt;code&gt;Exception&lt;/code&gt; superclass mappings for the &lt;code&gt;ErrorMessageExceptionTypeRouter&lt;/code&gt; to avoid mapping duplications for different inheritors.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;
+  &lt;p&gt;&lt;code&gt;null&lt;/code&gt; Remote Directory support for the &lt;code&gt;list()&lt;/code&gt; and &lt;code&gt;listNames()&lt;/code&gt; functions in the FTP adapters to meet the standard FTP protocol support when listing the current working directory .&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;
+  &lt;p&gt;An option to change the direction of Redis List Push/Pop operations in the Redis Queue Adapters.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;
+  &lt;p&gt;&lt;code&gt;FileWritingMessageHandler&lt;/code&gt; &lt;em&gt;sub-path&lt;/em&gt; support in the file name to allow restoration of the directory structure locally, e.g. after &lt;a href="https://spring.io/blog/2016/01/12/spring-integration-zip-1-0-0-m1-and-others"&gt;unzipping&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;
+  &lt;p&gt;Upgrade to Smack-4.1.x.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;
+  &lt;p&gt;Upgrade to &lt;a href="https://spring.io/blog/2016/05/06/spring-amqp-1-6-0-release-candidate-and-1-5-6-available"&gt;Spring Amqp 1.6&lt;/a&gt; with support for its new features such as Delayed Message Exchange.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;
+  &lt;p&gt;The Spring Integration runtime object model, together with Component Metrics, can now be exposed as a &lt;code&gt;graph&lt;/code&gt;, which may be used to visualize the current state of the integration application. When running in a web container, the &lt;code&gt;@EnableIntegrationGraphController&lt;/code&gt; annotation, together with an &lt;code&gt;IntegrationGraphServer&lt;/code&gt; bean, creates a service to retrieve the model and state over the REST protocol, e.g. in JSON notation:&lt;/p&gt;
+  &lt;pre&gt;&lt;code class="prettyprint"&gt;{&#xD;
+  &amp;quot;nodes&amp;quot;: [&#xD;
+{&#xD;
+  &amp;quot;nodeId&amp;quot;: 1,&#xD;
+  &amp;quot;name&amp;quot;: &amp;quot;nullChannel&amp;quot;,&#xD;
+  &amp;quot;componentType&amp;quot;: &amp;quot;channel&amp;quot;,&#xD;
+},&#xD;
+{&#xD;
+  &amp;quot;nodeId&amp;quot;: 2,&#xD;
+  &amp;quot;name&amp;quot;: &amp;quot;errorChannel&amp;quot;,&#xD;
+  &amp;quot;componentType&amp;quot;: &amp;quot;publish-subscribe-channel&amp;quot;,&#xD;
+},&#xD;
+{&#xD;
+  &amp;quot;nodeId&amp;quot;: 3,&#xD;
+  &amp;quot;name&amp;quot;: &amp;quot;_org.springframework.integration.errorLogger&amp;quot;,&#xD;
+  &amp;quot;componentType&amp;quot;: &amp;quot;logging-channel-adapter&amp;quot;,&#xD;
+  &amp;quot;output&amp;quot;: null,&#xD;
+  &amp;quot;input&amp;quot;: &amp;quot;errorChannel&amp;quot;&#xD;
+}&#xD;
+  ],&#xD;
+  &amp;quot;links&amp;quot;: [&#xD;
+{&#xD;
+  &amp;quot;from&amp;quot;: 2,&#xD;
+  &amp;quot;to&amp;quot;: 3&#xD;
+}&#xD;
+  ]&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;p&gt;Continuing the tradition of Spring Integration, message channels are represented as first class citizens (nodes) in this model, and are not simply links between nodes. Also, when statistics are enabled (&lt;code&gt;@EnableIntegrationManagement&lt;/code&gt; or &lt;code&gt;&amp;lt;int:management /&amp;gt;&lt;/code&gt;), each node in the object graph contains those statistics (message counts, response times etc). (Some improvements have been made to the graph since it was announced in the last milestone, including: support for chains - list of handlers, &lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;
+  &lt;p&gt;Persistent &lt;code&gt;MessageStore&lt;/code&gt;s now support a &lt;code&gt;Lazy-Load&lt;/code&gt; algorithm (enabled by default) for &lt;code&gt;MessageGroup&lt;/code&gt; retrieval. When dealing with large, persisted, groups with operations such as aggregation, this produces significant performance benefits. &lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;
+  &lt;p&gt;The Service Activator now supports an &lt;code&gt;async&lt;/code&gt; option. If the service returns a &lt;code&gt;ListenableFuture&amp;lt;?&amp;gt;&lt;/code&gt; and &lt;code&gt;async&lt;/code&gt; is &lt;code&gt;true&lt;/code&gt;, the calling thread is released immediately, and the reply message is sent on the thread (from within your service) that completes the future. Based on this foundation we also provide an &lt;code&gt;AsyncAmqpOutboundGateway&lt;/code&gt; and &lt;code&gt;async&lt;/code&gt; mode for the &lt;code&gt;JmsOutboundGateway&lt;/code&gt; where the downstream flow runs on the reply listener container thread.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;
+  &lt;p&gt;The XMPP Adapters now support &lt;code&gt;Extensions&lt;/code&gt; (XEP). So, for example, you can more easily interact with &lt;a href="https://developers.google.com/cloud-messaging/"&gt;Google Cloud Messaging&lt;/a&gt; (GCM):&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class="prettyprint xml"&gt;&amp;lt;int-xmpp:inbound-channel-adapter id=&amp;quot;xmppInboundAdapter&amp;quot;&#xD;
+    payload-expression=&amp;quot;getExtension(&amp;#39;google:mobile:data&amp;#39;).json&amp;quot;/&amp;gt;&#xD;
+...&#xD;
+&amp;lt;bean id=&amp;quot;gcmExtensionProvider&amp;quot; class=&amp;quot;org.jivesoftware.smackx.gcm.provider.GcmExtensionProvider&amp;quot;/&amp;gt;&#xD;
+&#xD;
+&amp;lt;int-xmpp:outbound-channel-adapter id=&amp;quot;xmppOutboundAdapter&amp;quot;&#xD;
+    extension-provider=&amp;quot;gcmExtensionProvider&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+  &lt;p&gt;Groovy scripts can now be configured with the &lt;code&gt;compile-static&lt;/code&gt; or &lt;code&gt;compiler-configuration&lt;/code&gt; to achieve improved performance or provide some exotic customization to the target AST.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;
+  &lt;p&gt;The &lt;code&gt;WatchServiceDirectoryScanner&lt;/code&gt; has undergone several improvements. Its logic has been moved to the &lt;code&gt;FileReadingMessageSource&lt;/code&gt; directly via the &lt;code&gt;use-watch-service&lt;/code&gt; flag. In addition, we can specify the &lt;code&gt;WatchEventType&lt;/code&gt;s to listen for on the directory tree. Also the &lt;code&gt;StandardWatchEventKinds.ENTRY_DELETE&lt;/code&gt; event is treated as a &lt;code&gt;ResettableFileListFilter.remove()&lt;/code&gt; operation, for example to remove a file from an &lt;code&gt;AcceptOnceFilteListFilter&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;
+  &lt;p&gt;Several more cases for &lt;em&gt;channel late binding&lt;/em&gt; have been implemented. For example in the was &lt;code&gt;WireTap&lt;/code&gt;, which led to the&lt;br/&gt;&lt;a href="https://github.com/spring-projects/spring-integration-java-dsl/issues/69"&gt;&lt;code&gt;MessageChannelSpec.wireTap()&lt;/code&gt;&lt;/a&gt; feature in the Spring Integration Java DSL.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;New in this RC:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+  &lt;p&gt;FTP/SFTP inbound channel adapters can now support direct streaming of file contents, avoiding a copy to the local file system.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;
+  &lt;p&gt;TCP deserializers can now be configured to use a buffer pool.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;
+  &lt;p&gt;Various minor fixes and improvements.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The release addresses &lt;a href="https://jira.spring.io/issues/?jql=project%20%3D%20%22Spring%20Integration%22%20AND%20fixVersion%20in%20%28%224.3%20M1%22%2C%20%224.3%20M2%22%2C%20%224.3%20RC1%22%29%20%20ORDER%20BY%20fixVersion%2C%20priority%20DESC"&gt;over 125 JIRA issues&lt;/a&gt;. Also see the &lt;a href="http://docs.spring.io/spring-integration/docs/4.3.0.RC1/reference/html/whats-new.html"&gt;What&amp;rsquo;s New&lt;/a&gt; for a summary of the major changes. We are very grateful for a number of external contributions to the project - thank you all!.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-integration/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/INT"&gt;JIRA&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-integration/blob/master/CONTRIBUTING.md"&gt;Contributions&lt;/a&gt; | &lt;a href="http://stackoverflow.com"&gt;StackOverflow&lt;/a&gt; (&lt;code&gt;spring-integration&lt;/code&gt; tag)&lt;/p&gt;
+&lt;p&gt;If you are attending Spring IO in Barcelona, I will be talking about Spring Integration and Spring AMQP on Friday, May 20. There are many other great talks from the Spring team members, so check the &lt;a href="http://www.springio.net/agenda/"&gt;agenda&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;This is also a reminder that &lt;a href="http://springoneplatform.io"&gt;Spring One Platform&lt;/a&gt; will be taking place in Las Vegas between August 1-4 this year, and you should consider &lt;a href="https://2016.event.springoneplatform.io/register"&gt;getting your ticket&lt;/a&gt; if you haven’t done so already. &lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Session 1.2.0 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/12/spring-session-1-2-0-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Rob Winch</name>
+    </author>
+    <id>tag:spring.io,2016-05-12:2500</id>
+    <updated>2016-05-12T12:03:47Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the community, I&amp;rsquo;m pleased to announce the release of Spring Session 1.2.0.RELEASE. This release evolved through &lt;a href="https://github.com/spring-projects/spring-session/issues?q=milestone%3A1.2.0.RC1"&gt;1.2.0 RC1&lt;/a&gt;, &lt;a href="https://github.com/spring-projects/spring-session/issues?utf8=%E2%9C%93&amp;q=milestone%3A1.2.0.RC2"&gt;1.2.0.RC2&lt;/a&gt;, &lt;a href="https://github.com/spring-projects/spring-session/issues?utf8=%E2%9C%93&amp;q=milestone%3A1.2.0.RC3"&gt;1.2.0.RC3&lt;/a&gt;, and &lt;a href="https://github.com/spring-projects/spring-session/issues?utf8=%E2%9C%93&amp;q=milestone%3A1.2.0"&gt;1.2.0.RELEASE&lt;/a&gt; closing over 60 issues.&lt;/p&gt;&lt;h1&gt;&lt;a href="#what-s-new-in-spring-session-1-2-0" class="anchor" name="what-s-new-in-spring-session-1-2-0"&gt;&lt;/a&gt;What’s New in Spring Session 1.2.0&lt;/h1&gt;
+&lt;p&gt;You can find highlights of what&amp;rsquo;s new in the &lt;a href="http://docs.spring.io/spring-session/docs/current/reference/html5/#what-s-new-in-1-2"&gt;What’s New in Spring Session 1.2.0&lt;/a&gt; section of the reference. For details refer to the changlog links above.&lt;/p&gt;&lt;h1&gt;&lt;a href="#contributions" class="anchor" name="contributions"&gt;&lt;/a&gt;Contributions&lt;/h1&gt;
+&lt;p&gt;Without the community we couldn&amp;rsquo;t be the successful project we are today. I&amp;rsquo;d like to thank everyone that created issues &amp;amp; provided feedback. &lt;/p&gt;&lt;h1&gt;&lt;a href="#feedback-please" class="anchor" name="feedback-please"&gt;&lt;/a&gt;Feedback Please&lt;/h1&gt;
+&lt;p&gt;If you have feedback on this release, I encourage you to reach out via &lt;a href="http://stackoverflow.com/questions/tagged/spring-session"&gt;StackOverflow&lt;/a&gt;, &lt;a href="https://github.com/spring-projects/spring-session/issues"&gt;GitHub Issues&lt;/a&gt;, or via the comments section. You can also ping me &lt;a href="https://twitter.com/rob_winch"&gt;@rob_winch&lt;/a&gt; or Joe (our latest full time Spring Security team member) &lt;a href="https://twitter.com/joe_grandja"&gt;@joe_grandja&lt;/a&gt; on Twitter.&lt;/p&gt;
+&lt;p&gt;Of course the best feedback comes in the form of &lt;a href="https://github.com/spring-projects/spring-session/blob/1.2.0.RELEASE/CONTRIBUTING.adoc"&gt;contributions&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-session/"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-session/docs/1.2.0.RELEASE/reference/html5/"&gt;Reference&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-session"&gt;Help&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Brixton.RELEASE is available</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/11/spring-cloud-brixton-release-is-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Spencer Gibb</name>
+    </author>
+    <id>tag:spring.io,2016-05-11:2498</id>
+    <updated>2016-05-11T12:14:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team, I am pleased to announce that the &lt;a href="http://cloud.spring.io"&gt;Spring Cloud Brixton&lt;/a&gt; Release Train has reached General Availability. The release is available today and can be found in our &lt;a href="http://repo.spring.io/release"&gt;Spring Release repository&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22spring-cloud-dependencies%22"&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We would like to thank many community contributors and testers for their help. There have been many pull requests, issues and conversations that have made Spring Cloud Brixton better.&lt;/p&gt;&lt;h4&gt;&lt;a href="#highlights" class="anchor" name="highlights"&gt;&lt;/a&gt;Highlights&lt;/h4&gt;
+&lt;p&gt;Some of the highlights of the Brixton &lt;a href="https://spring.io/blog/2015/06/26/spring-cloud-service-release-angel-sr3#release-train"&gt;Release Train&lt;/a&gt; are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Boot 1.3.x and Spring Framework 4.2.x support&lt;/li&gt;
+  &lt;li&gt;Hashicorp Consul support for service registration/discovery &amp;amp; configuration via Spring Cloud Consul&lt;/li&gt;
+  &lt;li&gt;Apache Zookeeper support for service registration/discovery, configuration via Spring Cloud Zookeeper and leader election in Spring Cloud Cluster&lt;/li&gt;
+  &lt;li&gt;Distributed tracing through the Spring Cloud Sleuth abstraction with two out of the box implementations: one supporting logging (ideal for log collectors and multiplexers like Logstash and Loggregator) and one supporting Twitter&amp;rsquo;s Zipkin&lt;/li&gt;
+  &lt;li&gt;Netflix &lt;a href="http://techblog.netflix.com/2014/12/introducing-atlas-netflixs-primary.html"&gt;Atlas Telemetry System&lt;/a&gt;, the next generation &lt;a href="https://github.com/Netflix/spectator/wiki"&gt;Spectator Metrics library&lt;/a&gt; and recent versions of Eureka, Ribbon, Hystrix and Feign are available in Spring Cloud Netflix&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Bus is now powered by the recently released &lt;a href="https://spring.io/blog/2016/05/10/spring-cloud-stream-1-0-0-release-is-available"&gt;Spring Cloud Stream&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Cluster Leadership election and locks via Spring Cloud Cluster&lt;/li&gt;
+  &lt;li&gt;Export of Spring Boot metrics to Amazon Cloudwatch, and native support for Amazon RDS&lt;/li&gt;
+&lt;/ul&gt;&lt;h4&gt;&lt;a href="#the-following-modules-are-part-of-brixton-release" class="anchor" name="the-following-modules-are-part-of-brixton-release"&gt;&lt;/a&gt;The following modules are part of Brixton.RELEASE:&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="http://cloud.spring.io/spring-cloud-aws/"&gt;Spring Cloud AWS&lt;/a&gt; 1.1.0.RELEASE&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://cloud.spring.io/spring-cloud-bus/"&gt;Spring Cloud Bus&lt;/a&gt; 1.1.0.RELEASE&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://cloud.spring.io/spring-cloud-cloudfoundry/"&gt;Spring Cloud Cloud Foundry&lt;/a&gt; 1.0.0.RELEASE&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-cloud/spring-cloud-cluster"&gt;Spring Cloud Cluster&lt;/a&gt; 1.0.0.RELEASE&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-cloud/spring-cloud-commons"&gt;Spring Cloud Commons&lt;/a&gt; 1.1.0.RELEASE&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://cloud.spring.io/spring-cloud-config/"&gt;Spring Cloud Config&lt;/a&gt; 1.1.0.RELEASE&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://cloud.spring.io/spring-cloud-consul/"&gt;Spring Cloud Consul&lt;/a&gt; 1.0.0.RELEASE&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://cloud.spring.io/spring-cloud-netflix/"&gt;Spring Cloud Netflix&lt;/a&gt; 1.1.0.RELEASE&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://cloud.spring.io/spring-cloud-security/"&gt;Spring Cloud Security&lt;/a&gt; 1.1.0.RELEASE&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://cloud.spring.io/spring-cloud-sleuth/"&gt;Spring Cloud Sleuth&lt;/a&gt; 1.0.0.RELEASE&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://cloud.spring.io/spring-cloud-stream/"&gt;Spring Cloud Stream&lt;/a&gt; 1.0.0.RELEASE&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://cloud.spring.io/spring-cloud-zookeeper/"&gt;Spring Cloud Zookeeper&lt;/a&gt; 1.0.0.RELEASE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And, as always, we welcome feedback: either in &lt;a href="https://github.com/spring-cloud"&gt;GitHub&lt;/a&gt;, on &lt;a href="http://stackoverflow.com/questions/tagged/spring-cloud"&gt;Stack Overflow&lt;/a&gt;, or on &lt;a href="https://twitter.com/SpringCloudOSS"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;&lt;h4&gt;&lt;a href="#roadmap" class="anchor" name="roadmap"&gt;&lt;/a&gt;Roadmap&lt;/h4&gt;
+&lt;p&gt;The next Spring Cloud Release Train will be called Camden and will follow as soon as possible after &lt;a href="https://github.com/spring-projects/spring-boot/milestones/1.4.0"&gt;Spring Boot 1.4&lt;/a&gt;.&lt;/p&gt;&lt;h4&gt;&lt;a href="#notes" class="anchor" name="notes"&gt;&lt;/a&gt;Notes:&lt;/h4&gt;
+&lt;p&gt;A &lt;code&gt;@LoadBalanced&lt;/code&gt; &lt;code&gt;RestTemplate&lt;/code&gt; is no longer created by default. See the &lt;a href="http://cloud.spring.io/spring-cloud-static/spring-cloud.html#_spring_resttemplate_as_a_load_balancer_client"&gt;updated documentation for details&lt;/a&gt;. You need to create it in your application’s configuration. For example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;@Configuration&#xD;
+public class MyConfiguration {&#xD;
+&#xD;
+    @LoadBalanced&#xD;
+    @Bean&#xD;
+    RestTemplate restTemplate() {&#xD;
+        return new RestTemplate();&#xD;
+    }&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Please note the correct BOM to use is &lt;code&gt;spring-cloud-dependencies&lt;/code&gt; not &lt;code&gt;spring-cloud-starter-parent&lt;/code&gt; (see Getting Started below).&lt;/p&gt;&lt;h4&gt;&lt;a href="#migrating-spring-cloud-hystrix-turbine-and-bus-with-amqp" class="anchor" name="migrating-spring-cloud-hystrix-turbine-and-bus-with-amqp"&gt;&lt;/a&gt;Migrating Spring Cloud Hystrix, Turbine and Bus with AMQP&lt;/h4&gt;
+&lt;p&gt;The Bus, Hystrix and Turbine support that used to be implemented on top of Spring AMQP have all been migrated to use Spring Cloud Stream. The old artifacts still exist, but are deprecated and will be removed at some point. Instead of the &lt;code&gt;spring-cloud-*-amqp&lt;/code&gt; artifacts you should use whatever raw feature you need, plus a stream binder of your choice, e.g. &lt;code&gt;spring-cloud-netflix-hystrix-stream&lt;/code&gt; and &lt;code&gt;spring-cloud-starter-stream-rabbit&lt;/code&gt; instead of &lt;code&gt;spring-cloud-netflix-hystrix-amqp&lt;/code&gt;.&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Angel &lt;/th&gt;
+      &lt;th&gt;Brixton (with AMQP) &lt;/th&gt;
+      &lt;th&gt;Brixton (with Kafka) &lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spring-cloud-starter-bus-amqp &lt;/td&gt;
+      &lt;td&gt;spring-cloud-starter-bus-amqp &lt;/td&gt;
+      &lt;td&gt;spring-cloud-starter-bus-kafka &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spring-cloud-netflix-hystrix-amqp &lt;/td&gt;
+      &lt;td&gt;spring-cloud-netflix-hystrix-stream spring-cloud-starter-stream-rabbit &lt;/td&gt;
+      &lt;td&gt;spring-cloud-netflix-hystrix-stream spring-cloud-starter-stream-kafka &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spring-cloud-starter-turbine-amqp &lt;/td&gt;
+      &lt;td&gt;spring-cloud-starter-turbine-stream spring-cloud-starter-stream-rabbit &lt;/td&gt;
+      &lt;td&gt;spring-cloud-starter-turbine-stream spring-cloud-starter-stream-kafka &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;NOTE: There is still a &lt;code&gt;spring-cloud-netflix-hystrix-amqp&lt;/code&gt; in the Brixton release, but it was (mistakenly) omitted from the BOM, so you will need to provide a version explicitly if you are upgrading and don&amp;rsquo;t want to change the artifacts.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;h4&gt;&lt;a href="#getting-started" class="anchor" name="getting-started"&gt;&lt;/a&gt;Getting Started&lt;/h4&gt;
+&lt;p&gt;The easiest way to get started with Brixton.RELEASE is to head to &lt;a href="http://start.spring.io"&gt;http://start.spring.io&lt;/a&gt;. If you want to write your build file by hand with Maven with a BOM (dependency management only):&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint xml"&gt;&lt;br/&gt;&amp;lt;dependencyManagement&amp;gt;&#xD;
+  &amp;lt;dependencies&amp;gt;&#xD;
+    &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
+    &amp;lt;artifactId&amp;gt;spring-cloud-dependencies&amp;lt;/artifactId&amp;gt;&#xD;
+    &amp;lt;version&amp;gt;Brixton.RELEASE&amp;lt;/version&amp;gt;&#xD;
+    &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;&#xD;
+    &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt;&#xD;
+  &amp;lt;/dependencies&amp;gt;&#xD;
+&amp;lt;/dependencyManagement&amp;gt;&#xD;
+&amp;lt;dependencies&amp;gt;&#xD;
+  &amp;lt;dependency&amp;gt;&#xD;
+    &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
+    &amp;lt;artifactId&amp;gt;spring-cloud-starter-config&amp;lt;/artifactId&amp;gt;&#xD;
+  &amp;lt;/dependency&amp;gt;&#xD;
+  &amp;lt;dependency&amp;gt;&#xD;
+    &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
+    &amp;lt;artifactId&amp;gt;spring-cloud-starter-eureka&amp;lt;/artifactId&amp;gt;&#xD;
+  &amp;lt;/dependency&amp;gt;&#xD;
+  ...&#xD;
+&amp;lt;/dependencies&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;or with Gradle:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;buildscript {&#xD;
+  dependencies {&#xD;
+    classpath(&amp;quot;org.springframework.boot:spring-boot-gradle-plugin:1.3.5.RELEASE&amp;quot;)&#xD;
+  }&#xD;
+}&#xD;
+repositories {&#xD;
+  maven {&#xD;
+    mavenCentral()&#xD;
+  }&#xD;
+}&#xD;
+apply plugin: &amp;#39;spring-boot&amp;#39;&#xD;
+&#xD;
+dependencyManagement {&#xD;
+  imports {&#xD;
+    mavenBom &amp;#39;org.springframework.cloud:spring-cloud-dependencies:Brixton.RELEASE&amp;#39;&#xD;
+  }&#xD;
+}&#xD;
+&#xD;
+dependencies {&#xD;
+    compile &amp;#39;org.springframework.cloud:spring-cloud-starter-config&amp;#39;&#xD;
+    compile &amp;#39;org.springframework.cloud:spring-cloud-starter-eureka&amp;#39;&#xD;
+    //...&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you are attending the &lt;a href="http://www.springio.net"&gt;Spring I/O conference&lt;/a&gt; next week there will be &lt;a href="http://lanyrd.com/2016/springio16/"&gt;various presentations&lt;/a&gt; on Spring Cloud from myself, Josh Long, Dave Syer and others.&lt;/p&gt;
+&lt;p&gt;This is also a reminder that &lt;a href="http://springoneplatform.io"&gt;Spring One Platform&lt;/a&gt; will be taking place in Las Vegas between August 1-4 this year, and you should consider &lt;a href="https://2016.event.springoneplatform.io/register"&gt;getting your ticket&lt;/a&gt; if you haven’t done so already.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Stream 1.0.0.RELEASE is available</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/10/spring-cloud-stream-1-0-0-release-is-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Marius Bogoevici</name>
+    </author>
+    <id>tag:spring.io,2016-05-10:2497</id>
+    <updated>2016-05-10T22:26:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team, I am pleased to announce the general availability of Spring Cloud Stream 1.0.0.RELEASE. The artifacts can be found in &lt;a href="https://repo.spring.io"&gt;Spring Repository&lt;/a&gt; as well as &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cspring-cloud-stream"&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The goal of &lt;a href="https://cloud.spring.io/spring-cloud-stream"&gt;Spring Cloud Stream&lt;/a&gt; is to be a lightweight framework for developing event-driven microservices, building on the ease of development and deployment of Spring Boot, and the component model and integration capabilities of Spring Integration. As part of the Spring Cloud family of projects, it has a specific focus on cloud-native architectures.&lt;/p&gt;
+&lt;p&gt;In order to simplify the development of both streaming and more traditional enterprise integration, it provides a number of primitives and abstractions such as:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Persistent publish-subscribe semantics between different logical applications;&lt;/li&gt;
+  &lt;li&gt;Consumer group support for scaling individual applications;&lt;/li&gt;
+  &lt;li&gt;Declarative partitioning support;&lt;/li&gt;
+  &lt;li&gt;Declarative message conversion support;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All features above are implemented in a middleware agnostic-fashion through the framework’s Binder abstraction, that allows for different implementations to adapt the model to the native capabilities of the communication middleware. This allows the developers to focus on the business abstractions, and also to develop reusable components that can be used with different flavors of messaging middleware. Spring Cloud Stream 1.0.0.RELEASE ships with Binders for Apache Kafka and Rabbit MQ. Additional implementations, such as Gemfire are available.&lt;/p&gt;
+&lt;p&gt;The whole list of features can be found in the &lt;a href="http://docs.spring.io/spring-cloud-stream/docs/1.0.0.RELEASE/reference/htmlsingle/"&gt;reference documentation&lt;/a&gt; and examples can be found &lt;a href="https://github.com/spring-cloud/spring-cloud-stream-samples"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;From the &lt;a href="https://github.com/spring-cloud/spring-cloud-stream/commit/a288ed1fbb2c974e57a099f849d90f5c74c2e757"&gt;first commit&lt;/a&gt;, 21 contributors, from the Spring team and the community have been adding 506 commits and resolving 189 issues. &lt;/p&gt;
+&lt;p&gt;Spring Cloud Stream has an older heritage than its commit history. It has been born as part of rethinking Spring XD (to which it owes a significant part of its current code) from a cloud-native, microservice-oriented perspective, more specifically redefining the notions of module and message bus in a Spring Boot and Spring Cloud-friendly fashion. It provides the mechanisms to write long-lived microservices that can be orchestrated and deployed across various platforms (Cloud Foundry, Apache YARN, Kubernetes, Apache Mesos) in sophisticated streaming pipelines by &lt;a href="http://cloud.spring.io/spring-cloud-dataflow/"&gt;Spring Cloud Data Flow&lt;/a&gt;, in counterpart with its task-oriented sibling &lt;a href="http://cloud.spring.io/spring-cloud-task/"&gt;Spring Cloud Task&lt;/a&gt;. It powers a &lt;a href="https://github.com/spring-cloud/spring-cloud-stream-app-starters"&gt;rich ecosystem of Spring Cloud Stream applications&lt;/a&gt; that integrate with various types of middleware and data stores, owing to its Spring Integration foundation. It also powers a few other Spring Cloud projects: &lt;a href="http://cloud.spring.io/spring-cloud-bus/"&gt;Spring Cloud Bus&lt;/a&gt;, &lt;a href="http://cloud.spring.io/spring-cloud-netflix"&gt;Spring Cloud Hystrix&lt;/a&gt; and &lt;a href="http://cloud.spring.io/spring-cloud-sleuth/"&gt;Spring Cloud Sleuth&lt;/a&gt;, who as early adopters have provided tremendously valuable input.&lt;/p&gt;
+&lt;p&gt;Thanks and congratulations to everyone who has been part of this this journey, current and former members of the Spring XD/Spring Cloud Data Flow team, and especially community members who have either been contributing directly or providing the more than necessary feedback for the success of the project. We couldn’t have gotten here without your help and hope you continue to do so. &lt;/p&gt;
+&lt;p&gt;You can find us on &lt;a href="https://github.com/spring-cloud/spring-cloud-stream"&gt;GitHub&lt;/a&gt;, on &lt;a href="http://stackoverflow.com/questions/tagged/spring-cloud-stream"&gt;Stack Overflow&lt;/a&gt;, or on &lt;a href="https://twitter.com/springcloudoss"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As for the future, our intended &lt;a href="https://github.com/spring-cloud/spring-cloud-stream/milestones/1.1.0.M1"&gt;roadmap&lt;/a&gt; includes such items as:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Kafka 0.9 client support&lt;/li&gt;
+  &lt;li&gt;Support for reactive binders and a reactive programming model&lt;/li&gt;
+  &lt;li&gt;Adding new types of binders such as JMS or Kinesis&lt;/li&gt;
+  &lt;li&gt;Schema registration and evolution support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Join us for the next leg of the journey!&lt;/p&gt;
+&lt;hr/&gt;
+&lt;p&gt;If you are attending Spring IO in Barcelona, I will be talking about Spring Cloud Stream on Friday, May 20. There are many other great talks from the Spring team members, so check the &lt;a href="http://www.springio.net/agenda/"&gt;agenda&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;This is also a reminder that &lt;a href="http://springoneplatform.io"&gt;Spring One Platform&lt;/a&gt; will be taking place in Las Vegas between August 1-4 this year, and you should consider &lt;a href="https://2016.event.springoneplatform.io/register"&gt;getting your ticket&lt;/a&gt; if you haven’t done so already. &lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - May 10th, 2016</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/10/this-week-in-spring-may-10th-2016" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2016-05-10:2496</id>
+    <updated>2016-05-10T18:52:45Z</updated>
+    <content type="html">&lt;p&gt;Auntie Em! Time sure is flying! Welcome to another installment of &lt;em&gt;This Week in Spring!&lt;/em&gt; This week I&amp;rsquo;m in Warsaw for a Cloud Native meetup and Krakow, Poland for the spectacular Geecon event! &lt;a href="http://twitter.com/starbuxman"&gt;If you&amp;rsquo;re around, don&amp;rsquo;t hesitate to say hi&lt;/a&gt; for Also, some &lt;em&gt;very&lt;/em&gt; big news coming! Stay tuned &lt;a href="http://spring.io/blog"&gt;to the Spring.io blog tomorrow&lt;/a&gt;! Anyway, as usual, we&amp;rsquo;ve got a lot to look at so let&amp;rsquo;s get to it! &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Security lead Rob Winch &lt;a href="https://spring.io/blog/2016/05/05/spring-security-4-1-0-released"&gt;just announced Spring Security 4.1.0 RELEASE&lt;/a&gt;! This is a big release with &lt;a href="http://docs.spring.io/spring-security/site/docs/4.1.x/reference/htmlsingle/#new"&gt;a lot of cool stuff&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;Spring IO Platform lead &lt;a href="https://spring.io/blog/2016/05/09/spring-io-platform-2-0-4-release"&gt;Andy Wilkinson just announced Spring IO Platform 2.0.4 release&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring AMQP and messaging guru Gary Russell just &lt;a href="https://spring.io/blog/2016/05/06/spring-amqp-1-6-0-release-candidate-and-1-5-6-available"&gt;announced Spring AMQP 1.6.0 RC (and 1.5.6)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring framework &lt;a href="https://spring.io/blog/2016/05/06/spring-framework-4-3-rc2-4-2-6-and-3-2-17-available-now"&gt;ninja Stéphane Nicoll just announced Spring Framework 4.3 RC2, 4.2.6 and 3.2.17 are now available&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;not one to sit on his laurels, &lt;a href="https://spring.io/blog/2016/05/10/spring-boot-1-3-5-released"&gt;Stéphane &lt;em&gt;also&lt;/em&gt; announced Spring Boot 1.3.5&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;This &lt;a href="https://www.datawire.io/continuous-delivery-ecosystem-for-microservices/"&gt;blog has a really nice look at some of the players in the microservice ecosystem&lt;/a&gt;, albeit a high level one.&lt;/li&gt;
+  &lt;li&gt;Want to learn about the service package manager that underpins Cloud Foundry, BOSH? &lt;a href="http://www.engineerbetter.com/bosh-concourse.html"&gt;This blog&amp;rsquo;s a &lt;em&gt;very&lt;/em&gt; fine start&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;Jessica Kerr and Continuous Delivery luminary Jez Humble had a nice discussion at Craft Conf, it seems, and &lt;a href="http://blog.jessitron.com/2016/05/tradeoffs-in-coordination-among-teams.html"&gt;Jessica&amp;rsquo;s resulting blog post on tradeoffs in coordination among teams&lt;/a&gt; is well worth a read&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://blog.pivotal.io/data-science-pivotal/products/using-data-science-to-make-sense-of-unstructured-text"&gt;Using Data Science to Make Sense of Unstructed Text&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I enjoyed this nice post &lt;a href="https://vanwilgenburg.wordpress.com/2016/04/01/spring-boot-http2/"&gt;on Spring Boot and HTTP 2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;a nice post from my buddy Markus Eisele on our joint talk at O&amp;rsquo;Reilly&amp;rsquo;s Software Architecture show where we &lt;a href="http://blog.eisele.net/2016/04/integration-architecture-with-java-ee-and-spring.html"&gt;discussed Spring and Java EE integration patterns&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Boot 1.3.5 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/10/spring-boot-1-3-5-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Stéphane Nicoll</name>
+    </author>
+    <id>tag:spring.io,2016-05-10:2495</id>
+    <updated>2016-05-10T06:53:33Z</updated>
+    <content type="html">&lt;p&gt;Shortly after 1.3.4, we&amp;rsquo;ve just released &lt;a href="https://github.com/spring-projects/spring-boot/issues?q=milestone%3A1.3.5+is%3Aclosed"&gt;Spring Boot 1.3.5&lt;/a&gt; as we&amp;rsquo;ve identified a &lt;a href="https://github.com/spring-projects/spring-boot/issues/5901"&gt;rather nasty regression&lt;/a&gt; with the Spring Integration auto-configuration. The bits are available from &lt;a href="http://repo.spring.io/release"&gt;repo.spring.io&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.springframework.boot%22"&gt;Maven Central&lt;/a&gt;, as usual.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring IO Platform 2.0.4.RELEASE</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/05/09/spring-io-platform-2-0-4-release" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Andy Wilkinson</name>
+    </author>
+    <id>tag:spring.io,2016-05-09:2494</id>
+    <updated>2016-05-09T12:27:19Z</updated>
+    <content type="html">&lt;p&gt;&lt;a href="http://platform.spring.io/platform"&gt;Spring IO Platform&lt;/a&gt; 2.0.4.RELEASE is now available from both &lt;a href="http://repo.spring.io/release"&gt;repo.spring.io&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3Aio.spring.platform"&gt;Maven Central&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;This maintenance release upgrades the versions of a number of the projects in the Platform to pick up their latest maintenance releases:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Reactor 2.0.8.RELEASE&lt;/li&gt;
+  &lt;li&gt;Spring AMQP 1.5.5.RELEASE&lt;/li&gt;
+  &lt;li&gt;Spring Batch 3.0.7.RELEASE&lt;/li&gt;
+  &lt;li&gt;Spring Boot 1.3.4.RELEASE&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Connectors 1.2.2.RELEASE&lt;/li&gt;
+  &lt;li&gt;Spring Framework 4.2.6.RELEASE&lt;/li&gt;
+  &lt;li&gt;Spring Security 4.0.4.RELEASE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The versions of several third-party dependencies have also been updated.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://platform.spring.io/platform"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-io/platform"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-io/platform/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/platform/docs/2.0.4.RELEASE/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+</feed>
