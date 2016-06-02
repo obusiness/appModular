@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Java Revolutions for Master . . .</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    <table align="center">
+                        <tr>
+                            <td>
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_target">
+                                <input type="hidden" name="cmd" value="_s-xclick"/>
+                                <input type="hidden" name="hosted_button_id" value="BDBWXVDZJULMG"/>
+                                <input type="image" src="${resources}/javarev/images/btn_donateCC_LG.gif" 
+                                       border="0" name="submit" alt="Contribuye para crear una escuela virtual."
+                                       title="Contribuye para crear una escuela virtual"/>
+                                <img alt="Contribuye para crear una escuela virtual" border="0" 
+                                     src="${resources}/javarev/images/pixel.gif" width="1" height="1"
+                                     title="Contribuye para crear una escuela virtual"/>
+                                </form>
+                            </td>
+                            <td>
+                                <img border="0" src="#{resources}/javarev/images/izquierda1.gif" 
+                                     title="Contribuye, aporta con Java Revolutions" width="60"/>
+                            </td>
+                            <td>
+                                <div style="border: 0; height: 100px; overflow: hidden; width: 248px;">
+                                <iframe align="middle" allowtransparency="true" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="http://www.youtube.com/subscribe_widget?p=JavaRevolutions" style="left: -1px; position: relative; top: -1px;" width="250px">
+                                </iframe>
+                                </div>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td align="center">
+                                <h:outputLabel style="font-size: 16px; color: steelblue; font-weight: bold;"
+                                               value="Síguenos"
+                                               title="Síguenos en Twitter, Facebook y Google"/><br></br>
+                                <a href="https://twitter.com/JavaRevolutions" target="_blank">
+                                <img border="0" src="${resources}/javarev/images/twitter.jpg" title="Siguenos en Twitter"/>
+                                </a>
+                                <a href="http://facebook.com/java.revolutions.2010" target="_blank">
+                                <img border="0" src="${resources}/javarev/images/facebook.jpg" title="Siguenos en Facebook"/>
+                                </a>
+                                <a href="https://plus.google.com/117956501338698136396" target="_blank">
+                                <img border="0" src="${resources}/javarev/images/gplus.jpg" title="Siguenos en Google"/>
+                                </a>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true" >
+                    <div>
+                        <center style="font-size: 12px;">Todas las marcas y logotipos que aparecen en este sitio, son propiedad de sus respectivas compañías.</center>
+                        <center style="font-size: 14px;">&copy; 2015 Java Revolutions | All Rights Reserved | Canal en YouTube: <a href="http://www.youtube.com/user/JavaRevolutions" target="_blank">Java Revolutions</a></center>
+                    </div>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Catalogos">
+                            <p:menuitem value="Alumnos" url="/alumnos/alumno.faces" />
+                            <p:menuitem value="Arrticulos" url="/articulos/articulo.faces" />
+                            <p:menuitem value="Tabla Alumnos" url="/alumnos/tablaAlumnos.faces" />
+                            <p:menuitem value="Salir" url="/logout.jsp" />
+                        </p:submenu>
+
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <ui:insert name="bodyJR">Aqui cambia el contenido . . .</ui:insert>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
