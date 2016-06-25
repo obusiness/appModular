@@ -1,2 +1,0 @@
-# appModular
-Sistema modulos
