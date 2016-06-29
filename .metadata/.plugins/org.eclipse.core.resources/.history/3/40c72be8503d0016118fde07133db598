@@ -1,0 +1,29 @@
+package com.obusiness.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.obusiness.bo.TsEmpUsuarios;
+import com.obusiness.dao.ValidaUsuarioDao;
+import com.obusiness.sp.ValidarLogueoSp;
+
+@Service
+public class ValidaUsuarioServiceImpl implements ValidaUsuarioService {
+
+	@Autowired 
+	private ValidaUsuarioDao validaUsuarioDao ;
+	
+	public ValidaUsuarioDao getValidaUsuarioDao() {
+		return validaUsuarioDao;
+	}
+
+	public void setValidaUsuarioDao(ValidaUsuarioDao validaUsuarioDao) {
+		this.validaUsuarioDao = validaUsuarioDao;
+	}
+
+	@Transactional
+	public String validaUsuario(TsEmpUsuarios usuario) throws Exception{		
+		return validaUsuarioDao.validaUsuario(usuario);
+	}
+}

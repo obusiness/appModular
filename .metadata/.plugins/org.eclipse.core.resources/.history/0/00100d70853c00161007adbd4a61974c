@@ -1,0 +1,66 @@
+package com.obusiness.beans;
+
+import java.io.Serializable;
+
+import javax.annotation.Resource;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.obusiness.bo.TsEmpUsuarios;
+import com.obusiness.dao.ValidaUsuarioDao;
+import com.obusiness.dao.ValidaUsuarioDaoImpl;
+import com.obusiness.service.ValidaUsuarioService;
+import com.obusiness.service.ValidaUsuarioServiceImpl;
+
+@Controller
+public class LoginBB implements Serializable  {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private TsEmpUsuarios usuario = new TsEmpUsuarios();
+	private String password;
+	
+	@Resource
+	  private ValidaUsuarioDaoImpl ser;
+	
+	
+	public void validaUsuario(ActionEvent event){
+		FacesMessage msg = null;
+		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenid@", usuario.getUsuario());
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		
+		try {
+
+			String mm = ser.validaUsuario(usuario);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenid@", usuario.getUsuario());
+		
+	}
+
+	public TsEmpUsuarios getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(TsEmpUsuarios usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
+}

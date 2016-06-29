@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+<h:head> </h:head> 
+<h:body style="text-align:center">
+    
+   <h:form>
+   <p:growl id="mensajes" showDetail="true" life="2000" />
+      <p:panel header="Login" style="width:300px">
+        <h:panelGrid columns="2" cellpadding="5">
+          <h:outputLabel for="username" value="Usuario:" />
+          
+          <h:outputLabel for="password" value="Clave:" />
+       
+        <f:facet name="footer">
+          <p:commandButton id="loginButton" value="Login"
+              update="mensajes"
+              />
+        </f:facet>
+      </h:panelGrid>
+    </p:panel>
+  </h:form>
+</h:body>
+</html>

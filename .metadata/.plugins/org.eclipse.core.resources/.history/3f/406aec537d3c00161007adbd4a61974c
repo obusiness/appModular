@@ -1,0 +1,280 @@
+package co.com.cotrafa.common;
+
+import java.util.Locale;
+
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import co.com.cotrafa.common.error.CotrafaError;
+import co.com.obusiness.common.AtributosSesion;
+
+/**
+ * Clase encargada de acceder a los datos de contexto
+ * @author Johann Medina
+ *
+ */
+public class ContextoWeb {
+	private FacesContext fctx;
+	private ExternalContext ctx;
+	
+	/**
+	 * Evita que se construya una instancia directamente
+	 */
+	private ContextoWeb() { }
+	
+	/**
+	 * Obtiene la unica instancia de la clase
+	 * @return Instancia de la clase
+	 */
+	public static ContextoWeb getInstance() {
+		ContextoWeb instancia = new ContextoWeb();
+		instancia.fctx = FacesContext.getCurrentInstance();
+		instancia.ctx = instancia.fctx.getExternalContext();
+		return instancia;
+	}
+	
+	
+	/**
+	 * Obtiene el valor de un atributo desde la configuracion
+	 * @param atributo Atributo de configuracion
+	 * @return Valor del atributo o null si no existe
+	 */
+	public String get(AtributosConfiguracion atributo) {
+		return ctx.getInitParameter(atributo.toString());
+	}
+	
+	/**
+	 * Obtiene el valor de un atributo desde el request
+	 * @param atributo Atributo de request
+	 * @return Valor del atributo o null si no existe
+	 */
+	public String get(AtributosRequest atributo) {
+		return (String) ctx.getRequestParameterMap().get(atributo.toString());
+	}
+	
+	/**
+	 * Obtiene el valor de un atributo desde el request
+	 * @param atributo Atributo de request
+	 * @return Valor del atributo o null si no existe
+	 */
+	public String getParameterRequest(String atributo) {
+		return (String) ctx.getRequestParameterMap().get(atributo);
+	}
+	
+	/**
+	 * Obtiene el valor de un atributo desde la sesion
+	 * @param atributo Atributo de sesion
+	 * @return Valor del atributo o null si no existe
+	 */
+	public Object get(AtributosSesion atributo) {
+		HttpSession sesion = (HttpSession) ctx.getSession(false);
+		return (sesion != null) ? sesion.getAttribute(atributo.toString()) : null;
+	}
+	
+	/**
+	 * Obtiene el valor de un atributo desde la sesion
+	 * @param atributo Atributo de sesion
+	 * @return Valor del atributo o null si no existe
+	 */
+	public Object get( String nameAtributo) {
+		HttpSession sesion = (HttpSession) ctx.getSession(false);
+		return (sesion != null) ? sesion.getAttribute(nameAtributo) : null;
+	}
+	
+	/**
+	 * Establece el valor de un atributo en sesion
+	 * @param atributo Atributo de sesion
+	 * @param valor Valor a establecer en sesion
+	 */
+	public void set(AtributosSesion atributo, Object valor) {
+		HttpSession sesion = (HttpSession) ctx.getSession(true);
+		sesion.setAttribute(atributo.toString(), valor);
+	}
+	
+	/**
+	 * Establece el valor de un atributo en sesion
+	 * @param atributo Atributo de sesion
+	 * @param valor Valor a establecer en sesion
+	 */
+	public void set(String nameAtributo, Object valor) {
+		HttpSession sesion = (HttpSession) ctx.getSession(true);
+		sesion.setAttribute(nameAtributo, valor);
+	}
+	
+	/**
+	 * Compara el valor de un atributo en sesion y lo establece si es diferente
+	 * @param atributo Atributo de sesion
+	 * @param valor Valor a establecer en sesion
+	 * @return Indica si se establecio el valor por ser diferente al de la sesion
+	 */
+	public boolean setCheck(AtributosSesion atributo, Object valor) {
+		HttpSession sesion = (HttpSession) ctx.getSession(true);
+		Object valorAnt = sesion.getAttribute(atributo.toString());
+		if (valorAnt == null && valor == null) return false;
+		if (valorAnt != null && valorAnt.equals(valor)) return false;
+		sesion.setAttribute(atributo.toString(), valor);
+		return true;
+	}
+	
+	/**
+	 * obtiene el identificador de la sesión
+	 * @return devuelve el Id de la sesion
+	 */
+	public String getIdSesion()	{
+		HttpSession sesion = (HttpSession) ctx.getSession(true);
+		return sesion.getId();
+	}
+	
+	/**
+	 * Obtiene la ruta relativa del contexto de la aplicacion
+	 * @return Url con la ruta relativa
+	 */
+	public String getContextPath() {
+		HttpServletRequest request = (HttpServletRequest) ctx.getRequest();
+		return request.getContextPath();
+	}
+	
+	/**
+	 * Obtiene el nombre del host que hace la peticion
+	 * @return Nombre del host
+	 */
+	public String getRemoteHost() {
+		HttpServletRequest request = (HttpServletRequest) ctx.getRequest();
+		return request.getRemoteHost();
+	}
+
+	/**
+	 * Obtiene la direccion publica desde donde se hace la peticion
+	 * @return Direccion publica
+	 */
+	public String getRemoteAddress() {
+		HttpServletRequest request = (HttpServletRequest) ctx.getRequest();
+		String remoteAddr = request.getRemoteAddr();
+		
+		// En caso que el web cache transfiera la peticion se verifica si CLIENTIP viene 
+		// realmente desde el web cache antes de usarlo como IP origen de las transacciones
+		String clientIp = request.getHeader("CLIENTIP");
+		if (clientIp != null && !clientIp.equals("")) {
+		    String webcacheIp = get(AtributosConfiguracion.WEBCACHE_IP);
+		    if (!remoteAddr.equals(webcacheIp)) throw new CotrafaError("Cliente no válido", "Se envió el encabezado CLIENTIP=" + clientIp + 
+                " desde IP=" + remoteAddr + ", la cual no coincide con WEBCACHE_IP=" + webcacheIp);
+		    return clientIp;
+		}
+		
+		return remoteAddr;
+	}
+	
+	/**
+	 * Obtiene el URL relativo del servlet con los reportes
+	 * @return Url del servlet de reportes
+	 */
+	public String getUrlReportes() {
+		return getContextPath() + get(AtributosConfiguracion.SERVLET_REPORTES);
+	}
+
+	/**
+     * Obtiene el URL relativo del servlet para descargas
+     * @return Url del servlet de descargas
+     */
+    public String getUrlDescarga() {
+        return getContextPath() + get(AtributosConfiguracion.SERVLET_DESCARGA);
+    }
+	
+	/**
+	 * Obtiene el error de contexto atrapado por el servlet actual
+	 * @return Error de contexto o null si no se encuentra
+	 */
+	public Throwable getFalloServlet() {
+		return (Throwable) ctx.getRequestMap().get("javax.servlet.error.exception");
+	}
+	
+	/**
+	 * Obtiene el error de contexto atrapado por el servlet actual
+	 * @return Error de contexto o null si no se encuentra
+	 */
+	public Throwable getFalloAjaxServlet() {
+		Throwable thrw = (Throwable) ((HttpSession) ctx.getSession(true)).getAttribute("richfaces.ajaxException.error");
+		((HttpSession) ctx.getSession(true)).setAttribute("richfaces.ajaxException.error", null);
+		
+		return thrw;
+	}
+	
+	/**
+	 * Método para que invalida la sesion
+	 */
+	public void cerrarSesion() {
+		HttpSession sesion = (HttpSession) ctx.getSession(false);	
+		if(sesion != null) sesion.invalidate();
+	}
+	
+	/**
+	 * Método para que invalida la sesion
+	 */
+	public void limpiarSesion() {
+		HttpSession sesion = (HttpSession) ctx.getSession(false);	
+		if(sesion != null) {
+			sesion.invalidate();
+			sesion = (HttpSession)ctx.getSession(true);
+		}
+	}
+
+	/**
+	 * Indica si la invocacion es Postback
+	 * @return Indicador de postback
+	 */
+	public boolean isPostback() {
+		// compara contra el valor establecido en PostbackPhaseListener
+		return fctx.getViewRoot().getViewId().equals(ctx.getRequestMap().get("postbackView"));
+	}
+	
+	/**
+	 * Crea un binding a partir de una expresion EL
+	 * @param ref Expresion EL
+	 * @return Instancia del binding
+	 */
+	@SuppressWarnings("deprecation")
+	public javax.faces.el.ValueBinding createValueBinding(String ref) {
+		return fctx.getApplication().createValueBinding(ref);
+	}
+	
+	/**
+	 * Obtiene la localidad configurada para faces
+	 * @return Localidad configurada
+	 */
+	public Locale getLocale() {
+	    return fctx.getViewRoot().getLocale(); 
+	}
+	/**
+	 * Remueve un objeto del contexto web
+	 * @param key
+	 */
+	public void remove(Object key){
+		if (ctx.getRequestMap().containsKey(key)){
+			ctx.getRequestMap().remove(key);
+		}
+		if (ctx.getSessionMap().containsKey(key)){
+			ctx.getSessionMap().remove(key);
+		}
+		if (ctx.getApplicationMap().containsKey(key)){
+			ctx.getApplicationMap().remove(key);
+		}
+	}
+	
+	/**
+	 * 
+	 * @return FacesContext
+	 */
+	public FacesContext getFacesContext(){
+		return this.fctx;
+	}
+	
+	/**
+	 * 
+	 * @return ExternalContext
+	 */
+	public ExternalContext getExternalContext(){
+		return this.ctx;
+	}
+}

@@ -1,0 +1,173 @@
+package co.com.obusiness.common;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.List;
+
+import javax.faces.context.FacesContext;
+
+import org.apache.commons.lang.ClassUtils;
+
+import co.com.obusiness.common.error.CotrafaError;
+import co.com.obusiness.common.error.CotrafaException;
+import co.com.obusiness.transacciones.delegate.GeneralDelegate;
+
+
+public class ClassContextUtils {
+	
+	public ClassContextUtils(){
+		
+	}
+	
+	/**
+	 * Obtiene la unica instancia de la clase
+	 * @return Instancia de la clase
+	 */
+	public static ClassContextUtils getInstance() {
+		ClassContextUtils instancia = new ClassContextUtils();
+		return instancia;
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public boolean executeMethodVoid( String clazz, String nameMethod )  throws CotrafaException, CotrafaError {
+		FacesContext context = FacesContext.getCurrentInstance();
+		try {
+			String nameBB = "#{" + this.initLowerCase( clazz.substring(clazz.lastIndexOf(".")+1, clazz.length()) ) + "}";
+			Class classP = Class.forName( clazz );
+			
+			Object bb = context.getApplication().evaluateExpressionGet(context, nameBB, classP);
+			
+			Method method = bb.getClass().getMethod(nameMethod);
+			method.invoke(bb);
+		} 
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		} catch (SecurityException e) {
+			e.printStackTrace();
+			return false;
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+			return false;
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+			return false;
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+			return false;
+		} catch (InvocationTargetException e) {
+			if (e.getCause() instanceof CotrafaError) {
+		        throw (CotrafaError) e.getCause();
+		    } 
+			else if (e.getCause() instanceof CotrafaException) {
+		        throw (CotrafaException) e.getCause();
+		    }
+		}
+		return true;
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public Object executeMethod( String clazz, String nameMethod, List parameters )  throws CotrafaException, CotrafaError{
+		Object retorno = null;
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		try {
+			String nameBB = "#{" + this.initLowerCase( clazz.substring(clazz.lastIndexOf(".")+1, clazz.length()) ) + "}";
+			Class classP = Class.forName( clazz );
+			
+			Object bb = context.getApplication().evaluateExpressionGet(context, nameBB, classP);
+			
+			Method method = null;
+			if( parameters != null && parameters.size() > 0 ){
+				Class[] parametersClass = new Class[parameters.size()];
+				Object[] parametersValues = new Object[parameters.size()];
+				for( int i = 0; i < parameters.size(); i++ ){
+					Class primitiveClass = ClassUtils.wrapperToPrimitive(parameters.get(i).getClass());
+					parametersClass[i] = ((primitiveClass != null)? primitiveClass : parameters.get(i).getClass());
+					
+					parametersValues[i] = parameters.get(i);
+				}
+				method = bb.getClass().getMethod(nameMethod, parametersClass);
+				retorno = method.invoke(bb, parametersValues);
+				
+			}else{
+				method = bb.getClass().getMethod(nameMethod);
+				retorno = method.invoke(bb);
+			}
+		} 
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			if (e.getCause() instanceof CotrafaError) {
+		        throw (CotrafaError) e.getCause();
+		    } 
+			else if (e.getCause() instanceof CotrafaException) {
+		        throw (CotrafaException) e.getCause();
+		    }
+		}
+		return retorno;
+	}
+	
+	@SuppressWarnings({ "unused", "rawtypes" })
+	public Object executeMethodTransactionalBB( String clazz, String nameMethod, List parameters )  throws CotrafaException, CotrafaError {
+		Object retorno = null;
+		
+		try {
+			String nameBB = this.initLowerCase( clazz.substring(clazz.lastIndexOf(".")+1, clazz.length()) );
+			Class classP = Class.forName( clazz );
+			
+			Object service = new GeneralDelegate(nameBB).getService();
+			
+			Method method = null;
+			if( parameters != null && parameters.size() > 0 ){
+				Class[] parametersClass = new Class[parameters.size()];
+				Object[] parametersValues = new Object[parameters.size()];
+				for( int i = 0; i < parameters.size(); i++ ){
+					Class primitiveClass = ClassUtils.wrapperToPrimitive(parameters.get(i).getClass());
+					parametersClass[i] = ((primitiveClass != null)? primitiveClass : parameters.get(i).getClass());
+					
+					parametersValues[i] = parameters.get(i);
+				}
+				method = service.getClass().getMethod(nameMethod, parametersClass);
+				retorno = method.invoke(service, parametersValues);
+				
+			}else{
+				method = service.getClass().getMethod(nameMethod);
+				retorno = method.invoke(service);
+			}
+		} 
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			if (e.getCause() instanceof CotrafaError) {
+		        throw (CotrafaError) e.getCause();
+		    } 
+			else if (e.getCause() instanceof CotrafaException) {
+		        throw (CotrafaException) e.getCause();
+		    }
+		}
+		return retorno;
+	}
+	
+	
+	private String initLowerCase( String word ){
+		return (word != null)? word.substring(0,1).toLowerCase() + word.substring(1, word.length()): null;
+	}
+
+}

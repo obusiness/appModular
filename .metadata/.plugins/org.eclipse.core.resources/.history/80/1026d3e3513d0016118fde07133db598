@@ -1,0 +1,40 @@
+package co.com.obusiness.dao.sp;
+
+import java.sql.Types;
+
+import javax.sql.DataSource;
+
+import org.springframework.jdbc.core.SqlOutParameter;
+import org.springframework.jdbc.core.SqlParameter;
+import org.springframework.jdbc.object.StoredProcedure;
+
+public class ValidaUsuarioSp extends StoredProcedure{ 
+	private static final String SPROC_NAME = "usp_GetEmployeeName"; 
+	
+	public ValidaUsuarioSp( DataSource datasource ){ 
+		super( datasource, SPROC_NAME ); 
+		declareParameter( new SqlParameter( "id", Types.INTEGER) ); 
+		declareParameter( new SqlOutParameter( "name", Types.VARCHAR ) );
+		this.compile();
+	}
+	
+	public List<MensajeValidacionBo> actualizarAsePersonas( TsAsePersonas personas ) throws CotrafaError {
+		
+		Map<String, Object> inParams =  new HashMap<String, Object>(1);
+		List<MensajeValidacionBo> mensaje = new ArrayList<MensajeValidacionBo>();
+		
+		inParams.put("niServicio", personas.getTsAseServicios().getConsecutivoServicio());
+		inParams.put("niPerId", 	   personas.getId().getPerId());
+		inParams.put("diFechaInicial",  personas.getId().getFechaInicial());
+		inParams.put("viModelo",  personas.getModelo());
+		inParams.put("viApersonType",  personas.getApersonType());
+		
+		Map<String, Object> out = this.execute(inParams);
+		
+		mensaje = ((List<MensajeValidacionBo>) out.get("cMensajes"));
+		
+		return mensaje;
+	}
+	
+	
+}

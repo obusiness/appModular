@@ -1,0 +1,8 @@
+package com.obusiness.services;
+
+import com.obusiness.bo.TsEmpUsuarios;
+
+public interface ValidaUsuarioService {
+	
+	public String validaUsuario(TsEmpUsuarios usuario) throws Exception;
+}

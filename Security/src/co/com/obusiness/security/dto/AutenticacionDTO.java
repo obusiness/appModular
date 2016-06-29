@@ -1,0 +1,98 @@
+package co.com.obusiness.security.dto;
+
+import java.io.Serializable;
+
+public class AutenticacionDTO implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private String nombreUsuario;
+	private String clave;
+	private String ip;
+	private String idSesion;
+	private String aplicacion;
+	
+	/**
+	 * Constructor vacio
+	 */
+	public AutenticacionDTO(){
+		
+	}
+	
+	/**
+	 * @param login
+	 * @param password
+	 * @param ip
+	 * @param idSesion
+	 */
+	public AutenticacionDTO(String nombreUsuario, String clave, String ip, String idSesion, String aplicacion) {
+		this.nombreUsuario = nombreUsuario;
+		this.clave = clave;
+		this.ip = ip;
+		this.idSesion = idSesion;
+		this.aplicacion = aplicacion;
+	}
+	
+	/**
+	 * Obtiene el login de conexion
+	 * @return String con el login de conexion
+	 */
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+	/**
+	 * Establece el login de conexion 
+	 * @param login de conexion
+	 */
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+    
+	/**
+	 * Obtiene el password para su confirmacion en el cambio de clave
+	 * @return String con el password
+	 */
+	public String getClave() {
+		return clave;
+	}
+    /**
+     * Establece el password para su confirmacion en el cambio de clave
+     * @param password del usuario
+     */
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
+	/**
+     * Obtiene la ip del usuario conectado
+     * @return String con la ip
+     */
+	public String getIp() {
+		return ip;
+	}
+    /**
+     * Establece la ip del usuario conectado
+     * @param ip de conexion
+     */
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+	/**
+	 * Obtiene el id de sesion
+	 * @return String con el id de sesion
+	 */
+	public String getIdSesion() {
+		return idSesion;
+	}
+    /**
+     * Establece el id de sesion
+     * @param idSesion de la conexion
+     */
+	public void setIdSesion(String idSesion) {
+		this.idSesion = idSesion;
+	}
+	public String getAplicacion() {
+		return aplicacion;
+	}
+	public void setAplicacion(String aplicacion) {
+		this.aplicacion = aplicacion;
+	}
+}

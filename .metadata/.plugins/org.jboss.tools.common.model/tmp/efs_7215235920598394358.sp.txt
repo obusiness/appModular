@@ -1,0 +1,222 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.3.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-4.3.xsd"
+       >
+	<!-- TRANSACTION MANAGER -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- SERVICES -->
+	<bean id="autenticacionService" class="co.com.cotrafa.security.service.AutenticacionServiceImpl">
+		<property name="usuarioDao" ref="usuarioDao" />
+		<property name="oidDao" ref="oidServiceDAO" />
+	</bean>
+	
+	<bean id="consultaGenericaService" class="co.com.cotrafa.transacciones.ConsultaGenericaServiceImpl">
+		<property name="dao" ref="consultaGenericaDao" />
+	</bean>
+	
+	<bean id="informacionSolicitudService" class="co.com.cotrafa.transacciones.InformacionSolicitudServiceImpl">
+		<property name="dao" ref="asesoriasDao" />
+	</bean>
+
+	<bean id="informacionPersonasService" class="co.com.cotrafa.transacciones.InformacionPersonasServiceImpl">
+		<property name="dao" ref="personasDao" />
+		<property name="asesoriasDao" ref="asesoriasDao" />
+	</bean>
+
+	<bean id="capacidadEndeudamientoService" class="co.com.cotrafa.transacciones.CapacidadEndeudamientoServiceImpl">
+		<property name="dao" ref="capacidadEndeudamientoDao" />
+	</bean>
+
+	<bean id="informacionGeneralService" class="co.com.cotrafa.transacciones.InformacionGeneralServiceImpl">
+		<property name="personasDao" ref="personasDao" />
+	</bean>
+
+	<bean id="informacionFinancieraService" class="co.com.cotrafa.transacciones.InformacionFinancieraServiceImpl">
+		<property name="dao" ref="informacionFinancieraDao" />
+		<property name="personasDao" ref="personasDao" />
+	</bean>
+
+	<bean id="informacionLaboralService" class="co.com.cotrafa.transacciones.InformacionLaboralServiceImpl">
+		<property name="dao" ref="informacionLaboralDao" />
+		<property name="personasDao" ref="personasDao" />
+	</bean>
+
+	<bean id="tipodePeriodicidadService" class="co.com.cotrafa.transacciones.TipodePeriodicidadServiceImpl">
+		<property name="dao" ref="tipodePeriodicidadDao" />
+	</bean>
+
+	<bean id="listasTipoService" class="co.com.cotrafa.transacciones.ListasTipoServiceImpl">
+		<property name="dao" ref="listaTipoDao" />
+	</bean>
+	
+	<bean id="messageQueueService" class="co.com.cotrafa.transacciones.MessageQueueServiceImpl">
+		<property name="dao" ref="messageQueueBPMDao" />
+	</bean>
+
+	<bean id="resultadoBPMService" class="co.com.cotrafa.transacciones.ResultadoBPMServiceImpl">
+		<property name="dao" ref="resultadoBPMDao" />
+	</bean>
+	
+	<bean id="regionesService" class="co.com.cotrafa.transacciones.RegionesServiceImpl">
+		<property name="dao" ref="regionesDao" />
+	</bean>
+	
+	<bean id="entrevistaSarlaftService" class="co.com.cotrafa.transacciones.EntrevistaSarlaftServiceImpl">
+		<property name="dao" ref="entrevistaSarlaftDao" />
+	</bean>
+
+	<bean id="transaccionMonedaExtranjeraService" class="co.com.cotrafa.transacciones.TransaccionMonedaExtranjeraServiceImpl">
+		<property name="dao" ref="transaccionMonedaExtranjeraDao" />
+		<property name="personasDao" ref="personasDao" />
+	</bean>
+
+	<bean id="dataCreditoService" class="co.com.cotrafa.transacciones.DataCreditoServiceImpl">
+		<property name="dao" ref="dataCreditoDao" />
+	</bean>
+
+	<bean id="detallePersonaService" class="co.com.cotrafa.transacciones.DetallePersonaServiceImpl">
+		<property name="dao" ref="detallePersonaDao" />
+	</bean>
+	
+	<bean id="refinanciarReestructurarService" class="co.com.cotrafa.transacciones.RefinanciarReestructurarServiceImpl">
+		<property name="dao" ref="refinanciarReestructurarDao" />
+	</bean>
+
+	<bean id="cuotasExtrasService" class="co.com.cotrafa.transacciones.CuotasExtrasServiceImpl">
+		<property name="dao" ref="cuotasExtrasDao" />
+	</bean>
+
+	<bean id="chequesRestrictivosService" class="co.com.cotrafa.transacciones.ChequesRestrictivosServiceImpl">
+		<property name="dao" ref="chequesRestrictivosDao" />
+	</bean>
+
+	<bean id="destinacionDesembolsoService" class="co.com.cotrafa.transacciones.DestinacionDesembolsoServiceImpl">
+		<property name="dao" ref="destinacionDesembolsoDao" />
+	</bean>
+
+	<bean id="basesExternasService" class="co.com.cotrafa.transacciones.BasesExternasServiceImpl">
+		<property name="dao" ref="basesExternasDao" />
+	</bean>
+
+	<bean id="direccionesClienteService" class="co.com.cotrafa.transacciones.DireccionesClienteServiceImpl">
+		<property name="dao" ref="direccionesClienteDao" />
+		<property name="personasDao" ref="personasDao" />
+	</bean>
+
+	<bean id="identidadClienteService" class="co.com.cotrafa.transacciones.IdentidadClienteServiceImpl">
+		<property name="dao" ref="identidadClienteDao" />
+	</bean>
+
+	<bean id="referenciaFamiliarService" class="co.com.cotrafa.transacciones.ReferenciaFamiliarServiceImpl">
+		<property name="dao" ref="referenciaFamiliarDao" />
+		<property name="personasDao" ref="personasDao" />
+	</bean>
+
+	<bean id="referenciaPersonalService" class="co.com.cotrafa.transacciones.ReferenciaPersonalServiceImpl">
+		<property name="dao" ref="referenciaPersonalDao" />
+	</bean>
+	
+	<bean id="formatoSeguroService" class="co.com.cotrafa.transacciones.FormatoSeguroServiceImpl">
+		<property name="dao" ref="formatoSeguroDao" />
+	</bean>
+	
+	<bean id="familiarSolicitanteService" class="co.com.cotrafa.transacciones.FamiliarSolicitanteServiceImpl">
+		<property name="dao" ref="familiarSolicitanteDao" />
+	</bean>
+
+	<bean id="verificacionComiteService" class="co.com.cotrafa.transacciones.VerificacionComiteServiceImpl">
+		<property name="dao" ref="verificacionComiteDao" />
+	</bean>
+
+	<bean id="detalleClienteService" class="co.com.cotrafa.transacciones.DetalleClienteServiceImpl">
+		<property name="dao" ref="detalleClienteDao" />
+	</bean>
+
+	<bean id="detalleCreditoService" class="co.com.cotrafa.transacciones.DetalleCreditoServiceImpl">
+		<property name="dao" ref="detalleCreditoDao" />
+	</bean>
+
+	<bean id="libranzaService" class="co.com.cotrafa.transacciones.LibranzaServiceImpl">
+		<property name="dao" ref="libranzaDao" />
+	</bean>
+	
+	<bean id="reportesService" class="co.com.cotrafa.transacciones.ReportesServiceImpl">
+		<property name="dao" ref="reportesDao" />
+	</bean>
+
+	<bean id="informacionViviendaService" class="co.com.cotrafa.transacciones.InformacionViviendaServiceImpl">
+		<property name="dao" ref="informacionViviendaDao" />
+	</bean>
+	
+	<bean id="documentosUCMService" class="co.com.cotrafa.transacciones.DocumentosUCMServiceImpl">
+		<property name="dao" ref="documentosUCMDao" />
+	</bean>
+	
+	<bean id="documentoSoporteService" class="co.com.cotrafa.transacciones.DocumentoSoporteServiceImpl">
+		<property name="dao" ref="documentoSoporteDao" />
+	</bean>
+
+	<!-- BACKIN BEANS PARA ACTUALIZACIÓN -->
+	<!-- INTEGRACION -->
+	<bean id="analisisSolicitudBB" class="co.com.cotrafa.transacciones.AnalisisSolicitudBB" />
+	<bean id="dataCreditoBB" class="co.com.cotrafa.transacciones.DataCreditoBB" />
+	<bean id="verificacionDigitalizacionBB" class="co.com.cotrafa.transacciones.VerificacionDigitalizacionBB" />
+	<bean id="verificacionFisicaDocumentoBB" class="co.com.cotrafa.transacciones.VerificacionFisicaDocumentoBB" />
+	<bean id="verificacionDocumentoPendienteBB" class="co.com.cotrafa.transacciones.VerificacionDocumentoPendienteBB" />
+	<bean id="realizarCorreccionesBB" class="co.com.cotrafa.transacciones.RealizarCorreccionesBB" />
+	<bean id="informarAprobacionBB" class="co.com.cotrafa.transacciones.InformarAprobacionBB" />
+	<bean id="conceptoModificacionBB" class="co.com.cotrafa.transacciones.ConceptoModificacionBB" />
+	<bean id="inconsistenciasDocsSoporteBB" class="co.com.cotrafa.transacciones.InconsistenciasDocsSoporteBB" />
+	<bean id="verificacionDocsSoporteBB" class="co.com.cotrafa.transacciones.VerificacionDocsSoporteBB" />	
+	<bean id="tramitarGarantiaBB" class="co.com.cotrafa.transacciones.TramitarGarantiaBB" />
+	<bean id="verificacionPersonalBB" class="co.com.cotrafa.transacciones.VerificacionPersonalBB" />
+	<bean id="informacionDetalleClienteBB" class="co.com.cotrafa.transacciones.InformacionDetalleClienteBB" />
+	<bean id="informacionDetalleCreditoBB" class="co.com.cotrafa.transacciones.InformacionDetalleCreditoBB" />
+	<bean id="informacionCupoRotativoBB" class="co.com.cotrafa.transacciones.InformacionCupoRotativoBB" />
+	<bean id="informarRechazoBB" class="co.com.cotrafa.transacciones.InformarRechazoBB" />
+	<bean id="emitirConceptoBB" class="co.com.cotrafa.transacciones.EmitirConceptoBB" />
+	<bean id="verificacionLaboralBB" class="co.com.cotrafa.transacciones.VerificacionLaboralBB" />
+	<bean id="revisarSeguroBB" class="co.com.cotrafa.transacciones.RevisarSeguroBB" />
+	<bean id="decisionAseguradoraBB" class="co.com.cotrafa.transacciones.DecisionAseguradoraBB" />
+	<bean id="decisionSeguroBB" class="co.com.cotrafa.transacciones.DecisionSeguroBB" />
+	<bean id="gestionarPersonaNaturalBB" class="co.com.cotrafa.transacciones.GestionarPersonaNaturalBB" />
+	<bean id="cancelarSolicitudBB" class="co.com.cotrafa.transacciones.CancelarSolicitudBB" />
+	<bean id="verificacionFisicaDocumentoAHOBB" class="co.com.cotrafa.transacciones.VerificacionFisicaDocumentoAHOBB" />
+	<bean id="verificacionFisicaDocInconsAHOBB" class="co.com.cotrafa.transacciones.VerificacionFisicaDocInconsAHOBB" />
+	<bean id="legalizarDocsDesembolsoBB" class="co.com.cotrafa.transacciones.LegalizarDocsDesembolsoBB" />
+	<bean id="legalizarDocumentosSoporteBB" class="co.com.cotrafa.transacciones.LegalizarDocumentosSoporteBB" />
+	<bean id="legalizarLibranzaCentralizadaBB" class="co.com.cotrafa.transacciones.LegalizarLibranzaCentralizadaBB" />
+	<bean id="legalizarLibranzaPendienteBB" class="co.com.cotrafa.transacciones.LegalizarLibranzaPendienteBB" />
+	<bean id="verificacionPersonaNaturalBB" class="co.com.cotrafa.transacciones.VerificacionPersonaNaturalBB" />
+	<bean id="verificacionPEPSBB" class="co.com.cotrafa.transacciones.VerificacionPEPSBB" />
+	<bean id="gestionarPersonaJuridicalBB" class="co.com.cotrafa.transacciones.GestionarPersonaJuridicalBB" />
+	<bean id="verificacionPersonaJuridicaBB" class="co.com.cotrafa.transacciones.VerificacionPersonaJuridicaBB" />
+	<bean id="reportesBB" class="co.com.cotrafa.transacciones.ReportesBB" />
+	<bean id="consultarSolicitudBB" class="co.com.cotrafa.transacciones.ConsultarSolicitudBB" />
+	
+	<!-- MODULOS -->
+	<bean id="informacionLaboralBB" class="co.com.cotrafa.transacciones.modulos.InformacionLaboralBB" />
+	<bean id="capacidadEndeudamientoBB" class="co.com.cotrafa.transacciones.modulos.CapacidadEndeudamientoBB" />
+	<bean id="destinacionDesembolsoBB" class="co.com.cotrafa.transacciones.modulos.DestinacionDesembolsoBB" />
+	<bean id="detallePersonaBB" class="co.com.cotrafa.transacciones.modulos.DetallePersonaBB" />	
+	<bean id="informacionTitularesBB" class="co.com.cotrafa.transacciones.modulos.InformacionTitularesBB" />
+	<bean id="identidadClienteBB" class="co.com.cotrafa.transacciones.modulos.IdentidadClienteBB" />
+	<bean id="personaJuridicaBB" class="co.com.cotrafa.transacciones.modulos.PersonaJuridicaBB" />
+	<bean id="verificacionComiteBB" class="co.com.cotrafa.transacciones.modulos.VerificacionComiteBB" />
+	<bean id="informacionViviendaBB" class="co.com.cotrafa.transacciones.modulos.InformacionViviendaBB" />
+	<bean id="documentosUCMBB" class="co.com.cotrafa.transacciones.modulos.DocumentosUCMBB" />
+	<bean id="empresasBB" class="co.com.cotrafa.transacciones.modulos.EmpresasBB" />
+	<bean id="ciiuBB" class="co.com.cotrafa.transacciones.modulos.CiiuBB" />
+	<bean id="documentoSoporteBB" class="co.com.cotrafa.transacciones.modulos.DocumentoSoporteBB" />
+		
+</beans>

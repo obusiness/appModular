@@ -1,0 +1,35 @@
+package com.obusiness.dao;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.obusiness.bo.TsEmpUsuarios;
+import com.obusiness.sp.ValidarLogueoSp;
+
+@Repository
+public class ValidaUsuarioDaoImpl implements ValidaUsuarioDao {
+
+	@Autowired
+	private SessionFactory sessionFactory;
+	@Autowired
+	private ValidarLogueoSp validaUsuarioSp;
+	
+	@Override
+	@Transactional
+	public String validaUsuario(TsEmpUsuarios usuario) throws Exception{	
+		//Session session = sessionFactory.getCurrentSession();
+		return validaUsuarioSp.validar(usuario);
+	}
+
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="obusiness" match-name="tb_empresas"/>
+  <table-filter match-catalog="obusiness" match-name="tb_fac_cuadres"/>
+  <table-filter match-catalog="obusiness" match-name="tb_fac_tran_detalles"/>
+  <table-filter match-catalog="obusiness" match-name="tb_fac_transacciones"/>
+  <table-filter match-catalog="obusiness" match-name="tb_inv_movimientos"/>
+  <table-filter match-catalog="obusiness" match-name="tb_inv_productos"/>
+  <table-filter match-catalog="obusiness" match-name="tb_inv_sucursal"/>
+  <table-filter match-catalog="obusiness" match-name="tb_ms_participaciones"/>
+  <table-filter match-catalog="obusiness" match-name="tb_ms_polizas"/>
+  <table-filter match-catalog="obusiness" match-name="tb_ms_ramos_companias"/>
+  <table-filter match-catalog="obusiness" match-name="tb_ms_tipo_companias"/>
+  <table-filter match-catalog="obusiness" match-name="tb_ms_tipo_ramos"/>
+  <table-filter match-catalog="obusiness" match-name="tb_ms_vigencias"/>
+  <table-filter match-catalog="obusiness" match-name="tb_per_acompanante"/>
+  <table-filter match-catalog="obusiness" match-name="tb_per_direcciones"/>
+  <table-filter match-catalog="obusiness" match-name="tb_per_ubicacion"/>
+  <table-filter match-catalog="obusiness" match-name="tb_personas"/>
+  <table-filter match-catalog="obusiness" match-name="tb_suc_usuario"/>
+  <table-filter match-catalog="obusiness" match-name="tb_sucursales"/>
+  <table-filter match-catalog="obusiness" match-name="tb_tipo_documentos"/>
+  <table-filter match-catalog="obusiness" match-name="tb_tipo_estado_civil"/>
+  <table-filter match-catalog="obusiness" match-name="tb_tipo_forma_pagos"/>
+  <table-filter match-catalog="obusiness" match-name="tb_tipo_movimientos"/>
+  <table-filter match-catalog="obusiness" match-name="tb_tipo_ocupacion"/>
+  <table-filter match-catalog="obusiness" match-name="tb_tipo_parentesco"/>
+  <table-filter match-catalog="obusiness" match-name="tb_tipo_periodicidades"/>
+  <table-filter match-catalog="obusiness" match-name="tb_tipo_region"/>
+  <table-filter match-catalog="obusiness" match-name="tb_tipo_sexo"/>
+  <table-filter match-catalog="obusiness" match-name="tb_tipo_ubicaciones"/>
+  <table-filter match-catalog="obusiness" match-name="ts_cfg_componentes"/>
+  <table-filter match-catalog="obusiness" match-name="ts_cfg_modulo_componentes"/>
+  <table-filter match-catalog="obusiness" match-name="ts_cfg_modulos"/>
+  <table-filter match-catalog="obusiness" match-name="ts_cfg_tipo_componentes"/>
+  <table-filter match-catalog="obusiness" match-name="ts_emp_aplicaciones"/>
+  <table-filter match-catalog="obusiness" match-name="ts_emp_permisos"/>
+  <table-filter match-catalog="obusiness" match-name="ts_emp_roles"/>
+  <table-filter match-catalog="obusiness" match-name="ts_emp_roles_usuarios"/>
+  <table-filter match-catalog="obusiness" match-name="ts_emp_usuarios"/>
+</hibernate-reverse-engineering>

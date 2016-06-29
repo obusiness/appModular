@@ -1,0 +1,10 @@
+<classpath>
+  <container id="Obusiness!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="C:/proyectos/appModular/Obusiness/WebContent/WEB-INF/lib/jsf-impl-2.2.9.jar">
+      <source-attachment-path>C:/Users/EQUIPO/.m2/repository/com/sun/faces/jsf-impl/2.2.9/jsf-impl-2.2.9-sources.jar</source-attachment-path>
+    </entry>
+    <entry id="C:/proyectos/appModular/Obusiness/WebContent/WEB-INF/lib/primefaces-6.0.jar">
+      <source-attachment-path>C:/Users/EQUIPO/.m2/repository/org/primefaces/primefaces/6.0/primefaces-6.0-sources.jar</source-attachment-path>
+    </entry>
+  </container>
+</classpath>

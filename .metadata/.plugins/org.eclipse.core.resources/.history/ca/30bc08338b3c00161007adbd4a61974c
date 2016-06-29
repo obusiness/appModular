@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"  " http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<bean id="dataSource" class="co.com.cotrafa.dataAcces.ProxyConnectionDataSource">
+		<property name="internalDataSource" ref="sicInternalDataSource" />
+		<property name="connectionStrategy" ref="sicConnectionStrategy" />
+	</bean>
+
+	<!-- Origen de datos para la conexion a MySQL -->
+	<!-- Local MySQL DataSource that works in any environment -->
+	<bean id="obusinessDataSource"
+		class="org.gjt.mm.mysql.Driver" >
+		<!--
+		<property name="URL" value="jdbc:oracle:thin:@172.16.101.71:1521:PRB0511" />
+		<property name="user" value="proxy_user" />
+		<property name="password" value="proxyprb2012"/>
+ 		 -->
+		<!--
+		<property name="URL" value="jdbc:oracle:thin:@172.16.101.68:1521:DLLO1012" />
+		<property name="user" value="proxy_bpm" />
+		<property name="password" value="proxypruebas201210" />
+		 -->
+        <!--
+        <property name="URL" value="jdbc:oracle:thin:@(DESCRIPTION= (LOAD_BALANCE=on) (ADDRESS=(PROTOCOL=TCP)(HOST=clausen.cotrafa.com.co)(PORT=1521)) (CONNECT_DATA=(SID=PROD1)))" />
+		<property name="user" value="proxy_bpm" />
+		<property name="password" value="kbhfytr687897" />
+		-->        
+         
+		<property name="URL" value="jdbc:mysql:///localhost:3306/obusiness" />
+		<property name="user" value="obusiness" />
+		<property name="password" value="oracle" />
+
+		<!--
+		<property name="URL" value="jdbc:oracle:thin:@172.16.101.240:1521:CERTIF" />
+		<property name="user" value="proxy_bpm" />
+		<property name="password" value="oracle11" />
+ 		 -->
+	</bean>
+
+	<!-- Origen de datos para la conexion a OID
+	<bean id="dataSourceOID" class="co.com.cotrafa.security.DataSourceOID">
+		<property name="ldapHost" value="172.16.101.2" />
+		<property name="ldapPort" value="389" />
+		<property name="baseDN" value="dc=Users,dc=cotrafa" />
+	</bean>
+
+	<bean id="sicConnectionStrategy"
+		class="co.com.cotrafa.dataAcces.OracleOCIConnectionThreadLocalStrategy">
+	</bean> -->
+</beans>

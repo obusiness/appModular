@@ -1,0 +1,72 @@
+package co.com.cotrafa.security.service;
+
+import java.util.Date;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import co.com.cotrafa.common.error.CotrafaException;
+import co.com.cotrafa.entidades.ConUsuarios;
+import co.com.cotrafa.entidades.Usuario;
+import co.com.cotrafa.security.CotrafaSecurityException;
+import co.com.cotrafa.security.FalloSeguridad;
+import co.com.cotrafa.security.dao.OidServiceDAO;
+import co.com.cotrafa.security.dao.UsuarioDAO;
+import co.com.cotrafa.security.dto.AutenticacionDTO;
+
+public class AutenticacionServiceImpl implements AutenticacionService{
+	
+	private UsuarioDAO usuarioDao;
+	private OidServiceDAO oidDao;
+	
+	public UsuarioDAO getUsuarioDao() {
+		return usuarioDao;
+	}
+	
+	public void setUsuarioDao(UsuarioDAO usuarioDao) {
+		this.usuarioDao = usuarioDao;
+	}
+	
+	@Transactional(readOnly = true)
+	public Usuario autenticar(AutenticacionDTO data) throws CotrafaSecurityException {
+		System.out.println("AUTENTICAR --> Antes delegate "+(new Date()));
+		System.out.println("AUTENTICAR --> Usuario a verificar : "+data.getNombreUsuario());
+		Usuario usuario = usuarioDao.getUsuario(data.getNombreUsuario().toUpperCase());//usuarioDao.findById(data.getNombreUsuario().toUpperCase());
+		if (usuario == null){
+			FalloSeguridad.ThrowCotrafaSecurityException("No se encontró la información del usuario en el sistema.", null);
+		}
+		System.out.println("AUTENTICAR --> Usuario 1 : "+usuario.getNombre());
+		System.out.println("AUTENTICAR --> Fin  : "+(new Date()));
+		return usuario;
+	}
+	
+	public void cerrar(Usuario usuario) throws CotrafaSecurityException {
+		//TODO pediente la implementacion con el DAO	
+	}
+	
+	/**
+	 * 
+	 * @param usuario
+	 * @return boolean
+	 * @throws CotrafaException
+	 */
+	public boolean autenticarUsuario( ConUsuarios usuario ) throws CotrafaException {
+		// autentica contra el OID
+		//oidDao.AutenticaUsuario(usuario.getUsuario(), usuario.getPassword());
+		return usuarioDao.autenticarUsuario(usuario.getUsuario(), usuario.getPassword());
+	}
+
+	/**
+	 * @return the oidDao
+	 */
+	public OidServiceDAO getOidDao() {
+		return oidDao;
+	}
+
+	/**
+	 * @param oidDao the oidDao to set
+	 */
+	public void setOidDao(OidServiceDAO oidDao) {
+		this.oidDao = oidDao;
+	}
+
+}

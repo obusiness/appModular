@@ -1,0 +1,5 @@
+package co.com.obusiness.dao.sp;
+
+public class ValidaUsuarioSp {
+
+}

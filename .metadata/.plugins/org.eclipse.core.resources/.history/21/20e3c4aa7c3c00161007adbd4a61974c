@@ -1,0 +1,54 @@
+package co.com.obusiness.transacciones;
+
+import co.com.obusiness.security.CotrafaSecurityException;
+import co.com.obusiness.security.dto.AutenticacionDTO;
+
+public class Autenticacion {
+	
+	/**
+	 * Este método ejecuta el proceso de autenticación del usuario.  Si la autenticación
+	 * es exitosa se debe adicionar a la sesión un objeto tipo {@link co.com.cotrafa.common.bo.Usuario Usuario}
+	 * @return "success" si la operación es exitosa
+	 */
+	public void autenticar() throws CotrafaSecurityException {
+		System.out.println("autenticar!!!");
+		
+		Mensajes.getInstance().realizarLog("Control autenticar : " + "Inicio ");
+		
+		AutenticacionDTO dto = new AutenticacionDTO();
+		dto.setNombreUsuario((String) ContextoWeb.getInstance().get("nombreUsuario"));
+		dto.setAplicacion(ContextoWeb.getInstance().get(AtributosConfiguracion.APPLICATION));
+		dto.setIdSesion(ContextoWeb.getInstance().getIdSesion());
+		
+		String direccionIP = ContextoWeb.getInstance().getRemoteAddress(); 
+		dto.setIp(direccionIP);
+
+		Mensajes.getInstance().realizarLog("AutenticacionDTO direccionIp : " + direccionIP);
+		Mensajes.getInstance().realizarLog("Control autenticar : " + "Service ");
+
+		AutenticacionService autenticacionService = (new AutenticacionServiceDelegate(dto)).getService();
+		Usuario	usuario = autenticacionService.autenticar(dto);
+		
+		usuario.setDireccionIp(direccionIP);
+		usuario.setHost(ContextoWeb.getInstance().getRemoteHost());
+		usuario.setAplicacion("BPM");		
+		
+		Mensajes.getInstance().realizarLog("Control autenticar : " + "Fin ");
+
+		System.out.println("AtributosSesion.USUARIO PRUEBA "+usuario.getNombre());
+
+		// Adiciona el usuario a la sesion
+		ContextoWeb.getInstance().set(AtributosSesion.USUARIO, usuario);
+		ContextoWeb.getInstance().set(AtributosSesion.CIERRE_SESION, "NO");
+		ContextoWeb.getInstance().set(AtributosSesion.FUNCIONALIDAD_ACTUAL, "INGRESO_INICIAL");
+		
+		Mensajes.getInstance().realizarLog("Control autenticar : " + "Contexto ");
+		
+	}
+	
+	public String desconectar(){
+		ContextoWeb.getInstance().set(AtributosSesion.USUARIO, null);
+		return "login";
+	}	
+
+}

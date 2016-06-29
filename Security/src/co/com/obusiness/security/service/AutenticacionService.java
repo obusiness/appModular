@@ -1,0 +1,32 @@
+package co.com.obusiness.security.service;
+
+import co.com.obusiness.common.error.CotrafaException;
+import co.com.obusiness.entidades.TsEmpUsuarios;
+import co.com.obusiness.security.CotrafaSecurityException;
+import co.com.obusiness.security.dto.AutenticacionDTO;
+
+public interface AutenticacionService {
+	
+	/**
+	 * Metodo encargado de autenticar el usuario (Tipo Persona natural ó persona juridica)
+	 * @param datos Datos de autenticacion 
+	 * @return El usuario que se autentico
+	 * @throws CotrafaException En caso que no se pueda autenticar
+	 */	
+	public abstract TsEmpUsuarios autenticar(AutenticacionDTO data) throws CotrafaSecurityException; 
+	
+	/**
+	 * Indica que el usuario sale de la aplicacion 
+	 * @param usuario Usuario conectado
+	 * @throws CotrafaException En caso que no sea posible salir 
+	 */	
+	public void cerrar(TsEmpUsuarios usuario) throws CotrafaSecurityException;
+	
+	/**
+	 * 
+	 * @param usuario
+	 * @return boolean
+	 * @throws CotrafaException
+	 */
+	public boolean autenticarUsuario( TsEmpUsuarios usuario ) throws CotrafaException;
+}

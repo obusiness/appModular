@@ -1,0 +1,44 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.3.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-4.3.xsd"
+       >
+	<!-- <bean id="dataSource" class="co.com.cotrafa.dataAcces.ProxyConnectionDataSource">
+		<property name="internalDataSource" ref="sicInternalDataSource" />
+		<property name="connectionStrategy" ref="sicConnectionStrategy" />
+	</bean> -->
+
+	<!-- Origen de datos para la conexion a MySQL -->
+	<!-- Local MySQL DataSource that works in any environment -->
+	<bean id="dataSource"
+		class="com.mysql.jdbc.Driver" >
+
+         
+		<property name="URL" value="jdbc:mysql:///localhost:3306/obusiness" />
+		<property name="user" value="obusiness" />
+		<property name="password" value="oracle" />
+
+		<!--
+		<property name="URL" value="jdbc:oracle:thin:@172.16.101.240:1521:CERTIF" />
+		<property name="user" value="proxy_bpm" />
+		<property name="password" value="oracle11" />
+ 		 -->
+	</bean>
+
+	<!-- Origen de datos para la conexion a OID
+	<bean id="dataSourceOID" class="co.com.cotrafa.security.DataSourceOID">
+		<property name="ldapHost" value="172.16.101.2" />
+		<property name="ldapPort" value="389" />
+		<property name="baseDN" value="dc=Users,dc=cotrafa" />
+	</bean>
+
+	<bean id="sicConnectionStrategy"
+		class="co.com.cotrafa.dataAcces.OracleOCIConnectionThreadLocalStrategy">
+	</bean> -->
+</beans>

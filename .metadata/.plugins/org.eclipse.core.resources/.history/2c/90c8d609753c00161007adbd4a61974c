@@ -1,0 +1,60 @@
+package co.com.cotrafa.common.error;
+
+import java.io.Serializable;
+
+/**
+ * Esta clase representa todos las excepciones de negocio que puedan suceder en los servicios
+ * de la aplicacion
+ * 
+ */
+public class CotrafaException extends Exception implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private String mensajeUsuario;
+
+	/**
+	 * Construye una instancia de la excepcion
+	 * @param message Mensaje de error
+	 */
+	public CotrafaException(String message) {
+		super(message);
+		this.mensajeUsuario = message;
+	}
+
+	/**
+	 * Construye una instancia de la excepcion
+	 * @param message Mensaje de error
+	 * @param mensajeUsuario Mensaje para el usuario
+	 */
+	public CotrafaException(String message, String mensajeUsuario) {
+		super(message);
+		this.mensajeUsuario = mensajeUsuario;
+	}
+	
+	/**
+	 * Construye una instancia de la excepcion
+	 * @param message Mensaje de error
+	 * @param mensajeUsuario Mensaje para el usuario
+	 * @param causa Causa del error
+	 */
+	public CotrafaException(String message, String mensajeUsuario, Throwable causa) {
+		super(message, causa);
+		this.mensajeUsuario = mensajeUsuario;
+	}
+	
+	/**
+	 * Construye una instancia de la excepcion
+	 * @param resultado Mensaje de error
+	 */
+	public CotrafaException( Resultado resultado ) {
+		super(resultado.getMensajeTecnico());
+		this.mensajeUsuario = resultado.getMensaje();
+	}
+
+	/**
+	 * Obtiene el mensaje para mostrar al usuario
+	 * @return Mensaje para el usuario o null si no hay
+	 */
+	public String getMensajeUsuario() {
+		return mensajeUsuario;
+	}
+}

@@ -1,0 +1,178 @@
+package co.com.obusiness.transacciones;
+ 
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import org.primefaces.model.menu.DefaultMenuItem;
+import org.primefaces.model.menu.DefaultMenuModel;
+import org.primefaces.model.menu.DefaultSubMenu;
+import org.primefaces.model.menu.MenuModel;
+
+import co.com.obusiness.bo.Menu;
+ 
+@ManagedBean
+public class MenuView {
+    
+	private List<Menu> menu;
+    private MenuModel model;
+ 
+    @PostConstruct
+    public void init() {
+        model = new DefaultMenuModel();
+         
+        cargarMenu();
+        
+        //First submenu
+        //DefaultSubMenu firstSubmenu = new DefaultSubMenu("Dynamic Submenu");
+         
+        for(Menu m: menu){
+        	if(m.getHijos().size()>0){
+        		DefaultSubMenu secondSubmenu = new DefaultSubMenu(m.getNombre());
+        		cargarSubMenu(m, secondSubmenu);
+        		model.addElement(secondSubmenu);
+        	}
+        	else{
+        		DefaultMenuItem item = new DefaultMenuItem(m.getNombre());
+                item.setUrl("http://www.primefaces.org");
+                item.setIcon("ui-icon-home");
+                //DefaultSubMenu submenu = new DefaultSubMenu(m.getNombre());
+                model.addElement(item);
+        	}
+        }
+        
+        /*
+        DefaultMenuItem item = new DefaultMenuItem("External");
+        item.setUrl("http://www.primefaces.org");
+        item.setIcon("ui-icon-home");
+        firstSubmenu.addElement(item);
+         
+        model.addElement(firstSubmenu);
+         
+        //Second submenu
+        DefaultSubMenu secondSubmenu = new DefaultSubMenu("Dynamic Actions");
+ 
+        item = new DefaultMenuItem("Save");
+        item.setIcon("ui-icon-disk");
+        item.setCommand("#{menuView.save}");
+        item.setUpdate("messages");
+        secondSubmenu.addElement(item);
+         
+        item = new DefaultMenuItem("Delete");
+        item.setIcon("ui-icon-close");
+        item.setCommand("#{menuView.delete}");
+        item.setAjax(false);
+        secondSubmenu.addElement(item);
+         
+        item = new DefaultMenuItem("Redirect");
+        item.setIcon("ui-icon-search");
+        item.setCommand("#{menuView.redirect}");
+        secondSubmenu.addElement(item);*/
+ 
+        
+    }
+    
+    public void cargarSubMenu(Menu m, DefaultSubMenu subMMenu ){
+    	for(Menu m1: menu){
+        	if(m.getHijos().size()>0){
+        		DefaultSubMenu secondSubmenu = new DefaultSubMenu(m1.getNombre());
+        		cargarSubMenu(m1, secondSubmenu);
+        	}
+        	else{
+        		DefaultMenuItem item = new DefaultMenuItem(m.getNombre());
+                item.setUrl("http://www.primefaces.org");
+                item.setIcon("ui-icon-home");
+                //DefaultSubMenu submenu = new DefaultSubMenu(m.getNombre());
+                subMMenu.addElement(item);
+        	}
+        }    	
+    }
+    
+    public void cargarMenu(){
+    	Menu opcion = new Menu();
+    	Menu opcion1 = new Menu();
+    	
+    	opcion.setId(1);
+    	opcion.setIdPadre(0);
+    	opcion.setNombre("opcion1");
+    	opcion.setUrl("");
+
+    	
+    	List<Menu> hijos = null;
+    	opcion1.setId(2);
+    	opcion1.setIdPadre(1);
+    	opcion1.setNombre("opcion1.2");
+    	opcion1.setUrl("");    	
+    	hijos.add(opcion1);
+    	
+    	opcion1 = new Menu();
+    	opcion1.setId(3);
+    	opcion1.setIdPadre(1);
+    	opcion1.setNombre("opcion1.3");
+    	opcion1.setUrl("");    	
+    	hijos.add(opcion1);    	
+    	
+    	opcion.setHijos(hijos);
+    	menu.add(opcion);
+    	
+    	opcion.setId(2);
+    	opcion.setIdPadre(0);
+    	opcion.setNombre("opcion2");
+    	opcion.setUrl("");
+
+    	
+    	 hijos = null;
+    	opcion1.setId(4);
+    	opcion1.setIdPadre(2);
+    	opcion1.setNombre("opcion2.2");
+    	opcion1.setUrl("");    	
+    	hijos.add(opcion1);
+    	
+    	opcion1 = new Menu();
+    	opcion1.setId(5);
+    	opcion1.setIdPadre(2);
+    	opcion1.setNombre("opcion2.3");
+    	opcion1.setUrl("");    	
+    	hijos.add(opcion1);    	
+    	
+    	opcion.setHijos(hijos);
+    	menu.add(opcion);
+    	
+    	opcion.setId(3);
+    	opcion.setIdPadre(0);
+    	opcion.setNombre("opcion3");
+    	opcion.setUrl("");
+    	menu.add(opcion);
+    }
+ 
+    public MenuModel getModel() {
+        return model;
+    }   
+     
+    public void save() {
+        addMessage("Success", "Data saved");
+    }
+     
+    public void update() {
+        addMessage("Success", "Data updated");
+    }
+     
+    public void delete() {
+        addMessage("Success", "Data deleted");
+    }
+     
+    public void addMessage(String summary, String detail) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+
+	public List<Menu> getMenu() {
+		return menu;
+	}
+
+	public void setMenu(List<Menu> menu) {
+		this.menu = menu;
+	}
+}

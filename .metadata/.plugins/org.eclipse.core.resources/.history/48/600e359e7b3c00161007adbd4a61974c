@@ -1,0 +1,99 @@
+package co.com.cotrafa.security.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.List;
+
+import oracle.jdbc.pool.OracleDataSource;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import co.com.cotrafa.common.error.CotrafaException;
+import co.com.cotrafa.entidades.Usuario;
+
+public class UsuarioDAOImpl extends HibernateDaoSupport implements UsuarioDAO {
+		
+	/* (non-Javadoc)
+	 * @see co.com.cotrafa.sic.security.dao.UsuarioDAO#findAll()
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Usuario> findAll() {
+		List<Usuario> usuarios = this.getHibernateTemplate().findByNamedQuery("Usuario.findAll");
+		return usuarios;
+	}
+	
+	/* (non-Javadoc)
+	 * @see co.com.cotrafa.sic.security.dao.UsuarioDAO#findById(java.lang.String)
+	 */
+	@SuppressWarnings("unchecked")
+	public Usuario findById(String nombre) {
+		Usuario usuario = new Usuario();
+		List<Usuario> usuarios = this.getHibernateTemplate().findByNamedQueryAndNamedParam(
+				   "Usuario.findById", "nombre", nombre);
+		for (Usuario u: usuarios){
+			usuario=u;
+		}
+		return usuario;
+		
+		//return (Usuario) getHibernateTemplate().get(Usuario.class, nombre);
+	}
+	
+	/* (non-Javadoc)
+	 * @see co.com.cotrafa.sic.security.dao.UsuarioDAO#save(co.com.cotrafa.sic.security.bo.Usuario)
+	 */
+	public void save(Usuario usuario){
+		this.getHibernateTemplate().saveOrUpdate(usuario);
+	}	
+	
+	public Usuario getUsuario( String nombre ){
+		Usuario retorno = null;
+
+		try {
+			Query query = this.getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from Usuario u where u.nombre = ? and u.estado='ACTIVO' and u.agsSegTipoUsuarios.codigo = 'USUARIO-INTERNO'");
+			query.setParameter(0, nombre);
+
+			retorno = (Usuario)query.uniqueResult();
+		} 
+		catch (HibernateException he) {
+			he.printStackTrace();
+			//throw new CotrafaError(he);
+		}
+
+		return retorno;
+	}
+	
+	public boolean autenticarUsuario( String usuario, String password ) throws CotrafaException {
+		boolean retorno = false;
+		
+		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("spring-datasource.xml");
+		
+		OracleDataSource dataSource = (OracleDataSource) ctx.getBean("sicInternalDataSource");
+		
+		Connection connection = null;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
+			connection = DriverManager.getConnection(dataSource.getURL(), usuario, password);
+			
+			retorno = true;
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+			throw new CotrafaException("Usuario y/o contraseña no válidos.");
+		} finally {
+		    if (connection != null) {
+		        try {
+		            connection.close();
+		        } catch (SQLException e) {
+		        	e.printStackTrace();
+		        }
+		    }
+		}
+		
+		return retorno;
+	}
+}
+

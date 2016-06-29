@@ -1,0 +1,11 @@
+package co.com.cotrafa.common;
+
+public enum AtributosSesion {
+	USUARIO,
+	SERVICIO,
+	REPORTE,
+	DESCARGA,
+	FUNCIONALIDAD_ACTUAL,
+	MENSAJE,
+	CIERRE_SESION,
+} 

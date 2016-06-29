@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"  " http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="co.com.cotrafa.entidades" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.max_fetch_depth">3</prop>
+				<prop key="hibernate.jdbc.batch_size">1</prop>
+				<!--
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop> 
+ 				 -->
+			</props>
+		</property>
+	</bean>
+
+	<!-- DAO para los servicios de SIC BPM -->
+	<bean id="usuarioDao" class="co.com.cotrafa.security.dao.UsuarioDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="oidServiceDAO" class="co.com.cotrafa.security.dao.OidServiceDAOImpl">
+		<property name="dataSource" ref="dataSourceOID" />
+	</bean>
+	
+	<bean id="consultaGenericaDao" class="co.com.cotrafa.dao.ConsultaGenericaDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="asesoriasDao" class="co.com.cotrafa.dao.AsesoriasDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="personasDao" class="co.com.cotrafa.dao.PersonasDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="capacidadEndeudamientoDao" class="co.com.cotrafa.dao.CapacidadEndeudamientoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="informacionFinancieraDao" class="co.com.cotrafa.dao.InformacionFinancieraDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="informacionLaboralDao" class="co.com.cotrafa.dao.InformacionLaboralDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="tipodePeriodicidadDao" class="co.com.cotrafa.dao.TipodePeriodicidadDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="listaTipoDao" class="co.com.cotrafa.dao.ListaTipoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="messageQueueBPMDao" class="co.com.cotrafa.dao.MessageQueueBPMDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="regionesDao" class="co.com.cotrafa.dao.RegionesDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="resultadoBPMDao" class="co.com.cotrafa.dao.ResultadoBPMDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="entrevistaSarlaftDao" class="co.com.cotrafa.dao.EntrevistaSarlaftDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="transaccionMonedaExtranjeraDao" class="co.com.cotrafa.dao.TransaccionMonedaExtranjeraDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="dataCreditoDao" class="co.com.cotrafa.dao.DataCreditoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="detallePersonaDao" class="co.com.cotrafa.dao.DetallePersonaDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="refinanciarReestructurarDao" class="co.com.cotrafa.dao.RefinanciarReestructurarDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cuotasExtrasDao" class="co.com.cotrafa.dao.CuotasExtrasDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="chequesRestrictivosDao" class="co.com.cotrafa.dao.ChequesRestrictivosDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="destinacionDesembolsoDao" class="co.com.cotrafa.dao.DestinacionDesembolsoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="basesExternasDao" class="co.com.cotrafa.dao.BasesExternasDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="direccionesClienteDao" class="co.com.cotrafa.dao.DireccionesClienteDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="identidadClienteDao" class="co.com.cotrafa.dao.IdentidadClienteDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="referenciaFamiliarDao" class="co.com.cotrafa.dao.ReferenciaFamiliarDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="referenciaPersonalDao" class="co.com.cotrafa.dao.ReferenciaPersonalDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="formatoSeguroDao" class="co.com.cotrafa.dao.FormatoSeguroDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="familiarSolicitanteDao" class="co.com.cotrafa.dao.FamiliarSolicitanteDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="verificacionComiteDao" class="co.com.cotrafa.dao.VerificacionComiteDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="detalleClienteDao" class="co.com.cotrafa.dao.DetalleClienteDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="detalleCreditoDao" class="co.com.cotrafa.dao.DetalleCreditoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="libranzaDao" class="co.com.cotrafa.dao.LibranzaDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="reportesDao" class="co.com.cotrafa.dao.ReportesDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="informacionViviendaDao" class="co.com.cotrafa.dao.InformacionViviendaDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="documentosUCMDao" class="co.com.cotrafa.dao.DocumentosUCMDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="documentoSoporteDao" class="co.com.cotrafa.dao.DocumentoSoporteDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+</beans>

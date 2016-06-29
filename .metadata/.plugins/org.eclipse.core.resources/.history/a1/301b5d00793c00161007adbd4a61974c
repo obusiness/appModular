@@ -1,0 +1,20 @@
+package co.com.cotrafa.security.dao;
+
+import java.util.List;
+
+import co.com.cotrafa.common.error.CotrafaException;
+import co.com.cotrafa.entidades.Usuario;
+
+public interface UsuarioDAO {
+
+	public abstract List<Usuario> findAll();
+
+	public abstract Usuario findById(String usuario);
+
+	public abstract void save(Usuario usuario);
+	
+	public Usuario getUsuario( String nombre );
+	
+	public boolean autenticarUsuario( String login, String password ) throws CotrafaException;
+
+}

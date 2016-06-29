@@ -1,0 +1,1365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Spring</title>
+  <link rel="alternate" href="https://spring.io/blog" />
+  <link rel="self" href="https://spring.io/blog.atom" />
+  <id>http://spring.io/blog.atom</id>
+  <icon>https://spring.io/favicon.ico</icon>
+  <updated>2016-06-29T10:19:00Z</updated>
+  <entry>
+    <title>Spring for Apache Hadoop 2.4.0 GA released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/29/spring-for-apache-hadoop-2-4-0-ga-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Thomas Risberg</name>
+    </author>
+    <id>tag:spring.io,2016-06-29:2537</id>
+    <updated>2016-06-29T10:19:00Z</updated>
+    <content type="html">&lt;p&gt;We are pleased to announce the Spring for Apache Hadoop 2.4.0 GA release.&lt;/p&gt;
+&lt;p&gt;In addition to version upgrades for Hadoop distros Spring for Apache Hadoop 2.4 adds the following improvements:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Add build support for HDP 2.4 [SHDP-557]&lt;/li&gt;
+  &lt;li&gt;Create utils sub-project [SHDP-556]&lt;/li&gt;
+  &lt;li&gt;Fix issue where NetworkUtils may find wrong default address [SHDP-546]&lt;/li&gt;
+  &lt;li&gt;Missing trailing slash on spring.yarn.applicationDir path fails to localize [SHDP-562]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;See the release &lt;a href="http://docs.spring.io/spring-hadoop/docs/2.4.0.RELEASE/changelog.txt"&gt;changelog&lt;/a&gt; for details.&lt;/p&gt;
+&lt;p&gt;We continue to provide version specific artifacts with their respective transitive dependencies in the Spring IO milestone repository:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;2.4.0.RELEASE (default - Apache Hadoop stable 2.7.1)&lt;/li&gt;
+  &lt;li&gt;2.4.0.RELEASE-phd30 (Pivotal HD 3.0)&lt;/li&gt;
+  &lt;li&gt;2.4.0.RELEASE-cdh5 (Cloudera CDH 5.7)&lt;/li&gt;
+  &lt;li&gt;2.4.0.RELEASE-hdp23 (Hortonworks HDP 2.3)&lt;/li&gt;
+  &lt;li&gt;2.4.0.RELEASE-hdp24 (Hortonworks HDP 2.4)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Please provide feedback so we can prioritize the work on new features scheduled for 2.5. You can use JIRA issues or GitHub issues (see project page for links).&lt;/p&gt;
+&lt;p&gt;The project page is at - &lt;a href="http://projects.spring.io/spring-hadoop/"&gt;http://projects.spring.io/spring-hadoop/&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - June 28, 2016</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/28/this-week-in-spring-june-28-2016" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2016-06-28:2536</id>
+    <updated>2016-06-28T11:55:00Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m in Munich and Wolfsburg, Germany, visiting with customers, then it&amp;rsquo;s off to Seoul, South Korea, for customers and some user group talks.&lt;/p&gt;
+&lt;img src="https://raw.githubusercontent.com/joshlong/meh/master/wolfsburg-28-06-2016.jpg" /&gt;
+&lt;p&gt;This week we&amp;rsquo;ve got a &lt;em&gt;lot&lt;/em&gt; of exciting Spring Cloud Data Flow news, coincident with the new Spring Cloud Data Flow RC1&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The good Dr. Pollack, co-lead of the Spring Cloud Data Flow project, &lt;a href="http://spring.io/blog/2016/06/21/spring-cloud-data-flow-1-0-rc1-released"&gt;just announced Spring Cloud Data Flow RC1&lt;/a&gt; which has updated deployers supporting deployments &lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.0.0.RC1/reference/htmlsingle/#getting-started-deploying-spring-cloud-dataflow"&gt;locally&lt;/a&gt; and to &lt;a href="https://spring.io/blog/2016/06/21/spring-cloud-data-flow-for-apache-yarn-1-0-0-rc1-released"&gt;Apache YARN&lt;/a&gt;, &lt;a href="https://spring.io/blog/2016/06/21/spring-cloud-data-flow-for-kubernetes-1-0-0-rc1-released"&gt;Kubernetes&lt;/a&gt;, &lt;a href="https://spring.io/blog/2016/06/21/spring-cloud-data-flow-for-apache-mesos-1-0-0-rc1-released"&gt;Mesos&lt;/a&gt;, and of course &lt;a href="https://spring.io/blog/2016/06/21/spring-cloud-data-flow-for-cloud-foundry-1-0-0-m3-released"&gt;Cloud Foundry&lt;/a&gt;, an incredible integration of Spring Cloud Flo (a visualization for Spring Cloud Data Flow streams) into the Spring Cloud Data Flow Dashboard, improved OAuth support and &lt;em&gt;so&lt;/em&gt; much more!&lt;/li&gt;
+  &lt;li&gt;I &lt;em&gt;really&lt;/em&gt; enjoyed Mark Paluch&amp;rsquo;s &lt;em&gt;excellent&lt;/em&gt; blog pulling back the veil of obscurity around the security secrets sensation sweeping the nation, Hashicorp Vault, and &lt;a href="http://spring.io/blog/2016/06/24/managing-secrets-with-vault"&gt;how Spring Cloud Vault works&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;I loved this discussion between our very &lt;a href="https://www.youtube.com/watch?v=cgTvvdxyIZs"&gt;own Phil Webb, Spring Boot co-founder, and Andrew Clay Shafer, one of our cloud luminaries&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;Have you seen &lt;a href="http://cloud.spring.io/spring-cloud-task-app-starters/"&gt;our new Spring Cloud Task Starters?&lt;/a&gt; From the page: &amp;ldquo;the Spring Cloud Task Application Starters are standalone executable applications that can be used for on-demand use-cases such as database migration, machine learning, and scheduled operations. These applications can run independently on variety of runtime platforms including: Cloud Foundry, Apache Yarn, Apache Mesos, Kubernetes, Docker, or even on your laptop.&amp;rdquo;&lt;/li&gt;
+  &lt;li&gt;our friends at JDriven put together a nice post on &lt;a href="http://blog.jdriven.com/2016/06/spicy-spring-creating-fully-executable-jar/"&gt;creating fully executable &lt;code&gt;.jar&lt;/code&gt;s with the Spring Boot Maven plugin&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Jakub Narloch put together a great post on a custom auto-configuration to run work &lt;a href="https://jmnarloch.wordpress.com/2016/06/22/spring-boot-rxjava-scheduler/"&gt;on various RxJava schedulers with his custom component model based on Spring Boot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Stormpath&amp;rsquo;s own Micah Silverman put together a great post &lt;a href="https://www.javacodegeeks.com/2016/06/simple-web-app-spring-boot-spring-security-stormpath-15-minutes.html"&gt;on connecting a Spring Boot application with Stormpath Authentication in 15 minutes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Trevor Page put together a &lt;a href="http://coderscampus.com/ep01-spring-boot-rocks/"&gt;fun piece&lt;/a&gt; on how the Spring team seem hell-bent on making our lives as Java programmers easier and easier.&amp;quot; I get the feeling we&amp;rsquo;re making fans.. :-)&lt;/li&gt;
+  &lt;li&gt;I haven&amp;rsquo;t read this yet, but this &lt;a href="http://www.springer.com/kr/book/9781484212394"&gt;book on Spring Cloud Data Flow looks interesting&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;In New York City? Check out this meetup &lt;a href="http://www.meetup.com/NYC-SUG/events/232197164/"&gt;on Spring Cloud Data Flow&lt;/a&gt; with Spring Cloud Data Flow lead Mark Pollack himself!&lt;/li&gt;
+  &lt;li&gt;our very own Michael Coté put together a nice post, &lt;a href="https://www.infoq.com/articles/multi-cloud-choice"&gt;&amp;ldquo;Multi-Cloud is a Safety Belt for the Speed-Freaks&amp;rdquo; for InfoQ&lt;/a&gt;. His posts (and his talks and podcasts!) are insightful and often hilarious.&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;&lt;a href="#springone-platform" class="anchor" name="springone-platform"&gt;&lt;/a&gt;SpringOne Platform&lt;/h2&gt;
+&lt;p&gt;I am &lt;em&gt;really&lt;/em&gt; looking forward to this year&amp;rsquo;s &lt;a href="http://springoneplatform.io"&gt;SpringOne Platform&lt;/a&gt; show, coming in early August. It&amp;rsquo;s an amazing time to build applications, and SpringOne Platform is in a unique position to capture the larger discussion: why do we #devops, #cloud, #agile, or #microservice? Join the discussion August 1-4, 2016 in beautiful Las Vegas and let&amp;rsquo;s find out!&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Managing Secrets with Vault</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/24/managing-secrets-with-vault" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Mark Paluch</name>
+    </author>
+    <id>tag:spring.io,2016-06-23:2535</id>
+    <updated>2016-06-24T08:00:00Z</updated>
+    <content type="html">&lt;p&gt;Passwords, API keys and confidential data fall into the category of secrets. Storing secrets the secure way is a challenge with limiting access and a true secure storage. Let&amp;rsquo;s take a look at &lt;a href="https://www.hashicorp.com/"&gt;Hashicorp&lt;/a&gt; &lt;a href="https://www.vaultproject.io/"&gt;Vault&lt;/a&gt; and how you can use it to store and access secrets.&lt;/p&gt;&lt;h2&gt;&lt;a href="#how-do-you-store-secrets" class="anchor" name="how-do-you-store-secrets"&gt;&lt;/a&gt;How do you store Secrets?&lt;/h2&gt;
+&lt;p&gt;Passwords, API keys, secure Tokens, and confidential data fall into the category of secrets.&lt;br/&gt;That&amp;rsquo;s data which shouldn&amp;rsquo;t lie around. It mustn&amp;rsquo;t be available in plaintext in easy to guess locations. In fact, it must not be stored in plaintext in any location.&lt;/p&gt;
+&lt;p&gt;Sensitive data can be encrypted by using the &lt;a href="http://cloud.spring.io/spring-cloud-config/spring-cloud-config.html#_encryption_and_decryption"&gt;Spring Cloud Config Server&lt;/a&gt; or &lt;a href="http://tomee.apache.org/datasource-password-encryption.html"&gt;TomEE&lt;/a&gt;.&lt;br/&gt;Encrypted data is one step better than unencrypted. Encryption imposes on the other side the need for decryption on the user side which requires a decryption key to be distributed. Now, where do you put the key? Is the key protected by a passphrase? Where do you put the passphrase? On how many systems do you distribute your key and the passphrase?&lt;/p&gt;
+&lt;p&gt;As you see, encryption introduces a chicken-egg problem. Storing a decryption key gives the application the possibility to decrypt data. It also allows an attack vector. Someone who is not authorized could get access to the decryption key by having access to the machine. That person can decrypt data which is decryptable by this key. The key is static so a leaked key requires the change of keys. Data needs to be re-encrypted and credentials need to be changed. It&amp;rsquo;s not possible to discover such leakage with online measure because data can be decrypted offline once it was obtained.&lt;/p&gt;
+&lt;p&gt;One approach is putting the key in a hard to guess location before the application starts and wipe the key once it was read to memory. The time in which the key is available is shortened. The attack time-frame is reduced, but still the key was there. Wiping the key works only for one application startup. Containers and microservices in the Cloud are known to be restarted once they crashed. A restart of the application is no longer possible as the key is gone.&lt;/p&gt;&lt;h2&gt;&lt;a href="#wait-there-rsquo-s-hope" class="anchor" name="wait-there-rsquo-s-hope"&gt;&lt;/a&gt;Wait, there&amp;rsquo;s hope!&lt;/h2&gt;
+&lt;p&gt;Doing encryption right is tough, managing secrets is even harder if doing it yourself. Vault addresses exactly these issues. It helps to address the chicken-egg problem and it comes with encryption. Vault is a service to manage secrets. It provides an API that gives access to secrets based on policies. Any user of the API needs to authenticate and only sees the secrets for which he is authorized. Vault encrypts data using 256-bit &lt;a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard"&gt;AES&lt;/a&gt; with &lt;a href="https://en.wikipedia.org/wiki/Galois/Counter_Mode"&gt;GCM&lt;/a&gt;. It can store data in various backends (files, Amazon DynamoDB, Consul, etcd and much more). The other key aspect is that Vault never stores a key in a persistent location. Starting/restarting Vault always requires one or more operators to unseal Vault. However let&amp;rsquo;s start with the basics first.&lt;/p&gt;
+&lt;p&gt;Vault isn&amp;rsquo;t the answer for all security concern. It&amp;rsquo;s worth to check the &lt;a href="https://www.vaultproject.io/docs/internals/security.html"&gt;Vault Security Model&lt;/a&gt; documentation to get an idea of the threat model.&lt;/p&gt;
+&lt;p&gt;To bootstrap Vault, you need to download the binary from &lt;a href="https://www.vaultproject.io/downloads.html"&gt;https://www.vaultproject.io/downloads.html&lt;/a&gt;. Vault is written in Go and binaries are available for various platforms.&lt;br/&gt;Unzip the downloaded file and you are ready to use Vault.&lt;/p&gt;
+&lt;p&gt;Start Vault Server next. You need a configuration file to specify some options.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;vault.conf&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;backend &amp;quot;inmem&amp;quot; {&#xD;
+}&#xD;
+&#xD;
+listener &amp;quot;tcp&amp;quot; {&#xD;
+  address = &amp;quot;0.0.0.0:8200&amp;quot;&#xD;
+  tls_disable = 1&#xD;
+}&#xD;
+&#xD;
+disable_mlock = true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This config is good for most platforms and to try first steps with Vault. Don&amp;rsquo;t use it in production.&lt;/p&gt;
+&lt;p&gt;Start Vault with&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;$ vault server -config vault.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Vault will start as a foreground process.&lt;/p&gt;
+&lt;p&gt;Congratulations, you started Vault.&lt;/p&gt;
+&lt;p&gt;Now is a good moment to open a second console to perform administrative tasks with Vault. Vault runs now in plaintext mode because TLS/SSL is disabled. You need to set the &lt;code&gt;VAULT_ADDR&lt;/code&gt; environment variable to tell the Vault client to use plaintext:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;$ export VAULT_ADDR=http://127.0.0.1:8200
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Vault is started. It requires two additional steps before you can actually start using Vault. Vault needs to be initialized and unsealed. Initialization is the process of initial key generation. Unsealing is supplying the keys to Vault so Vault can decrypt encrypted data and start serving clients.&lt;/p&gt;
+&lt;p&gt;Vault creates upon initialization two things:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;The master key and key splits&lt;/li&gt;
+  &lt;li&gt;A root token&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vault allows shared keys using the &lt;a href="https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing"&gt;Shamir Secret Sharing&lt;/a&gt; algorithm. Data is usually encrypted with one key. The one, who has access to the key has full control to all data as a single person. Sometimes you don&amp;rsquo;t want that. Usually you want to distribute the master key amongst multiple people so no one single person is in control of all your encrypted data. Vault allows specifying the number of total key shares and the number of key shares required to unseal Vault during initialization. That setting cannot be changed once Vault is initialized. Initializing Vault from the console will display the full key. Initialization using the API is maybe something you want to adopt with your DevOps tooling by e.g. sending secure messages to your operators who should receive a key share.&lt;/p&gt;
+&lt;p&gt;Initialize Vault with:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint bash"&gt;$ vault init -key-shares=5 -key-threshold=2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Vault will display the key shares and the root key. Please note that these values are random&lt;br/&gt;and change upon every initialization. Be careful with that output as you will see it only once. There&amp;rsquo;s no way to retrieve the keys and the token afterward. Please read the instructions carefully when using Vault with real data otherwise you&amp;rsquo;ll loose your data.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;Key 1: 99eb89735688ad7a29bb1ff27383bd1005a22a62c97f14357ea4f5f98c1d2c8c01&#xD;
+Key 2: 0c5605b16905794a302603bbeb8f6c8ad5ecf7e877f0e29084f838eba931b86902&#xD;
+Key 3: 7f3d88067c7e355acea4fe756a8b23fc6cd6bc671d7cb0f3d2cc8ae543dc3dc303&#xD;
+Key 4: 3d37062e1704ca2a02073b29c097d5a56e7056e710f515c16b40b9cfe3698bb804&#xD;
+Key 5: 4e5c8b99027f863afc85c6e741939ad3d74a1d687a7947a23d740bc109840e1205&#xD;
+Initial Root Token: 9a63de21-8af7-311a-9a5a-151b6a0d4795&#xD;
+&#xD;
+Vault initialized with 5 keys and a key threshold of 2. Please&#xD;
+securely distribute the above keys. When the Vault is re-sealed,&#xD;
+restarted, or stopped, you must provide at least 2 of these keys&#xD;
+to unseal it again.&#xD;
+&#xD;
+Vault does not store the master key. Without at least 2 keys,&#xD;
+your Vault will remain permanently sealed.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then you need to unseal Vault. Vault does not store the key on disk. It&amp;rsquo;s stored in memory all the time. After initializing and after (re)starting Vault you&amp;rsquo;re required to unseal Vault with the required number of key shares so Vault can serve secrets. In this case that&amp;rsquo;s two key shares. Note: There&amp;rsquo;s also a seal command to make Vault stop serving secrets.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;$ vault unseal 99eb89735688ad7a29bb1ff27383bd1005a22a62c97f14357ea4f5f98c1d2c8c01&#xD;
+Sealed: true&#xD;
+Key Shares: 5&#xD;
+Key Threshold: 2&#xD;
+Unseal Progress: 1&#xD;
+&#xD;
+$ vault unseal 7f3d88067c7e355acea4fe756a8b23fc6cd6bc671d7cb0f3d2cc8ae543dc3dc303&#xD;
+Sealed: false&#xD;
+Key Shares: 5&#xD;
+Key Threshold: 2&#xD;
+Unseal Progress: 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Once Vault is unsealed you can start storing secret data inside of Vault.&lt;/p&gt;
+&lt;p&gt;Vault requires an authenticated access to proceed from here on. Vault uses tokens as generic authentication on its transport level.&lt;/p&gt;
+&lt;p&gt;Remember the output from the initialization? The last item after the key shares is the root token. The easiest way for now is using the root token. The easiest way to use the token on the console is storing it in an environment variable:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;$ export VAULT_TOKEN=9a63de21-8af7-311a-9a5a-151b6a0d4795&#xD;
+$ vault write secret/my-application password=H@rdT0Gu3ss
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The generic secret backend allows storage of arbitrary values as a key-value store. A single context can store one or many key-value tuples. Contexts can be organized hierarchically and the used data format is JSON.&lt;/p&gt;
+&lt;p&gt;Vault provides besides the generic secret backend other backends that allow credential generation for MySQL, SQL Server, PostgreSQL, Consul and &lt;a href="https://www.vaultproject.io/docs/secrets/index.html"&gt;many more&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#authentication" class="anchor" name="authentication"&gt;&lt;/a&gt;Authentication&lt;/h2&gt;
+&lt;p&gt;Vault works primarily with tokens. Each token is assigned to a policy that may constrain the actions and the paths. Policies use path based matching to apply rules. Tokens can get metadata (key-values) and display names assigned which makes administration a bit more ops friendly.&lt;/p&gt;
+&lt;p&gt;You can create tokens manually and assign them to applications and users. Besides that there are a couple of &lt;a href="https://www.vaultproject.io/docs/auth/index.html"&gt;authentication mechanisms&lt;/a&gt; (LDAP, Username/Password, GitHub Token, …) that allow users to login and obtain a token. Tokens and authentication mechanisms can be revoked and that makes it easy to lock out a particular user.&lt;/p&gt;&lt;h2&gt;&lt;a href="#spring-cloud-vault" class="anchor" name="spring-cloud-vault"&gt;&lt;/a&gt;Spring Cloud Vault&lt;/h2&gt;
+&lt;p&gt;We at Pivotal took a look at Vault and considered it a promising tool. That&amp;rsquo;s why we built &lt;a href="https://github.com/spring-cloud-incubator/spring-cloud-vault-config"&gt;Spring Cloud Vault&lt;/a&gt;. Spring Cloud Vault is a configuration extension similar to &lt;a href="https://github.com/spring-cloud/spring-cloud-config"&gt;Spring Cloud Config&lt;/a&gt;. Spring Cloud Config targets external configuration management backed by data stored in various repositories, such as GitHub, SVN or even Vault.&lt;/p&gt;
+&lt;p&gt;With Spring Cloud Vault you can access your secrets inside Vault. Secrets are picked up at startup of your application. Spring Cloud Vault uses the data from your application (application name, active contexts) to determine contexts paths in which you stored your secrets.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;/secret/{application}/{profile}&#xD;
+/secret/{application}&#xD;
+/secret/{defaultContext}/{profile}&#xD;
+/secret/{defaultContext}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a href="#getting-started-with-spring-cloud-vault" class="anchor" name="getting-started-with-spring-cloud-vault"&gt;&lt;/a&gt;Getting started with Spring Cloud Vault&lt;/h2&gt;
+&lt;p&gt;First you need a Spring Boot project. &lt;a href="http://start.spring.io/"&gt;start.spring.io&lt;/a&gt; is a good starting point. Any empty project is sufficient.&lt;/p&gt;&lt;h3&gt;&lt;a href="#include-the-spring-cloud-vault-starter-in-your-project" class="anchor" name="include-the-spring-cloud-vault-starter-in-your-project"&gt;&lt;/a&gt;Include the Spring Cloud Vault starter in your project&lt;/h3&gt;
+&lt;p&gt;Add the following code to your build configuration file. These lines include a starter for Spring Cloud Vault with all required dependencies.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Maven&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint xml"&gt;&amp;lt;dependency&amp;gt;&#xD;
+    &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
+    &amp;lt;artifactId&amp;gt;spring-cloud-vault-starter-config&amp;lt;/artifactId&amp;gt;&#xD;
+    &amp;lt;version&amp;gt;1.0.0.BUILD-SNAPSHOT&amp;lt;/version&amp;gt;&#xD;
+&amp;lt;/dependency&amp;gt;&#xD;
+&#xD;
+&amp;lt;repositories&amp;gt;&#xD;
+    &amp;lt;repository&amp;gt;&#xD;
+        &amp;lt;id&amp;gt;spring-snapshots&amp;lt;/id&amp;gt;&#xD;
+        &amp;lt;name&amp;gt;Spring Snapshots&amp;lt;/name&amp;gt;&#xD;
+        &amp;lt;url&amp;gt;https://repo.spring.io/libs-snapshot&amp;lt;/url&amp;gt;&#xD;
+        &amp;lt;snapshots&amp;gt;&#xD;
+            &amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;&#xD;
+        &amp;lt;/snapshots&amp;gt;&#xD;
+    &amp;lt;/repository&amp;gt;&#xD;
+&amp;lt;/repositories&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Gradle&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;repositories {&#xD;
+    maven {&#xD;
+        url &amp;#39;https://repo.spring.io/libs-snapshot&amp;#39;&#xD;
+    }&#xD;
+}&#xD;
+&#xD;
+dependencies {&#xD;
+    compile(&amp;quot;org.springframework.cloud:spring-cloud-vault-starter-config:1.0.0.BUILD-SNAPSHOT&amp;quot;)&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Make sure to include the Snapshots repository when using &lt;code&gt;SNAPSHOT&lt;/code&gt; dependencies.&lt;/p&gt;&lt;h3&gt;&lt;a href="#setup-the-configuration" class="anchor" name="setup-the-configuration"&gt;&lt;/a&gt;Setup the configuration&lt;/h3&gt;
+&lt;p&gt;Spring Cloud Vault uses by default &lt;code&gt;application&lt;/code&gt; as the default context and the value of &lt;code&gt;spring.application.name&lt;/code&gt; as application context. All configuration needs to be specified in the bootstrap configuration. For this example we use &lt;code&gt;bootstrap.yml&lt;/code&gt; in &lt;code&gt;src/main/resources&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint yaml"&gt;spring:&#xD;
+    application.name: my-application&#xD;
+    cloud.vault:&#xD;
+        token: 9a63de21-8af7-311a-9a5a-151b6a0d4795&#xD;
+        scheme: http
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;spring.cloud.vault.scheme&lt;/code&gt; is set to &lt;code&gt;http&lt;/code&gt; because we&amp;rsquo;ve started Vault in plaintext HTTP mode. Don&amp;rsquo;t do this for production. Plaintext makes the whole secret story useless as all listeners on the network can see your secrets. &lt;code&gt;spring.cloud.vault.scheme&lt;/code&gt; defaults to &lt;code&gt;https&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Please note that the token here is taken from the root token. You can create new tokens with:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;$ vault token-create&#xD;
+Key            	Value&#xD;
+---            	-----&#xD;
+token          	728d26ae-53a6-d8b6-d7a0-c5f62238ea55&#xD;
+token_accessor 	2fd7dcba-39d0-04d3-8d6b-096c3529cf14&#xD;
+token_duration 	0&#xD;
+token_renewable	true&#xD;
+token_policies 	[root]
+&lt;/code&gt;&lt;/pre&gt;&lt;h3&gt;&lt;a href="#write-data-into-vault" class="anchor" name="write-data-into-vault"&gt;&lt;/a&gt;Write data into Vault&lt;/h3&gt;
+&lt;p&gt;Write some data into Vault:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;$ vault write secret/my-application password=H@rdT0Gu3ss
+&lt;/code&gt;&lt;/pre&gt;&lt;h3&gt;&lt;a href="#update-your-spring-boot-application" class="anchor" name="update-your-spring-boot-application"&gt;&lt;/a&gt;Update your Spring Boot Application&lt;/h3&gt;
+&lt;p&gt;Now go over to your application launcher class and enhance it to inject the secret. Use the same property name as you used to write it into Vault:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;package example;&#xD;
+&#xD;
+import javax.annotation.PostConstruct;&#xD;
+&#xD;
+import org.springframework.beans.factory.annotation.Value;&#xD;
+import org.springframework.boot.SpringApplication;&#xD;
+import org.springframework.boot.autoconfigure.SpringBootApplication;&#xD;
+&#xD;
+@SpringBootApplication&#xD;
+public class SpringBootVaultHelloWorldApplication {&#xD;
+&#xD;
+    public static void main(String[] args) {&#xD;
+        SpringApplication.run(SpringBootVaultHelloWorldApplication.class, args);&#xD;
+    }&#xD;
+&#xD;
+    @Value(&amp;quot;${password}&amp;quot;)&#xD;
+    String password;&#xD;
+&#xD;
+    @PostConstruct&#xD;
+    private void postConstruct() {&#xD;
+        System.out.println(&amp;quot;My password is: &amp;quot; + password);&#xD;
+    }&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;All the other things are handled by Spring Cloud Vault itself. Now run your application. &lt;/p&gt;
+&lt;p&gt;Congratulations, you&amp;rsquo;ve made it!&lt;/p&gt;&lt;h2&gt;&lt;a href="#outlook" class="anchor" name="outlook"&gt;&lt;/a&gt;Outlook&lt;/h2&gt;
+&lt;p&gt;Spring Cloud Vault lives in the Cloud Incubator right now. It supports Token and &lt;a href="https://www.vaultproject.io/docs/auth/app-id.html"&gt;AppId&lt;/a&gt; authentication. Spring Cloud Vault comes with a starter and dependencies for various database integration and RabbitMQ/Consul support.&lt;br/&gt;You can checkout the project and the &lt;a href="https://github.com/spring-cloud-incubator/spring-cloud-vault-config/blob/master/docs/src/main/asciidoc/spring-cloud-vault-config.adoc"&gt;documentation&lt;/a&gt; at &lt;a href="https://github.com/spring-cloud-incubator/spring-cloud-vault-config"&gt;ttps://github.com/spring-cloud-incubator/spring-cloud-vault-config&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We prepared some samples to give you an impression how you could integrate Spring Cloud Vault with your application. You can find the samples at &lt;a href="https://github.com/mp911de/spring-cloud-vault-config-samples"&gt;https://github.com/mp911de/spring-cloud-vault-config-samples&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We don&amp;rsquo;t have a timeline yet when to release Spring Cloud Vault. You&amp;rsquo;re invited to join &lt;a href="https://2016.event.springoneplatform.io/presenters/spencer_gibb.html"&gt;Spencer Gibb&amp;rsquo;s&lt;/a&gt; talk at &lt;a href="https://springoneplatform.io/"&gt;SpringOne Platform 2016&lt;/a&gt; about &lt;a href="https://2016.event.springoneplatform.io/schedule/sessions/spring_cloud_with_consul_and_vault.html"&gt;Spring Cloud with Consul and Vault&lt;/a&gt; or mine to learn how to &lt;a href="https://2016.event.springoneplatform.io/schedule/sessions/managing_secrets_at_scale.html"&gt;Manage Secrets at Scale&lt;/a&gt;. We&amp;rsquo;re interested in your feedback.&lt;/p&gt;
+&lt;p&gt;Thanks to Alex Soto who showed Vault to me. Vault is made by Hashicorp, the guys who created Vagrant, Consul and other great tools.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Data Flow 1.0 RC1 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/21/spring-cloud-data-flow-1-0-rc1-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Mark Pollack</name>
+    </author>
+    <id>tag:spring.io,2016-06-21:2534</id>
+    <updated>2016-06-21T17:01:52Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;On behalf of the team I am pleased to announce the release of Spring Cloud Data Flow 1.0 RC1.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Several exciting new features have been added in this release which carry over to the other Data Flow Server implementations that were also released today.&lt;/p&gt;
+&lt;/div&gt;
+&lt;table class="tableblock frame-none grid-all" style="width: 45%;"&gt;
+&lt;colgroup&gt;
+&lt;col style="width: 100%;"&gt;
+&lt;/colgroup&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="tableblock halign-left valign-middle"&gt;&lt;div&gt;&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.0.0.RC1/reference/htmlsingle/#getting-started-deploying-spring-cloud-dataflow"&gt;Data Flow Local Server&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="tableblock halign-left valign-middle"&gt;&lt;div&gt;&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="https://spring.io/blog/2016/06/21/spring-cloud-data-flow-for-cloud-foundry-1-0-0-m3-released"&gt;Data Flow for Cloud Foundry&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="tableblock halign-left valign-middle"&gt;&lt;div&gt;&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="https://spring.io/blog/2016/06/21/spring-cloud-data-flow-for-apache-yarn-1-0-0-rc1-released"&gt;Data Flow for Apache YARN&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="tableblock halign-left valign-middle"&gt;&lt;div&gt;&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="https://spring.io/blog/2016/06/21/spring-cloud-data-flow-for-kubernetes-1-0-0-rc1-released"&gt;Data Flow for Kubernetes&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="tableblock halign-left valign-middle"&gt;&lt;div&gt;&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="https://spring.io/blog/2016/06/21/spring-cloud-data-flow-for-apache-mesos-1-0-0-rc1-released"&gt;Data Flow for Apache Mesos&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Follow the links above for details on features unique to each individual runtime platform.  The highlights of the release are:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-flo/wiki"&gt;Spring Flo&lt;/a&gt; is now an open source project and has been integrated into the Spring Cloud Data Flow dashboard allowing you to &lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.0.0.RC1/reference/htmlsingle/#dashboard-flo-streams-designer"&gt;visually design data pipelines in your browser&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="imageblock"&gt;
+&lt;div class="content"&gt;
+&lt;img src="https://raw.githubusercontent.com/spring-cloud/spring-cloud-dataflow/master/spring-cloud-dataflow-docs/src/main/asciidoc/images/dataflow-flo-create-stream.png" alt="Data Flow Designer Screenshot"&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.0.0.RC1/reference/html/spring-cloud-dataflow-task-events.html"&gt;Batch and Task Events&lt;/a&gt; can be used as a source in a stream definition on YARN and Kubernetes server implementations.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.0.0.RC1/reference/html/getting-started-security.html"&gt;Improved security&lt;/a&gt; by enabling HTTPS access to the server endpoints and support for basic and OAuth 2.0 authentication. The UI and shell have also been updated to support HTTPS and authentication.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The server now uses a RDBMS instead of Redis for stream/task definitions, application registration, and job repositories.  Running a Redis Server is only required for analytics functionality.  The default configuration uses an embedded H2 instance, but Oracle, SqlServer, MySQL/MariaDB, PostgreSQL, H2, and HSQLDB databases are supported.  To use Oracle and SqlServer you will need to create your own Data Flow Server using &lt;a href="https://start.spring.io/"&gt;Spring Initializr&lt;/a&gt; and add the appropriate JDBC driver class.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.0.0.RC1/reference/htmlsingle/#enable-disable-specific-features"&gt;Feature toggles&lt;/a&gt; to enable/disable analytics, stream, and task functionality.  By default, all three are enabled using the configuration.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;For all of the servers, including Data Flow Local Server, applications are no longer pre-registered.  This helps decouple our out of the box applications’ releases from the Data Flow Server release lifecycle.  As a convenience, a list of the latest stream applications are available via user-friendly public URLs.  For example, the shell command&lt;/p&gt;
+&lt;div class="literalblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre&gt;$ dataflow:&amp;gt;app import --uri http://bit.ly/stream-applications-kafka-maven&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;will load the latest applications with the kafka binder and hosted via our maven repository.  See the reference guide for more information on &lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.0.0.RC1/reference/htmlsingle/#spring-cloud-dataflow-register-apps"&gt;registering groups of applications&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;To support centralized and consistent management of an application’s configuration properties, Spring Cloud Config client libraries have been included into the Spring Cloud Data Flow server as well as the Spring Cloud Stream applications provided by the &lt;a href="https://github.com/spring-cloud/spring-cloud-stream-app-starters"&gt;Spring Cloud Stream App Starters repository&lt;/a&gt;.  You can also &lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.0.0.RC1/reference/htmlsingle/#spring-cloud-dataflow-global-properties"&gt;pass common application properties&lt;/a&gt; to all streams when the Data Flow Server starts.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;You can further customize our Spring Cloud Stream and Task application starters by using this version of &lt;a href="http://start-scs.cfapps.io/"&gt;Spring Initializr&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.0.0.RC1/reference/htmlsingle/#spring-cloud-dataflow-stream-app-whitelisting"&gt;Whitelisting of Spring Boot application properties&lt;/a&gt; gives the shell/UI information to show a preferred set of boot properties to display for code completion and application info.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Naming changes.  The UI can now be found under the URL &lt;a href="http://localhost:9393/dashboard" class="bare"&gt;http://localhost:9393/dashboard&lt;/a&gt;.  All references to ‘module’ have now been replaced with ‘app’.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;For the complete list of features, bug-fixes, and improvements, please refer to the &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/issues?q=milestone%3A1.0.0.RC1"&gt;closed 1.0.0.RC GitHub issues.&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We welcome feedback and contributions! If you have any questions, comments or suggestions, please let us know via &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/issues"&gt;GitHub Issues&lt;/a&gt;, &lt;a href="http://stackoverflow.com/tags/spring-cloud-dataflow"&gt;StackOverflow&lt;/a&gt;, or using the #SpringCloudDataFlow hashtag on Twitter.&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Data Flow for Cloud Foundry 1.0.0.M3 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/21/spring-cloud-data-flow-for-cloud-foundry-1-0-0-m3-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Eric Bottard</name>
+    </author>
+    <id>tag:spring.io,2016-06-20:2529</id>
+    <updated>2016-06-21T17:01:33Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;I am pleased to announce the 1.0.0.M3 release of Spring Cloud Data Flow for Cloud Foundry, a team effort that encompasses many new features under the hood:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This third milestone builds upon the recent RC1 release of Spring Cloud Data Flow and also adds Cloud Foundry specific refinements. Some highlights include:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Alignment with Cloud Foundry’s global environment properties such as ORG, API, and URL as opposed to previous naming variants&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Adds security integration to authenticate against OAUTH backend server that’s compatible with Cloud Foundry&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Publishes security configurations for easier overrides when connecting to OAUTH backend server that’s compatible with Cloud Foundry&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Preliminary iterations on performance testing on Cloud Foundry with and without taps’s in real-time streaming pipeline&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Builds upon feature-toggle support from Spring Cloud Data Flow’s core project to conditionally refine what features get included in each release&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;A great way to start using this new release by yourself is to follow &lt;a href="http://docs.spring.io/spring-cloud-dataflow-server-cloudfoundry/docs/1.0.0.M3/reference/htmlsingle/#getting-started"&gt;this section&lt;/a&gt; of the reference documentation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;For a complete list of changes and improvements, please refer to the 1.0.0.M3 &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow-server-cloudfoundry/issues?q=milestone%3A1.0.0.M3"&gt;release&lt;/a&gt; as well as the Cloud Foundry deployer &lt;a href="https://github.com/spring-cloud/spring-cloud-deployer-cloudfoundry/issues?q=milestone%3A1.0.0.M2"&gt;release details&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Data Flow for Apache YARN 1.0.0.RC1 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/21/spring-cloud-data-flow-for-apache-yarn-1-0-0-rc1-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Janne Valkealahti</name>
+    </author>
+    <id>tag:spring.io,2016-06-20:2530</id>
+    <updated>2016-06-21T16:58:16Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the Spring Cloud Data Flow team, I am pleased to announce the 1.0.0.RC1 release of Spring Cloud Data Flow for Apache YARN.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow-server-yarn"&gt;Spring Cloud Data Flow for Apache YARN&lt;/a&gt; allows one to use all the goodness of &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow"&gt;Spring Cloud Data Flow&lt;/a&gt; (like the Shell and UI) while targeting Apache YARN as a backend. Stream components are deployed as individual apps in Apache YARN, leveraging the power of the platform to handle scaling and health monitoring.&lt;/p&gt;
+&lt;p&gt;This first release candicate&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Adds several improvements to launching of short-lived applications a.k.a tasks to Apache YARN&lt;/li&gt;
+  &lt;li&gt;Builds upon Spring StateMachine 1.1.0.RELEASE that includes new features, stability, and API improvements&lt;/li&gt;
+  &lt;li&gt;Adds support to configure command line args as a separate set of properties to be passed to an application when it&amp;rsquo;s deployed. This is an important requirement for running Spring Batch jobs&lt;/li&gt;
+  &lt;li&gt;Several Ambari plugin improvements to simplify provisioning of Spring Cloud Data Flow’s YARN server&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To get started using Spring Cloud Data Flow for Apache YARN &lt;a href="http://docs.spring.io/spring-cloud-dataflow-server-yarn/docs/1.0.0.RC1/reference/htmlsingle/#_spring_cloud_data_flow_runtime"&gt;follow these steps&lt;/a&gt; outlined in the reference documentation.&lt;/p&gt;
+&lt;p&gt;For a complete list of changes and improvements, please refer to &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow-server-yarn/issues?q=milestone%3A1.0.0.RC1+is%3Aclosed"&gt;1.0.0.RC1 release&lt;/a&gt;.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Data Flow for Apache Mesos 1.0.0.RC1 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/21/spring-cloud-data-flow-for-apache-mesos-1-0-0-rc1-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Thomas Risberg</name>
+    </author>
+    <id>tag:spring.io,2016-06-21:2532</id>
+    <updated>2016-06-21T16:57:00Z</updated>
+    <content type="html">&lt;p&gt;I am pleased to announce the 1.0.0.RC1 release candidate of Spring Cloud Data Flow for Mesos, a team effort that encompasses many new features under the hood.&lt;/p&gt;
+&lt;p&gt;This release candidate builds upon the recent 1.0.0.RC1 release of Spring Cloud Data Flow. Some highlights include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Improves orchestration mechanics by inheriting latest improvements to spring-cloud-deployer contracts and the supported functionalities.&lt;/li&gt;
+  &lt;li&gt;Builds upon feature-toggle support from Spring Cloud Data Flow’s core project to conditionally refine what features get included in each release&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To get started using Spring Cloud Data Flow for Mesos &lt;a href="http://docs.spring.io/spring-cloud-dataflow-server-mesos/docs/1.0.0.RC1/reference/htmlsingle/#_getting_started"&gt;follow these steps&lt;/a&gt; outlined in the reference documentation.&lt;/p&gt;
+&lt;p&gt;For a complete list of changes and improvements, please refer to the &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow-server-mesos/issues?q=milestone%3A1.0.0.RC1"&gt;1.0.0.RC1 issues&lt;/a&gt;.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Data Flow for Kubernetes 1.0.0.RC1 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/21/spring-cloud-data-flow-for-kubernetes-1-0-0-rc1-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Thomas Risberg</name>
+    </author>
+    <id>tag:spring.io,2016-06-21:2531</id>
+    <updated>2016-06-21T16:56:00Z</updated>
+    <content type="html">&lt;p&gt;I am pleased to announce the 1.0.0.RC1 release candidate of Spring Cloud Data Flow for Kubernetes, a team effort that encompasses many new features under the hood.&lt;/p&gt;
+&lt;p&gt;This release candidate builds upon the recent 1.0.0.RC1 release of Spring Cloud Data Flow and also adds Cloud Foundry specific refinements. Some highlights include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Implements the TaskLauncher SPI to support launching of short-lived applications a.k.a tasks. They will be created as Kubernetes jobs and each task launch will create a new pod as part of the Kubernetes job&lt;/li&gt;
+  &lt;li&gt;Adds support to configure command line args as a separate set of properties to be passed to an application when it&amp;rsquo;s deployed. This is an important requirement for running Spring Batch jobs orchestrated as tasks using Spring Cloud Task programming model&lt;/li&gt;
+  &lt;li&gt;Adds support for RDBMS “datasource” to supplement persistent repository requirements&lt;/li&gt;
+  &lt;li&gt;Adds &lt;code&gt;/info&lt;/code&gt; API to query health checks and to supplement probing requirements&lt;/li&gt;
+  &lt;li&gt;Health endpoint improvements to standardize probing over readiness of all the applications orchestrated in Kubernetes&lt;/li&gt;
+  &lt;li&gt;Adds docker image for Spring Cloud Data Flow’s Kubernetes server so it can be deployed as a Kubernetes replication controller and service&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To get started using Spring Cloud Data Flow for Kubernetes &lt;a href="http://docs.spring.io/spring-cloud-dataflow-server-kubernetes/docs/1.0.0.RC1/reference/htmlsingle/#_getting_started"&gt;follow these steps&lt;/a&gt; outlined in the reference documentation.&lt;/p&gt;
+&lt;p&gt;For a complete list of changes and improvements, please refer to the &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow-server-kubernetes/issues?q=milestone%3A1.0.0.RC1"&gt;1.0.0.RC1 issues&lt;/a&gt;.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring  - June 21, 2016</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/21/this-week-in-spring-june-21-2016" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2016-06-21:2533</id>
+    <updated>2016-06-21T13:00:00Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m in Amsterdam, Holland to speak at the local Spring User Groups and with local companies, and then it&amp;rsquo;s off to &lt;a href="http://devoxx.pl"&gt;Krakow, Poland&lt;/a&gt;, Los Angeles, USA, Berlin, Germany and finally &lt;a href="http://www.meetup.com/koreasug/events/231710237/"&gt;Seoul, South Korea&lt;/a&gt;! If you&amp;rsquo;re in any of those regions, &lt;a href="http://twitter.com/starbuxman"&gt;hit me up&lt;/a&gt;. Anyway, there&amp;rsquo;s a lot of good stuff to get into this week so let&amp;rsquo;s get to it!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Batch and Spring Cloud Task &lt;a href="https://spring.io/blog/2016/06/17/spring-cloud-task-1-0-0-rc1-is-now-available"&gt;lead Michael Minella just announced Spring Cloud Task 1.0.0.RC1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data ninja &lt;a href="https://spring.io/blog/2016/06/15/spring-data-release-train-hopper-sr2-released"&gt;Mark Paluch just announced Spring Data Hopper SR2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud cofounder Spencer Gibb &lt;a href="https://spring.io/blog/2016/06/14/spring-cloud-brixton-sr1-is-available"&gt;just announced Spring Cloud Brixton.SR1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;the CodeCentric blog is back at it again, this time with a &lt;a href="https://blog.codecentric.de/en/2016/06/spring-boot-apache-cxf-xml-validation-custom-soap-faults/"&gt;post on validation and custom SOAP faults&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I answered this question about Spring Boot&amp;rsquo;s &lt;a href="https://www.quora.com/Is-Spring-Boot-all-about-pom-xml"&gt;use of Maven &lt;code&gt;starter&lt;/code&gt; dependencies&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I dig this blog introducing a custom, albeit alternative, &lt;a href="http://www.codeproject.com/Articles/1107850/JSON-Web-Tokens-With-Spring-Cloud-Microservices?display=Print"&gt;way to do JWT (JSON Web Tokens) with Spring Cloud-based microservices&lt;/a&gt;. I wonder why they didn&amp;rsquo;t use JWT with Spring Cloud Security, instead?&lt;/li&gt;
+  &lt;li&gt;this &lt;a href="https://dzone.com/articles/validating-jwt-with-spring-boot-and-springsecurity"&gt;blog&lt;/a&gt; is a nice followup to this post &lt;a href="https://www.toptal.com/java/rest-security-with-jwt-spring-security-and-java"&gt;on using Spring Security and JWT&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Our friend Michael Simons has put together a great post on &lt;a href="http://info.michael-simons.eu/2016/06/19/netbeans-ide-plugin-supporting-programming-with-spring-boot/"&gt;the NB-Spring Boot plugin for Netbeans&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I don&amp;rsquo;t know if I would call this &lt;em&gt;complete&lt;/em&gt;, but it is exhaustive! Well done Dinesh, &lt;a href="http://www.dineshonjava.com/2016/06/introduction-to-spring-boot-a-spring-boot-complete-guide.html#.V2k1U5N96EI"&gt;on this lengthy introduction to Spring Boot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Hah! I was &lt;em&gt;just&lt;/em&gt; thinking about writing this blog yesterday! I was giving a demo and Cloud Flare started misbehaving - the result was that the otherwise bulletproof and load-balanced application running the &lt;a href="http://start.spring.io"&gt;Spring Initializr&lt;/a&gt; was basically useless. So I just did what anybody would: &lt;code&gt;git clone&lt;/code&gt; &amp;rsquo;d the project and ran the application locally. It&amp;rsquo;s a trivial Spring Boot application, after all. I&amp;rsquo;m glad I don&amp;rsquo;t have to, though, as &lt;a href="http://mrhaki.blogspot.nl/2016/06/spring-sweets-running-our-own-spring.html"&gt;this Mr. Haki&amp;rsquo;s blog has done a very good job!&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Task 1.0.0.RC1 is now available</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/17/spring-cloud-task-1-0-0-rc1-is-now-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Michael Minella</name>
+    </author>
+    <id>tag:spring.io,2016-06-17:2528</id>
+    <updated>2016-06-17T15:21:13Z</updated>
+    <content type="html">&lt;p&gt;We are pleased to announce the release of &lt;a href="http://cloud.spring.io/spring-cloud-task/"&gt;Spring Cloud Task&lt;/a&gt; 1.0.0.RC1. This is the first release candidate of the Spring Cloud Task project!&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-rsquo-s-new" class="anchor" name="what-rsquo-s-new"&gt;&lt;/a&gt;What&amp;rsquo;s New?&lt;/h2&gt;
+&lt;p&gt;This release really represents the polishing of the functionality that existed within 1.0.0.M2:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The TaskRepository&lt;/li&gt;
+  &lt;li&gt;Task listeners&lt;/li&gt;
+  &lt;li&gt;Task integration with Spring Batch&lt;/li&gt;
+  &lt;li&gt;Task integration with Spring Cloud Stream&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are a few minor breaking changes (renaming of a few methods) but those are all to get things right for our 1.0.0.GA. This release will serve as the baseline version of Spring Cloud Data Flow&amp;rsquo;s 1.0.0.RC1 as well.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-rsquo-s-next" class="anchor" name="what-rsquo-s-next"&gt;&lt;/a&gt;What&amp;rsquo;s Next?&lt;/h2&gt;
+&lt;p&gt;We expect to go 1.0.0.GA later this month. From there, we&amp;rsquo;ll be digging into new features for our 1.1 roadmap. Stay tuned!&lt;/p&gt;&lt;h2&gt;&lt;a href="#tell-us-what-you-think" class="anchor" name="tell-us-what-you-think"&gt;&lt;/a&gt;Tell us what you think!&lt;/h2&gt;
+&lt;p&gt;Spring Cloud Task is a new and exciting project that we feel fills an under served area of enterprise development. However, we want to know what you think. Please let us know via the issues in &lt;a href="https://github.com/spring-cloud/spring-cloud-task/issues"&gt;Github Issues&lt;/a&gt; , &lt;a href="http://stackoverflow.com/tags/spring-cloud-task"&gt;StackOverflow&lt;/a&gt;, directly on &lt;a href="https://twitter.com/michaelminella"&gt;Twitter&lt;/a&gt;, or in person at &lt;a href="https://springoneplatform.io/"&gt;SpringOnePlatform&lt;/a&gt;!&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Data release train Hopper SR2 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/15/spring-data-release-train-hopper-sr2-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Mark Paluch</name>
+    </author>
+    <id>tag:spring.io,2016-06-14:2525</id>
+    <updated>2016-06-15T13:18:22Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the Spring Data team I’d like to announce the availability of the second service release of the Spring Data Hopper release train. The release ships &lt;a href="https://jira.spring.io/issues/?filter=15382"&gt;103 issues&lt;/a&gt; fixed. We fixed a couple of bugs in the area of repository projections, especially for JPA users and introduce Hibernate 5.2 compatibility with this release (also already back-ported to the Gosling release train for inclusion in the upcoming service release). Hopper SR2 is a recommended upgrade for all Hopper users and also users of previous release trains.&lt;/p&gt;
+&lt;p&gt;Here are the released modules:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Data Cassandra 1.4.2 - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-cassandra/1.4.2.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/1.4.2.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/1.4.2.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/1.4.2.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Commons 1.12.2 - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-commons/1.12.2.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/1.12.2.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/1.12.2.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/1.12.2.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Couchbase 2.1.2 - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-couchbase/2.1.2.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/2.1.2.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/2.1.2.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/2.1.2.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Elasticsearch 2.0.2 - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-elasticsearch/2.0.2.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/2.0.2.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/2.0.2.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/2.0.2.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Envers 1.0.2 - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-envers/1.0.2.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/envers/docs/1.0.2.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/envers/docs/1.0.2.RELEASE/reference/html"&gt;Documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Gemfire 1.8.2 - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-gemfire/1.8.2.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/1.8.2.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/1.8.2.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/1.8.2.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data JPA 1.10.2 - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-jpa/1.10.2.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/1.10.2.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/1.10.2.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/1.10.2.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data KeyValue 1.1.2 - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-keyvalue/1.1.2.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/1.1.2.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/1.1.2.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/1.1.2.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data MongoDB 1.9.2 - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-mongodb/1.9.2.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/1.9.2.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/1.9.2.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/1.9.2.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Neo4j 4.1.2 - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-neo4j/4.1.2.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/4.1.2.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/4.1.2.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/4.1.2.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data REST 2.5.2 - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-rest-webmvc/2.5.2.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/2.5.2.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/2.5.2.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/2.5.2.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Redis 1.7.2 - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-redis/1.7.2.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/1.7.2.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/1.7.2.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/1.7.2.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Solr 2.0.2 - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-solr/2.0.2.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/2.0.2.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/2.0.2.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/2.0.2.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The release will be included in the upcoming Spring Boot 1.4.0 RC1 release which should make the upgrade a non-issue. If you’re using the BOM, make sure you upgrade to &lt;code&gt;Hopper-SR2&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In case you missed it: a huge chunk of the program for this year&amp;rsquo;s SpringOne Platform conference is already live on the &lt;a href="http://springoneplatform.io/"&gt;event website&lt;/a&gt;. We&amp;rsquo;re going to cover data related topics from a variety of angles. A discounted ticket price is still offered until July 1st, so use the chance to save a couple of bucks (not bugs!) and &lt;a href="https://2016.event.springoneplatform.io/register"&gt;register&lt;/a&gt;.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Brixton.SR1 is available</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/14/spring-cloud-brixton-sr1-is-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Spencer Gibb</name>
+    </author>
+    <id>tag:spring.io,2016-06-14:2527</id>
+    <updated>2016-06-14T20:11:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team, I am pleased to announce that Service Release 1 of the &lt;a href="http://cloud.spring.io"&gt;Spring Cloud Brixton&lt;/a&gt; Release Train is available today. The release can be found in our &lt;a href="http://repo.spring.io/release"&gt;Spring Release repository&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22spring-cloud-dependencies%22"&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This is primarily a bug fix release with a few small features. Of particular note is a change that allows Brixton Eureka Servers to work with Angel Eureka clients.&lt;/p&gt;&lt;h4&gt;&lt;a href="#the-following-modules-were-updated-as-part-of-brixton-sr1" class="anchor" name="the-following-modules-were-updated-as-part-of-brixton-sr1"&gt;&lt;/a&gt;The following modules were updated as part of Brixton.SR1:&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Cloud Commons &lt;a href="https://github.com/spring-cloud/spring-cloud-commons/issues?q=milestone:1.1.1"&gt;1.1.1.RELEASE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Config &lt;a href="https://github.com/spring-cloud/spring-cloud-config/issues?q=milestone:1.1.1"&gt;1.1.1.RELEASE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Consul &lt;a href="https://github.com/spring-cloud/spring-cloud-consul/issues?q=milestone:1.0.1"&gt;1.0.1.RELEASE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Netflix &lt;a href="https://github.com/spring-cloud/spring-cloud-netflix/issues?q=milestone:1.1.1"&gt;1.1.1.RELEASE&lt;/a&gt; &amp;amp; &lt;a href="https://github.com/spring-cloud/spring-cloud-netflix/issues?q=milestone:1.1.2"&gt;1.1.2.RELEASE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Sleuth &lt;a href="https://github.com/spring-cloud/spring-cloud-sleuth/issues?q=milestone:1.0.1"&gt;1.0.1.RELEASE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Stream &lt;a href="https://github.com/spring-cloud/spring-cloud-stream/issues?q=milestone:1.0.2.RELEASE"&gt;1.0.2.RELEASE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Zookeeper &lt;a href="https://github.com/spring-cloud/spring-cloud-zookeeper/issues?q=milestone:1.0.1"&gt;1.0.1.RELEASE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And, as always, we welcome feedback: either on &lt;a href="https://github.com/spring-cloud"&gt;GitHub&lt;/a&gt;, on &lt;a href="https://gitter.im/spring-cloud/spring-cloud"&gt;gitter&lt;/a&gt;, on &lt;a href="http://stackoverflow.com/questions/tagged/spring-cloud"&gt;Stack Overflow&lt;/a&gt;, or on &lt;a href="https://twitter.com/SpringCloudOSS"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+&lt;hr/&gt;
+&lt;p&gt;The Spring Cloud team will be talking about Spring Cloud at &lt;a href="http://springoneplatform.io"&gt;Spring One Platform&lt;/a&gt;, which will be taking place in Las Vegas between August 1-4 this year. There are many other great talks so &lt;a href="https://2016.event.springoneplatform.io/schedule/sessions"&gt;check the agenda&lt;/a&gt; and &lt;a href="https://2016.event.springoneplatform.io/register"&gt;get your ticket&lt;/a&gt; if you haven’t done so already. &lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - June 14th, 2016</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/14/this-week-in-spring-june-14th-2016" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2016-06-14:2526</id>
+    <updated>2016-06-14T18:58:00Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m in London and Amsterdam (for the epic &lt;a href="http://gotocon.com/amsterdam-2016/speaker/Josh+Long"&gt;GOTO Amsterdam conference&lt;/a&gt; as well &lt;a href="http://www.jdriven.nl/events"&gt;as the JDriven meetup&lt;/a&gt; and the &lt;a href="http://www.meetup.com/Dutch-Spring-Meetup/events/231334315/"&gt;Dutch Spring User Group&lt;/a&gt;). We&amp;rsquo;ve got a lot to cover, as usual, so let&amp;rsquo;s get to it!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2016/06/10/spring-framework-4-3-goes-ga"&gt;Spring framework 4.3, packed with all sorts of niceties, is now available&lt;/a&gt;. This release provides all sorts of cool updates to various libraries (Hibernate ORM, Jackson, Netty, Undertow, Tomcat) and supports two features I&amp;rsquo;m quite excited about: auto-injection in constructors of Spring managed components whose parameters are unambiguously resolved by other types in the application context and the ability to inject types into a &lt;code&gt;@Configuration&lt;/code&gt;-class&amp;rsquo;s constructor.&lt;/li&gt;
+  &lt;li&gt;Marius Bogoevici just announced &lt;a href="https://spring.io/blog/2016/06/08/spring-cloud-stream-1-0-2-release-is-available"&gt;a critical update to Spring Cloud Stream, 1.0.2.RELEASE, is now available for immediate use&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;the good Dr. David Syer posted the second in a &lt;a href="https://spring.io/blog/2016/06/13/notes-on-reactive-programming-part-ii-writing-some-code"&gt;series of posts looking at the reactive programming landscape&lt;/a&gt;. This post looks specifically at Project Reactor. Check it out!&lt;/li&gt;
+  &lt;li&gt;Spring Integration ninja Artem Bilan just announced that &lt;a href="https://spring.io/blog/2016/06/14/spring-integration-4-3-ga-is-available"&gt;Spring Integration 4.3.GA is now available&lt;/a&gt;! This release is packed with all sorts of cool stuff so grab the bits and go ASAP!&lt;/li&gt;
+  &lt;li&gt;I really dig this blog on &lt;a href="http://blog.gardeviance.org/2016/06/how-cloud-foundry-will-save-world-from.html"&gt;how Cloud Foundry will save the world from too much yak-shaving&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;want to quickly build a UI with which to edit data in MySQL? &lt;a href="https://vaadin.com/blog/-/blogs/building-a-web-ui-for-mysql-databases-in-plain-java-"&gt;The Vaadin blog has a nice blog introducing a way to to build one using Vaadin and Spring Boot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;this looks interesting: an &lt;code&gt;npm&lt;/code&gt; module for &lt;a href="https://www.npmjs.com/package/spring-data-rest-js"&gt;working with Spring Data REST APIs from JavaScript&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;As usual, our buddy Baeldung nails it again with &lt;a href="http://www.baeldung.com/spring-boot-support-for-jooq"&gt;this post on using JOOQ with Spring Boot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;this is an interesting post from Bartosz Jedrzejewski&lt;br/&gt; on &lt;a href="http://blog.scottlogic.com/2016/06/13/code-reuse-in-microservices-architecture.html"&gt;isolating and reusing functionality with Microservices&lt;/a&gt; demonstrated in terms of Spring Cloud.&lt;/li&gt;
+  &lt;li&gt;The Apereo CAS application, which is meant to be an enterprise single-signon solution, just released &lt;a href="https://groups.google.com/a/apereo.org/forum/#!topic/cas-user/srramLDpBpM"&gt;CAS version 5.0.0.M2&lt;/a&gt;. This release is built on Spring Boot and Spring Cloud, and so a lot of the work in the evolution is providing intelligent auto-configurations. Check it out!&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Integration 4.3 GA is Available</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/14/spring-integration-4-3-ga-is-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Artem Bilan</name>
+    </author>
+    <id>tag:spring.io,2016-06-13:2524</id>
+    <updated>2016-06-14T04:00:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;Dear Spring community,&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;I&amp;#8217;m pleased to announce that Spring Integration Framework 4.3 GA is now available from &lt;a href="https://repo.spring.io"&gt;repo.spring.io&lt;/a&gt;, as well as Maven Central!
+Also the maintainance 4.2.8 version has been released, too.
+Together with an internal 4.2.7 release it includes some &lt;a href="https://jira.spring.io/issues/?jql=project%20%3D%20%22Spring%20Integration%22%20AND%20fixVersion%20in%20(%224.2.7%22%2C%20%224.2.8%22)%20%20ORDER%20BY%20fixVersion%2C%20priority%20DESC"&gt;important bug fixes&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In addition to the feature themes mentioned in &lt;a href="https://spring.io/blog/2016/05/12/spring-integration-4-3-0-release-candidate-available"&gt;4.3 RC1 announcement&lt;/a&gt;, the GA release includes several major changes:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Upgrade to Spring Framework 4.3 GA, Spring AMQP 1.6 GA, Spring Security 4.1 GA;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;FtpRemoteFileTemplate&lt;/code&gt; now provides &lt;code&gt;ExistsMode&lt;/code&gt; option to control how an &lt;code&gt;exists()&lt;/code&gt; operation should work;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;FileSplitter&lt;/code&gt; lets represent &lt;code&gt;FileMarker&lt;/code&gt; object as a JSON string (&lt;code&gt;markersJson&lt;/code&gt; option) to avoid an additional &lt;code&gt;spring-integration-file&lt;/code&gt; dependency on the consumer applications in distributed environments;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A new &lt;code&gt;JdbcLockRegistry&lt;/code&gt; feature has been introduced. Special thanks to &lt;a href="https://spring.io/team/dsyer"&gt;Dave Syer&lt;/a&gt;!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The Integration &lt;code&gt;Graph&lt;/code&gt; has been improved with generic gateway nodes and &lt;code&gt;LinkNode&lt;/code&gt; now has a &lt;code&gt;type&lt;/code&gt; (&lt;code&gt;input&lt;/code&gt;, &lt;code&gt;output&lt;/code&gt;, &lt;code&gt;error&lt;/code&gt;, &lt;code&gt;discard&lt;/code&gt;, &lt;code&gt;route&lt;/code&gt;) property for better visualization experience;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Other minor improvements and simple and not only (&lt;a href="https://jira.spring.io/browse/INT-4044"&gt;&lt;code&gt;WebSocketStompSessionManager.connect&lt;/code&gt;&lt;/a&gt;) bug fixes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The release addresses &lt;a href="https://jira.spring.io/issues/?jql=project%20%3D%20%22Spring%20Integration%22%20AND%20fixVersion%20in%20(%224.3%20M1%22%2C%20%224.3%20M2%22%2C%20%224.3%20RC1%22%2C%20%224.3%20GA%22)%20%20ORDER%20BY%20fixVersion%2C%20priority%20DESC"&gt;over 150 JIRA issues&lt;/a&gt;.
+Also see the &lt;a href="http://docs.spring.io/spring-integration/docs/4.3.0.RELEASE/reference/html/whats-new.html"&gt;What&amp;#8217;s New&lt;/a&gt; for a summary of the major changes.
+We are very grateful for a number of external contributions to the project - thank you all!.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;And as a teaser, not related to the release, but a new cool feature from legendary &lt;a href="https://spring.io/team/aclement"&gt;Andy Clement&lt;/a&gt; - &lt;a href="https://github.com/spring-projects/spring-flo"&gt;Spring Flo&lt;/a&gt; for Spring Integration.
+This project is fully based on our latest Integration Graph JSON model and lets to visualize an integration model and refresh it at runtime:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="imageblock"&gt;
+&lt;div class="content"&gt;
+&lt;img src="https://lh3.googleusercontent.com/KDR2qQ9l-PmBe7gBzPHXaJ8n1WitlAq4n8GVUvt3SHBfMOvzWWGpsz8j1UN73u8ecPYKPVOuclP_sJ5bANPLeYSHBP2PhH0-xT-qgpzF6wvNGa80R_ng7xSMAQDUdm7sWMYIMaE9Orjr7ZmEEhpLQWzEwKYD1GkXtjiRC9ibxEkRWeI_TACTCEg-648ke-ZehC2glqTUYiBXp-k8q3AmacOnRlZMXrvbbskrNi3VaCpWFEMpQssPhHrk82gFe56rY8lydGaLTKwwRhtLfGyc0_uQQKYXJTkQaBKzU258tNbbpJ4fwhpB8gaL-f5Jk7yn-1EG-BReRtzWZVMEsxvkjUMlX6PDpaEoCDTQRaN2zh3B1alS_TNhi_QAYEkAGvuDshg-LBFaFadxRnAua-oSazvDpVuoLKXf_4aYR_gpIA1LrYFs4k598khDXareUElgFB62STFUPAXGEX1qbAT0_VAYI_qPVXso39VMlQ9hgUkFCPtjCyW5LlDjaDPvF9gKDyZR6fs1TAYc-9rN45zozMZ8KiGl3TMkGo4sn-5sWS3GCTmiHVb5ihdkfqoXOtr5IcTi0kLuN3oM58_0M-F4TQPGyYxWeW0=w1237-h691-no" alt="SpringFlo.png"&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The work is still in progress, so stay tuned!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Spring Integration 4.3 is designed as a straightforward upgrade for all 4.x users.
+We will keep supporting the 4.2.x line until the end of this year; however, we recommend an upgrade to 4.3 at your earliest convenience.
+As previously hinted at, &lt;em&gt;the 4.3.x line will enjoy an extended support life until 2019&lt;/em&gt;, within the general Spring Framework 4 system requirements (JDK 6+, Servlet 2.5+ etc.).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Next up: Spring Integration 5.0, with Spring Framework 5.0 foundation and some Reactive Streams support.
+Don&amp;#8217;t miss &lt;a href="https://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; conference this August in Las Vegas to hear from us about all the new features and future plans!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-integration/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/INT"&gt;JIRA&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-integration/blob/master/CONTRIBUTING.md"&gt;Contributions&lt;/a&gt; | &lt;a href="http://stackoverflow.com"&gt;StackOverflow&lt;/a&gt; (&lt;code&gt;spring-integration&lt;/code&gt; tag)&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>Notes on Reactive Programming Part II: Writing Some Code</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/13/notes-on-reactive-programming-part-ii-writing-some-code" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Dave Syer</name>
+    </author>
+    <id>tag:spring.io,2016-05-25:2510</id>
+    <updated>2016-06-13T14:57:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;In this article we continue the series on &lt;a href="https://spring.io/blog/2016/06/07/notes-on-reactive-programming-part-i-the-reactive-landscape"&gt;Reactive Programming&lt;/a&gt;, and we concentrate on explaining some concepts through actual code samples. The end result should be that you understand a bit better what makes Reactive different, and what makes it functional. The examples here are quite abstract, but they give you a way to think about the APIs and the programming style, and start to get a feel for how it is different. We will see the elements of Reactive, and learn how to control the flow of data, and process in background threads if necessary.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="setting-up-a-project"&gt;&lt;a class="anchor" href="#setting-up-a-project"&gt;&lt;/a&gt;Setting Up a Project&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We will use the Reactor libraries and a bit of Spring 5.0 to illustrate the points we need to make. The code could just as easily be written with other tools. If you want to play with the code and see it working without having to copy-paste anything, there are working samples with tests in &lt;a href="https://github.com/dsyer/reactive-notes"&gt;Github&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To get started grab a blank project from &lt;a href="https://start.spring.io" class="bare"&gt;https://start.spring.io&lt;/a&gt; and add the Reactor Core dependency. With Maven&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-xml" data-lang="xml"&gt;		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;io.projectreactor&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;reactor-core&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;2.5.0.M4&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;With Gradle it&amp;#8217;s very similar:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;    compile 'io.projectreactor:reactor-core:2.5.0.M4'&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Now let&amp;#8217;s write some code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="what-makes-it-functional"&gt;&lt;a class="anchor" href="#what-makes-it-functional"&gt;&lt;/a&gt;What Makes it Functional?&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The basic building block of Reactive is a sequence of events, and two protagonists, a publisher and a subscriber to those events. It&amp;#8217;s also OK to call a sequence a "stream" because that&amp;#8217;s what it is. If we need to, we will use the word "stream" with a small "s", but Java 8 has a &lt;code&gt;java.util.Stream&lt;/code&gt; which is different, so try not to get confused. We will try to concentrate the narrative on the publisher and subscriber anyway (that&amp;#8217;s what Reactive Streams does).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Reactor is the library we are going to use in samples, so we&amp;#8217;ll stick to the notation there, and call the publisher a &lt;code&gt;Flux&lt;/code&gt; (it implements the interface &lt;code&gt;Publisher&lt;/code&gt; from Reactive Streams). The RxJava library is very similar and has a lot of parallel features, so in that case we would be talking about an &lt;code&gt;Observable&lt;/code&gt; instead, but the code would be very similar. (Reactor 2.0 called it a &lt;code&gt;Stream&lt;/code&gt; which is confusing if we need to talk about Java 8 &lt;code&gt;Streams&lt;/code&gt; as well, so we&amp;#8217;ll only use the new code in Reactor 2.5.)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="generators"&gt;&lt;a class="anchor" href="#generators"&gt;&lt;/a&gt;Generators&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;A &lt;code&gt;Flux&lt;/code&gt; is a publisher of a sequence of events of a specific POJO type, so it is generic, i.e. &lt;code&gt;Flux&amp;lt;T&amp;gt;&lt;/code&gt; is a publisher of &lt;code&gt;T&lt;/code&gt;. &lt;code&gt;Flux&lt;/code&gt; has some static convenience methods to create instances of itself from a variety of sources. For example, to create a &lt;code&gt;Flux&lt;/code&gt; from an array:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;Flux&amp;lt;String&amp;gt; flux = Flux.just("red", "white", "blue");&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We just generated a &lt;code&gt;Flux&lt;/code&gt;, and now we can do stuff with it. There are actually only three things you can do with it: operate on it (transform it, or combine it with other sequences), subscribe to it (it&amp;#8217;s a publisher), or configure it (modify the behaviour of subscribers).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="single-valued-sequences"&gt;&lt;a class="anchor" href="#single-valued-sequences"&gt;&lt;/a&gt;Single Valued Sequences&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Often you encounter a sequence that you know has only one or zero elements, for example a repository method that finds an entity by its id. Reactor has a &lt;code&gt;Mono&lt;/code&gt; type representing a single valued or empty &lt;code&gt;Flux&lt;/code&gt;. &lt;code&gt;Mono&lt;/code&gt; has a very similar API to &lt;code&gt;Flux&lt;/code&gt; but more focused because not all operators make sense for single-valued sequences. RxJava also has a bolt on (in version 1.x) called &lt;code&gt;Single&lt;/code&gt;, and also &lt;code&gt;Completable&lt;/code&gt; for an empty sequence. The empty sequence in Reactor is &lt;code&gt;Mono&amp;lt;Void&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="operators"&gt;&lt;a class="anchor" href="#operators"&gt;&lt;/a&gt;Operators&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;There are a &lt;em&gt;lot&lt;/em&gt; of methods on a &lt;code&gt;Flux&lt;/code&gt; and nearly all of them are operators. We aren&amp;#8217;t going to look at them all here because there are better places to look for that (like the Javadocs). We only need to get a flavour for what an operator is, and what it can do for you.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;For instance, to ask for the internal events inside a &lt;code&gt;Flux&lt;/code&gt; to be logged to standard out, you can call the &lt;code&gt;.log()&lt;/code&gt; method. Or you can transform it using a &lt;code&gt;map()&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;Flux&amp;lt;String&amp;gt; flux = Flux.just("red", "white", "blue");
+
+Flux&amp;lt;String&amp;gt; upper = flux
+  .log()
+  .map(value -&amp;gt; value.toUpperCase());&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In this code we transformed the strings in the input by converting them to upper case. So far, so trivial.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;What&amp;#8217;s interesting about this little sample&amp;#8201;&amp;#8212;&amp;#8201;mind blowing, even, if you&amp;#8217;re not used to it&amp;#8201;&amp;#8212;&amp;#8201;is that no data have been processed yet. Nothing has even been logged because literally, nothing happened (try it and you will see). Calling operators on a &lt;code&gt;Flux&lt;/code&gt; amounts to building a plan of execution for later. It is completely declarative, and it&amp;#8217;s why people call it "functional". The logic implemented in the operators is only executed when data starts to flow, and that doesn&amp;#8217;t happen until someone subscribes to the &lt;code&gt;Flux&lt;/code&gt; (or equivalently to the &lt;code&gt;Publisher&lt;/code&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The same declarative, functional approach to processing a sequence of data exists in all Reactive libraries, and also in Java 8 &lt;code&gt;Streams&lt;/code&gt;. Consider this, similar looking code, using a &lt;code&gt;Stream&lt;/code&gt; with the same contents as the &lt;code&gt;Flux&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;Stream&amp;lt;String&amp;gt; stream = Streams.of("red", "white", "blue");
+Stream&amp;lt;String&amp;gt; upper = stream.map(value -&amp;gt; {
+    System.out.println(value);
+    return value.toUpperCase();
+});&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The observation we made about &lt;code&gt;Flux&lt;/code&gt; applies here: no data is processed, it&amp;#8217;s just a plan of execution. There are, however, some important differences between &lt;code&gt;Flux&lt;/code&gt; and &lt;code&gt;Stream&lt;/code&gt;, which make &lt;code&gt;Stream&lt;/code&gt; an inappropriate API for Reactive use cases. &lt;code&gt;Flux&lt;/code&gt; has a lot more operators, much of which is just convenience, but the real difference comes when you want to consume the data, so that&amp;#8217;s what we need to look at next.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock tip"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Tip&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+There is a useful blog by Sebastien Deleuze on &lt;a href="https://spring.io/blog/2016/04/19/understanding-reactive-types"&gt;Reactive Types&lt;/a&gt;, where he describes the differences between the various streaming and reactive APIs by looking at the types they define, and how you would use them. The differences between &lt;code&gt;Flux&lt;/code&gt; and &lt;code&gt;Stream&lt;/code&gt; are highlighted there in more detail.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="subscribers"&gt;&lt;a class="anchor" href="#subscribers"&gt;&lt;/a&gt;Subscribers&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To make the data flow you have to subscribe to the &lt;code&gt;Flux&lt;/code&gt; using one of the &lt;code&gt;subscribe()&lt;/code&gt; methods. Only those methods make the data flow. They reach back through the chain of operators you declared on your sequence (if any) and request the publisher to start creating data. In the sample samples we have been working with, this means the underlying collection of strings is iterated. In more complicated use case it might trigger a file to be read from the filesystem, or a pull from a database or a call to an HTTP service.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Here&amp;#8217;s a call to &lt;code&gt;subscribe()&lt;/code&gt; in action:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;Flux.just("red", "white", "blue")
+  .log()
+  .map(value -&amp;gt; value.toUpperCase())
+.subscribe();&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The output is:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code&gt;09:17:59.665 [main] INFO reactor.core.publisher.FluxLog -  onSubscribe(reactor.core.publisher.FluxIterable$IterableSubscription@3ffc5af1)
+09:17:59.666 [main] INFO reactor.core.publisher.FluxLog -  request(unbounded)
+09:17:59.666 [main] INFO reactor.core.publisher.FluxLog -  onNext(red)
+09:17:59.667 [main] INFO reactor.core.publisher.FluxLog -  onNext(white)
+09:17:59.667 [main] INFO reactor.core.publisher.FluxLog -  onNext(blue)
+09:17:59.667 [main] INFO reactor.core.publisher.FluxLog -  onComplete()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;So we can see from this that the effect of &lt;code&gt;subscribe()&lt;/code&gt; without an argument, is to request the publisher to send &lt;em&gt;all&lt;/em&gt; data&amp;#8201;&amp;#8212;&amp;#8201;there&amp;#8217;s only one &lt;code&gt;request()&lt;/code&gt; logged and it&amp;#8217;s "unbounded". We can also see callbacks for each item that is published (&lt;code&gt;onNext()&lt;/code&gt;), for the end of the sequence (&lt;code&gt;onComplete()&lt;/code&gt;), and for the original subscription (&lt;code&gt;onSubscribe()&lt;/code&gt;). If you needed to you could listen for those events yourself using the &lt;code&gt;doOn*()&lt;/code&gt; methods in &lt;code&gt;Flux&lt;/code&gt;, which are themselves operators, not subscribers, so they don&amp;#8217;t cause any data to flow on their own.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The &lt;code&gt;subscribe()&lt;/code&gt; method is overloaded, and the other variants give you different options to control what happens. One important and convenient form is &lt;code&gt;subscribe()&lt;/code&gt; with callbacks as arguments. The first argument is a &lt;code&gt;Consumer&lt;/code&gt;, which gives you a callback with each of the items, and you can also optionally add a &lt;code&gt;Consumer&lt;/code&gt; for an error if there is one, and a vanilla &lt;code&gt;Runnable&lt;/code&gt; to execute when the sequence is complete. For example, just with the per-item callback:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;Flux.just("red", "white", "blue")
+    .log()
+    .map(value -&amp;gt; value.toUpperCase())
+.subscribe(System.out::println);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Here&amp;#8217;s the output:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code&gt;09:56:12.680 [main] INFO reactor.core.publisher.FluxLog -  onSubscribe(reactor.core.publisher.FluxArray$ArraySubscription@59f99ea)
+09:56:12.682 [main] INFO reactor.core.publisher.FluxLog -  request(unbounded)
+09:56:12.682 [main] INFO reactor.core.publisher.FluxLog -  onNext(red)
+RED
+09:56:12.682 [main] INFO reactor.core.publisher.FluxLog -  onNext(white)
+WHITE
+09:56:12.682 [main] INFO reactor.core.publisher.FluxLog -  onNext(blue)
+BLUE
+09:56:12.682 [main] INFO reactor.core.publisher.FluxLog -  onComplete()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We could control the flow of data, and make it "bounded", in a variety of ways. The raw API for control is the &lt;code&gt;Subscription&lt;/code&gt; you get from a &lt;code&gt;Subscriber&lt;/code&gt;. The equivalent long form of the short call to &lt;code&gt;subscribe()&lt;/code&gt; above is:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;.subscribe(new Subscriber&amp;lt;String&amp;gt;() {
+
+    @Override
+    public void onSubscribe(Subscription s) {
+        s.request(Long.MAX_VALUE);
+    }
+    @Override
+    public void onNext(String t) {
+        System.out.println(t);
+    }
+    @Override
+    public void onError(Throwable t) {
+    }
+    @Override
+    public void onComplete() {
+    }
+
+});&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To control the flow, e.g. to consume at most 2 items at a time, you could use the &lt;code&gt;Subscription&lt;/code&gt; more intelligently:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;.subscribe(new Subscriber&amp;lt;String&amp;gt;() {
+
+    private long count = 0;
+    private Subscription subscription;
+
+    @Override
+    public void onSubscribe(Subscription subscription) {
+        this.subscription = subscription;
+        subscription.request(2);
+    }
+
+    @Override
+    public void onNext(String t) {
+        count++;
+        if (count&amp;gt;=2) {
+            count = 0;
+            subscription.request(2);
+        }
+     }
+...&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This &lt;code&gt;Subscriber&lt;/code&gt; is "batching" items 2 at a time. It&amp;#8217;s a common use case so you might think about extracting the implementation to a convenience class, and that would make the code more readable too. The output looks like this:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code&gt;09:47:13.562 [main] INFO reactor.core.publisher.FluxLog -  onSubscribe(reactor.core.publisher.FluxArray$ArraySubscription@61832929)
+09:47:13.564 [main] INFO reactor.core.publisher.FluxLog -  request(2)
+09:47:13.564 [main] INFO reactor.core.publisher.FluxLog -  onNext(red)
+09:47:13.565 [main] INFO reactor.core.publisher.FluxLog -  onNext(white)
+09:47:13.565 [main] INFO reactor.core.publisher.FluxLog -  request(2)
+09:47:13.565 [main] INFO reactor.core.publisher.FluxLog -  onNext(blue)
+09:47:13.565 [main] INFO reactor.core.publisher.FluxLog -  onComplete()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="configurers"&gt;&lt;a class="anchor" href="#configurers"&gt;&lt;/a&gt;Configurers&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In fact the batching subscriber is such a common use case that there are convenience methods already available in &lt;code&gt;Flux&lt;/code&gt;. They fall into the category of "configurers", operating on the &lt;code&gt;Flux&lt;/code&gt; itself and not on the data. Generally a configurer modifies the behaviour of subscribers before they are added. The batching example above can be implemented like this:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;Flux.just("red", "white", "blue")
+  .log()
+  .map(value -&amp;gt; value.toUpperCase())
+  .useCapacity(2)
+.subscribe();&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;(note the call to &lt;code&gt;useCapacity()&lt;/code&gt; before the subscription). Here&amp;#8217;s the output:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code&gt;10:25:43.739 [main] INFO reactor.core.publisher.FluxLog -  onSubscribe(reactor.core.publisher.FluxArray$ArraySubscription@4667ae56)
+10:25:43.740 [main] INFO reactor.core.publisher.FluxLog -  request(2)
+10:25:43.740 [main] INFO reactor.core.publisher.FluxLog -  onNext(red)
+10:25:43.741 [main] INFO reactor.core.publisher.FluxLog -  onNext(white)
+10:25:43.741 [main] INFO reactor.core.publisher.FluxLog -  request(2)
+10:25:43.741 [main] INFO reactor.core.publisher.FluxLog -  onNext(blue)
+10:25:43.741 [main] INFO reactor.core.publisher.FluxLog -  onComplete()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock tip"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Tip&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+A library that will process sequences for you, like Spring Reactive Web, can handle the configuration concerns, as well as the subscriptions. It&amp;#8217;s good to be able to push these concerns down the stack because it saves you from cluttering your code with non-business logic, making it more readable and easier to test and maintain. So as a rule, it is a good thing if you can &lt;strong&gt;avoid calling configurers&lt;/strong&gt;, or at least push that code into a processing layer, and out of the business logic.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="threads-schedulers-and-background-processing"&gt;&lt;a class="anchor" href="#threads-schedulers-and-background-processing"&gt;&lt;/a&gt;Threads, Schedulers and Background Processing&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;An interesting feature of all the logs above is that they are all on the "main" thread, which is the thread of the caller to &lt;code&gt;subscribe()&lt;/code&gt;. This highlights an important point: Reactor is extremely frugal with threads, because that gives you the greatest chance of the best possible performance. That might be a surprising statement if you&amp;#8217;ve been wrangling threads and thread pools and asynchronous executions for the last 5 years, trying to squeeze more juice out of your services. But it&amp;#8217;s true: in the absence of any imperative to switch threads, even if the JVM is optimized to handle threads very efficiently, it is always faster to do computation on a single thread. Reactor has handed you the keys to control all the asynchronous processing, and it assumes you know what you are doing.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;code&gt;Flux&lt;/code&gt; provides a few configurer methods that control the thread boundaries inside the eventual subscriber. For example, you can configure the subscriptions to be handled in a background thread using &lt;code&gt;Flux.subscribeOn()&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;Flux.just("red", "white", "blue")
+  .log()
+  .map(String::toUpperCase)
+  .subscribeOn(Schedulers.parallel())
+.useCapacity(2)
+.subscribe();&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;the result can be seen in the output:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code&gt;13:43:41.279 [parallel-1-1] INFO reactor.core.publisher.FluxLog -  onSubscribe(reactor.core.publisher.FluxArray$ArraySubscription@58663fc3)
+13:43:41.280 [parallel-1-1] INFO reactor.core.publisher.FluxLog -  request(2)
+13:43:41.281 [parallel-1-1] INFO reactor.core.publisher.FluxLog -  onNext(red)
+13:43:41.281 [parallel-1-1] INFO reactor.core.publisher.FluxLog -  onNext(white)
+13:43:41.281 [parallel-1-1] INFO reactor.core.publisher.FluxLog -  request(2)
+13:43:41.281 [parallel-1-1] INFO reactor.core.publisher.FluxLog -  onNext(blue)
+13:43:41.281 [parallel-1-1] INFO reactor.core.publisher.FluxLog -  onComplete()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock tip"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Tip&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+if you write this code yourself, or copy-paste it, remember to wait for the processing to stop before the JVM exits.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Note that the subscription, and all the processing, takes place on a single background thread "parallel-1-1"&amp;#8201;&amp;#8212;&amp;#8201;this is because we asked for the subscriber to our main &lt;code&gt;Flux&lt;/code&gt; to be in the background. This is fine if the item processing is CPU intensive (but pointless being in a background thread, in point of fact, since you pay for the context switch but don&amp;#8217;t get the results any faster). You might also want to be able to perform item processing that is I/O intensive and possibly blocking. In this case, you would want to get it done as quickly as possible without blocking the caller. A thread pool is still your friend, and that&amp;#8217;s what you get from &lt;code&gt;Schedulers.parallel()&lt;/code&gt;. To switch the processing of the individual items to separate threads (up to the limit of the pool) we need to break them out into separate publishers, and for each of those publishers ask for the result in a background thread. One way to do this is with an operator called &lt;code&gt;flatMap()&lt;/code&gt;, which maps the items to a &lt;code&gt;Publisher&lt;/code&gt; (potentially of a different type), and then back to a sequence of the new type:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;Flux.just("red", "white", "blue")
+  .log()
+  .flatMap(value -&amp;gt;
+     Mono.just(value.toUpperCase())
+       .subscribeOn(Schedulers.parallel()),
+     2)
+.subscribe(value -&amp;gt; {
+  log.info("Consumed: " + value);
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Note here the use of &lt;code&gt;flatMap()&lt;/code&gt; to push the items down into a "child" publisher, where we can control the subscription per item instead of for the whole sequence. Reactor has built in default behaviour to hang onto a single thread as long as possible, so we need to be explicit if we want it to process specific items or groups of items in a background thread. Actually, this is one of a handful of recognized tricks for forcing parallel processing (see the &lt;a href="https://github.com/reactor/reactive-streams-commons/issues/21"&gt;Reactive Gems&lt;/a&gt; issue for more detail).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The output looks like this:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code&gt;15:24:36.596 [main] INFO reactor.core.publisher.FluxLog -  onSubscribe(reactor.core.publisher.FluxIterable$IterableSubscription@6f1fba17)
+15:24:36.610 [main] INFO reactor.core.publisher.FluxLog -  request(2)
+15:24:36.610 [main] INFO reactor.core.publisher.FluxLog -  onNext(red)
+15:24:36.613 [main] INFO reactor.core.publisher.FluxLog -  onNext(white)
+15:24:36.613 [parallel-1-1] INFO com.example.FluxFeaturesTests - Consumed: RED
+15:24:36.613 [parallel-1-1] INFO reactor.core.publisher.FluxLog -  request(1)
+15:24:36.613 [parallel-1-1] INFO reactor.core.publisher.FluxLog -  onNext(blue)
+15:24:36.613 [parallel-1-1] INFO reactor.core.publisher.FluxLog -  onComplete()
+15:24:36.614 [parallel-3-1] INFO com.example.FluxFeaturesTests - Consumed: BLUE
+15:24:36.617 [parallel-2-1] INFO com.example.FluxFeaturesTests - Consumed: WHITE&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Notice that there are now multiple threads consuming the items, and the concurrency hint in the &lt;code&gt;flatMap()&lt;/code&gt; ensures that there are 2 items being processed at any given time, as long as they are available. We see &lt;code&gt;request(1)&lt;/code&gt; a lot because the system is trying to keep 2 items in the pipeline, and generally they don&amp;#8217;t finish processing at the same time. Reactor tries to be very smart here in fact, and it pre-fetches items from the upstream &lt;code&gt;Publisher&lt;/code&gt; to try to eliminate waiting time for the subscriber (we aren&amp;#8217;t seeing that here because the numbers are low&amp;#8201;&amp;#8212;&amp;#8201;we are only processing 3 items).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock tip"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Tip&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+Three items ("red", "white", "blue") might be too few to convincingly see more than one background thread, so it might be better to generate more data. You could do that with a random number generator, for instance.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;code&gt;Flux&lt;/code&gt; also has a &lt;code&gt;publishOn()&lt;/code&gt; method which is the same, but for the listeners (i.e. &lt;code&gt;onNext()&lt;/code&gt; or consumer callbacks) instead of for the subscriber itself:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;Flux.just("red", "white", "blue")
+  .log()
+  .map(String::toUpperCase)
+  .subscribeOn(Schedulers.newParallel("sub"))
+  .publishOn(Schedulers.newParallel("pub"), 2)
+.subscribe(value -&amp;gt; {
+    log.info("Consumed: " + value);
+});&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The output looks like this:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code&gt;15:12:09.750 [sub-1-1] INFO reactor.core.publisher.FluxLog -  onSubscribe(reactor.core.publisher.FluxIterable$IterableSubscription@172ed57)
+15:12:09.758 [sub-1-1] INFO reactor.core.publisher.FluxLog -  request(2)
+15:12:09.759 [sub-1-1] INFO reactor.core.publisher.FluxLog -  onNext(red)
+15:12:09.759 [sub-1-1] INFO reactor.core.publisher.FluxLog -  onNext(white)
+15:12:09.770 [pub-1-1] INFO com.example.FluxFeaturesTests - Consumed: RED
+15:12:09.771 [pub-1-1] INFO com.example.FluxFeaturesTests - Consumed: WHITE
+15:12:09.777 [sub-1-1] INFO reactor.core.publisher.FluxLog -  request(2)
+15:12:09.777 [sub-1-1] INFO reactor.core.publisher.FluxLog -  onNext(blue)
+15:12:09.777 [sub-1-1] INFO reactor.core.publisher.FluxLog -  onComplete()
+15:12:09.783 [pub-1-1] INFO com.example.FluxFeaturesTests - Consumed: BLUE&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Notice that the consumer callbacks (logging "Consumed: &amp;#8230;&amp;#8203;") are on the publisher thread &lt;code&gt;pub-1-1&lt;/code&gt;. If you take out the &lt;code&gt;subscribeOn()&lt;/code&gt; call, you might see all of the 2nd chunk of data processed on the &lt;code&gt;pub-1-1&lt;/code&gt; thread as well. This, again, is Reactor being frugal with threads&amp;#8201;&amp;#8212;&amp;#8201;if there&amp;#8217;s no explicit request to switch threads it stays on the same one for the next call, whatever that is.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock note"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Note&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+We changed the code in this sample from &lt;code&gt;useCapacity(2)&lt;/code&gt; to adding a &lt;code&gt;prefetch=2&lt;/code&gt; to the &lt;code&gt;publishOn()&lt;/code&gt;. The configurers are only hints, and sometimes they conflict with each other, and Reactor has to choose one over the other. This is a case where the &lt;code&gt;useCapacity()&lt;/code&gt; hint would have been ignored.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="extractors-the-subscribers-from-the-dark-side"&gt;&lt;a class="anchor" href="#extractors-the-subscribers-from-the-dark-side"&gt;&lt;/a&gt;Extractors: The Subscribers from the Dark Side&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;There is another way to subscribe to a sequence, which is to call &lt;code&gt;Mono.block()&lt;/code&gt; or &lt;code&gt;Mono.toFuture()&lt;/code&gt; or &lt;code&gt;Flux.toStream()&lt;/code&gt; (these are the "extractor" methods&amp;#8201;&amp;#8212;&amp;#8201;they get you out of the Reactive types into a less flexible, blocking abstraction). &lt;code&gt;Flux&lt;/code&gt; also has converters &lt;code&gt;collectList()&lt;/code&gt; and &lt;code&gt;collectMap()&lt;/code&gt; that convert from &lt;code&gt;Flux&lt;/code&gt; to &lt;code&gt;Mono&lt;/code&gt;. They don&amp;#8217;t actually subscribe to the sequence, but they do throw away any control you might have had over the suscription at the level of the individual items.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock warning"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Warning&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+A good rule of thumb is "&lt;strong&gt;never call an extractor&lt;/strong&gt;". There are some exceptions (otherwise the methods would not exist). One notable exception is in tests because it&amp;#8217;s useful to be able to block to allow results to accumulate.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;These methods are there as an escape hatch to bridge from Reactive to blocking; if you need to adapt to a legacy API, for instance Spring MVC. When you call &lt;code&gt;Mono.block()&lt;/code&gt; you throw away all the benefits of the Reactive Streams. This is the key difference between Reactive Streams and Java 8 &lt;code&gt;Streams&lt;/code&gt;&amp;#8201;&amp;#8212;&amp;#8201;the native Java &lt;code&gt;Stream&lt;/code&gt; only has the "all or nothing" subscription model, the equivalent of &lt;code&gt;Mono.block()&lt;/code&gt;. Of course &lt;code&gt;subscribe()&lt;/code&gt; can block the calling thread as well, so it&amp;#8217;s just as dangerous as the converter methods, but you have more control&amp;#8201;&amp;#8212;&amp;#8201;you can prevent it from blocking by using &lt;code&gt;subscribeOn()&lt;/code&gt; and you can drip the items through by applying back pressure and periodically deciding whether to continue.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="conclusion"&gt;&lt;a class="anchor" href="#conclusion"&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In this article we have covered the basics of the Reactive Streams and Reactor APIs. If you need to know more there are plenty of places to look, but there&amp;#8217;s no substitute for hands on coding, so use the code in &lt;a href="https://github.com/dsyer/reactive-notes"&gt;GitHub&lt;/a&gt; (for this article in tests in the project called "flux"), or head over to the &lt;a href="https://github.com/reactor/lite-rx-api-hands-on"&gt;Lite RX Hands On&lt;/a&gt; workshop. So far, really this is just overhead, and we haven&amp;#8217;t learned much that we couldn&amp;#8217;t have done in a more obvious way using non-Reactive tools. The next article in the series will dig a little deeper into the blocking, dispatching and asynchronous sides of the Reactive model, and show you what opportunities there are to reap the real benefits.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Framework 4.3 goes GA</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/10/spring-framework-4-3-goes-ga" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Juergen Hoeller</name>
+    </author>
+    <id>tag:spring.io,2016-06-09:2523</id>
+    <updated>2016-06-10T09:41:23Z</updated>
+    <content type="html">&lt;p&gt;Dear Spring community,&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m pleased to announce that Spring Framework 4.3 GA (a.k.a. 4.3.0.RELEASE) is now available from &lt;a href="https://repo.spring.io"&gt;repo.spring.io&lt;/a&gt; as well as Maven Central!&lt;/p&gt;
+&lt;p&gt;In addition to the feature themes mentioned in my &lt;a href="https://spring.io/blog/2016/04/06/spring-framework-4-3-goes-rc1"&gt;4.3 RC1 announcement&lt;/a&gt;, the GA release covers compatibility with several recent third-party releases, in particular: Hibernate ORM 5.2, Jackson 2.8, Netty 4.1, Undertow 1.4, and Tomcat 8.5.2 / 9.0 M6. Also, please note that our Hibernate 3.x support is finally deprecated (even &lt;a href="http://in.relation.to/2015/10/27/great-jira-cleanup-2015/"&gt;Hibernate 4.x is not actively supported by Red Hat anymore&lt;/a&gt;) and that Spring 4.3&amp;rsquo;s Jackson support requires Jackson 2.6+ now.&lt;/p&gt;
+&lt;p&gt;Spring Framework 4.3 is designed as a straightforward upgrade for all 4.x users. We will keep supporting the 4.2.x line until the end of this year; however, we recommend an upgrade to 4.3 at your earliest convenience. As previously hinted at, &lt;em&gt;the 4.3.x line will enjoy an extended support life until 2019&lt;/em&gt;, within the general Spring Framework 4 system requirements (JDK 6+, Servlet 2.5+) but with a focus on recent servers such as Tomcat 8 and WebSphere 8.&lt;/p&gt;
+&lt;p&gt;Next up: Spring Framework 5.0, with a first milestone to arrive towards the end of July, just in time for our &lt;a href="https://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; conference in Las Vegas!&lt;/p&gt;
+&lt;p&gt;Cheers,&lt;br/&gt;Juergen&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Stream 1.0.2.RELEASE is available</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/08/spring-cloud-stream-1-0-2-release-is-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Marius Bogoevici</name>
+    </author>
+    <id>tag:spring.io,2016-06-08:2522</id>
+    <updated>2016-06-08T22:10:42Z</updated>
+    <content type="html">&lt;p&gt;Shortly after the &lt;a href="https://spring.io/blog/2016/06/03/spring-cloud-stream-1-0-1-release-is-available"&gt;1.0.1.RELEASE announcement&lt;/a&gt; last week we’ve identified a critical and very specific &lt;a href="https://github.com/spring-cloud/spring-cloud-stream/issues/564"&gt;issue&lt;/a&gt; concerning multi-binder configurations in cloud environments. As a result, we have decided to follow up with a 1.0.2.RELEASE to handle that and ensure that the fix is available in the upcoming Brixton.SR1 release. The artifacts can be found in &lt;a href="https://repo.spring.io"&gt;Spring Repository&lt;/a&gt; as well as &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cspring-cloud-stream"&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
+&lt;hr/&gt;
+&lt;p&gt;I will be talking about Spring Cloud Stream at &lt;a href="http://springoneplatform.io"&gt;Spring One Platform&lt;/a&gt;, which will be taking place in Las Vegas between August 1-4 this year. There are many other great talks so &lt;a href="https://2016.event.springoneplatform.io/schedule/sessions"&gt;check the agenda&lt;/a&gt; and &lt;a href="https://2016.event.springoneplatform.io/register"&gt;get your ticket&lt;/a&gt; if you haven’t done so already. &lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - June 7th, 2016</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/07/this-week-in-spring-june-7th-2016" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2016-06-07:2521</id>
+    <updated>2016-06-07T23:35:36Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! It&amp;rsquo;s &lt;em&gt;already&lt;/em&gt; June! Where. Does. The. Time. GO?? This week I&amp;rsquo;m in Chicago, IL, for the Chicago Coder Conference, Boston and New Hampshire for customer visits, London, England for Devoxx UK and Talin, Estonia for Geekout EE. If you&amp;rsquo;re around be &lt;a href="http://twitter.com/starbuxman"&gt;sure to say hi&lt;/a&gt;! Now then, we&amp;rsquo;ve got a lot to cover this week so let&amp;rsquo;s get to it!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Cloud Services ninja Scott Frederick just announced the Spring Cloud Cloud Foundry Service Broker, which is a &lt;a href="https://spring.io/blog/2016/06/07/introducing-spring-cloud-cloud-foundry-service-broker"&gt;nice framework for building service brokers for the Cloud Foundry platform&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Boot and Spring Cloud co-founder (the good) Dr. Dave Syer just put published the &lt;a href="https://spring.io/blog/2016/06/07/notes-on-reactive-programming-part-i-the-reactive-landscape"&gt;first post in a series on the reactive programming landscape&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Integration ninja Artem Bilan &lt;a href="https://spring.io/blog/2016/06/07/spring-integration-kafka-support-2-0-0-release-candidate-is-now-available"&gt;just announced that Spring Integration Kafka 2.0.0.RC1 is now available&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;not one to rest on his laurels, Artem &lt;em&gt;also&lt;/em&gt; &lt;a href="https://spring.io/blog/2016/06/07/spring-for-apache-kafka-1-0-release-candidate-1-available"&gt;announced the Spring for Apache Kafka 1.0. RC1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Streams lead &lt;a href="https://spring.io/blog/2016/06/03/spring-cloud-stream-1-0-1-release-is-available"&gt;Marius Bogoevici has just announced Spring Cloud Stream 1.0.1.RELEASE&lt;/a&gt;. It provides additional configuration options and the ability to contribute bindings without overriding defaults and a slew of small updates.&lt;/li&gt;
+  &lt;li&gt;the Reactor project has come a long way, and &lt;a href="https://spring.io/blog/2016/06/02/reactor-guides-deprecated"&gt;we&amp;rsquo;ve deprecated some of the older Reactor guides accordingly&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Integration and Spring AMQP ninja Artem Bilan &lt;em&gt;also&lt;/em&gt; just announced that &lt;a href="https://spring.io/blog/2016/06/01/spring-amqp-1-6-release-available"&gt;the Spring AMQP 1.6 GA (1.6.0.RELEASE) is now available&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;This blog on &lt;a href="http://javatar81.blogspot.com/2016/06/hibernate-validator-spring-expression.html"&gt;integrating Hibernate to use Spring Expression Language for class-level and cross-parameter constraints&lt;/a&gt; is &lt;em&gt;very interesting&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;I really liked this InfoQ post &lt;a href="https://www.infoq.com/news/2016/06/Spring-Releases-Statemachine"&gt;by Michael Redlich on Spring Statemachine 1.1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;the New Stack has a nice post called &lt;a href="http://thenewstack.io/cloud-foundry-wants-help-destroy-architecture-seriously/"&gt;&lt;em&gt;Cloud Foundry: Built to Survive&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;want &lt;a href="http://blog.schneider-electric.com/industrial-software/2016/06/03/basics-mqtt-messaging-protocol-internet-things/"&gt;a quick introduction to MQTT&lt;/a&gt;?&lt;/li&gt;
+  &lt;li&gt;this blog on &lt;a href="https://blog.codecentric.de/en/2016/06/spring-boot-apache-cxf-testing-soap-webservices/"&gt;developing document-centric JAX-WS SOAP-based services with Spring Boot and CXF is interesting&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>Introducing Spring Cloud Cloud Foundry Service Broker</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/07/introducing-spring-cloud-cloud-foundry-service-broker" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Scott Frederick</name>
+    </author>
+    <id>tag:spring.io,2016-05-27:2512</id>
+    <updated>2016-06-07T18:57:27Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;I am pleased to announce the newest addition to the Spring Cloud family. &lt;a href="http://cloud.spring.io/spring-cloud-cloudfoundry-service-broker/"&gt;Spring Cloud Cloud Foundry Service Broker&lt;/a&gt; is a framework for building &lt;a href="http://docs.cloudfoundry.org/services"&gt;service brokers&lt;/a&gt; for the &lt;a href="https://www.cloudfoundry.org"&gt;Cloud Foundry&lt;/a&gt; platform.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="cloud-foundry-service-brokers"&gt;&lt;a class="anchor" href="#cloud-foundry-service-brokers"&gt;&lt;/a&gt;Cloud Foundry service brokers&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Service brokers provide a means to extend Cloud Foundry with managed services that can be consumed by applications deployed to the platform. Managed services typically expose some sort of resource to an application, such as a database or other persistent store, a messaging system, or other supporting infrastructure. Service brokers publish a catalog of services and service plans, manage the provisioning and de-provisioning of service instances, and provide connection details and credentials for an application to consume the resource. Service brokers are registered to Cloud Foundry and communicate with the platform using a well-defined &lt;a href="http://docs.cloudfoundry.org/services/api.html"&gt;Service Broker REST API&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Spring Cloud Cloud Foundry Service Broker implements the full service broker REST API as Spring MVC endpoints. This allows a service broker author to focus on the logic necessary to manage the backing resources without having to worry about implementing the broker API semantics.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="some-history"&gt;&lt;a class="anchor" href="#some-history"&gt;&lt;/a&gt;Some history&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Shortly after Spring Boot was released, &lt;a href="https://twitter.com/spgreenberg"&gt;Steve Greenberg&lt;/a&gt; developed the &lt;a href="https://github.com/cloudfoundry-community/spring-boot-cf-service-broker"&gt;spring-boot-cf-service-broker&lt;/a&gt; project and contributed it to the Cloud Foundry community. In the subsequent months, many &lt;a href="https://github.com/cloudfoundry-community/spring-boot-cf-service-broker/graphs/contributors"&gt;contributors&lt;/a&gt; helped add features, fix bugs, and keep pace with the service broker API. Unfortunately, the contributors couldn&amp;#8217;t commit to keeping the project up to date on a consistent basis since it was a "side project" for everyone involved.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The Spring Cloud team offered to take ownership and commit to keeping the project up-to-date, and Steve graciously agreed to allow the project to be moved under the Spring Cloud umbrella. The move to Spring Cloud includes changes to the project&amp;#8217;s packaging structure and Maven coordinates, along with some cleanup and rationalization of the interfaces that need to be implemented by service broker authors.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="the-path-forward"&gt;&lt;a class="anchor" href="#the-path-forward"&gt;&lt;/a&gt;The path forward&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Spring Cloud Cloud Foundry Service Broker will track the service broker API evolution and add support for the latest broker API features, allowing developers to quickly react to changes in the API. Of course, contributions are welcomed and encouraged. Since there are no interdependencies with other Spring Cloud projects, Spring Cloud Cloud Foundry Service Broker won&amp;#8217;t be part of the Spring Cloud &lt;a href="http://projects.spring.io/spring-cloud/#release-trains"&gt;release trains&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;A few release candidates have already been published for the project. Users of the previous project have tested these RCs and provided feedback. With this introduction, Spring Cloud Cloud Foundry Service Broker will be GA with version 1.0.0.RELEASE.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="get-involved"&gt;&lt;a class="anchor" href="#get-involved"&gt;&lt;/a&gt;Get involved&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To get started, view the &lt;a href="http://cloud.spring.io/spring-cloud-cloudfoundry-service-broker/"&gt;project page&lt;/a&gt; and the &lt;a href="https://github.com/spring-cloud/spring-cloud-cloudfoundry-service-broker"&gt;documentation&lt;/a&gt;. Provide feedback via GitHub &lt;a href="https://github.com/spring-cloud/spring-cloud-cloudfoundry-service-broker/issues"&gt;issues&lt;/a&gt; or contribute via &lt;a href="https://github.com/spring-cloud/spring-cloud-cloudfoundry-service-broker/pulls"&gt;pull requests&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>Notes on Reactive Programming Part I: The Reactive Landscape</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/07/notes-on-reactive-programming-part-i-the-reactive-landscape" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Dave Syer</name>
+    </author>
+    <id>tag:spring.io,2016-05-25:2509</id>
+    <updated>2016-06-07T12:15:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;Reactive Programming is interesting (again) and there is a lot of noise about it at the moment, not all of which is very easy to understand for an outsider and simple enterprise Java developer, such as the author. This article (the first in a series) might help to clarify your understanding of what the fuss is about. The approach is as concrete as possible, and there is no mention of "denotational semantics". If you are looking for a more academic approach and loads of code samples in Haskell, the internet is full of them, but you probably don&amp;#8217;t want to be here.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Reactive Programming is often conflated with concurrent programming and high performance to such an extent that it&amp;#8217;s hard to separate those concepts, when actually they are in principle completely different. This inevitably leads to confusion.  Reactive Programming is also often referred to as or conflated with Functional Reactive Programming, or FRP (and we use the two interchangeably here). Some people think Reactive is nothing new, and it&amp;#8217;s what they do all day anyway (mostly they use JavaScript). Others seem to think that it&amp;#8217;s a gift from Microsoft (who made a big splash about it when they released some C# extensions a while ago). In the Enterprise Java space there has been something of a buzz recently (e.g. see the &lt;a href="http://www.reactive-streams.org/"&gt;Reactive Streams initiative&lt;/a&gt;), and as with anything shiny and new, there are a lot of easy mistakes to make out there, about when and where it can and should be used.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="what-is-it"&gt;&lt;a class="anchor" href="#what-is-it"&gt;&lt;/a&gt;What Is It?&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Reactive Programming is a style of micro-architecture involving intelligent routing and consumption of events, all combining to change behaviour. That&amp;#8217;s a bit abstract, and so are many of the other definitions you will come across online. We attempt build up some more concrete notions of what it means to be reactive, or why it might be important in what follows.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The origins of Reactive Programming can probably be traced to the 1970s or even earlier, so there&amp;#8217;s nothing new about the idea, but they are really resonating with something in the modern enterprise. This resonance has arrived (not accidentally) at the same time as the rise of microservices, and the ubiquity of multi-core processors. Some of the reasons for that will hopefully become clear.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Here are some useful potted definitions from other sources:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre&gt;The basic idea behind reactive programming is that there are certain
+datatypes that represent a value "over time". Computations that
+involve these changing-over-time values will themselves have values
+that change over time.&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;and&amp;#8230;&amp;#8203;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre&gt;An easy way of reaching a first intuition about what it's like is to
+imagine your program is a spreadsheet and all of your variables are
+cells. If any of the cells in a spreadsheet change, any cells that
+refer to that cell change as well. It's just the same with FRP. Now
+imagine that some of the cells change on their own (or rather, are
+taken from the outside world): in a GUI situation, the position of
+the mouse would be a good example.&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;(from &lt;a href="http://stackoverflow.com/questions/1028250/what-is-functional-reactive-programming"&gt;Terminology Question on Stackoverflow&lt;/a&gt;)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;FRP has a strong affinity with high-performance, concurrency, asynchronous operations and non-blocking IO. However, it might be helpful to start with a suspicion that FRP has nothing to do with any of them. It is certainly the case that such concerns can be naturally handled, often transparently to the caller, when using a Reactive model. But the actual benefit, in terms of handling those concerns effectively or efficiently is entirely up to the implementation in question (and therefore should be subject to a high degree of scrutiny). It is also possible to implement a perfectly sane and useful FRP framework in a synchronous, single-threaded way, but that isn&amp;#8217;t really likely to be helpful in trying to use any of the new tools and libraries.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="reactive-use-cases"&gt;&lt;a class="anchor" href="#reactive-use-cases"&gt;&lt;/a&gt;Reactive Use Cases&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The hardest question to get an answer to as a newbie seems to be "what is it good for?" Here are some examples from an enterprise setting that illustrate general patterns of use:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;External Service Calls&lt;/strong&gt; Many backend services these days are REST-ful (i.e. they operate over HTTP) so the underlying protocol is fundamentally blocking and synchronous. Not obvious territory for FRP maybe, but actually it&amp;#8217;s quite fertile ground because the implementation of such services often involves calling other services, and then yet more services depending on the results from the first calls. With so much IO going on if you were to wait for one call to complete before sending the next request, your poor client would give up in frustration before you managed to assemble a reply. So external service calls, especially complex orchestrations of dependencies between calls, are a good thing to optimize. FRP offers the promise of "composability" of the logic driving those operations, so that it is easier to write for the developer of the calling service.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;Highly Concurrent Message Consumers&lt;/strong&gt; Message processing, in particular when it is highly concurrent, is a common enterprise use case. Reactive frameworks like to measure micro benchmarks, and brag about how many messages per second you can process in the JVM. The results are truly staggering (tens of millions of messages per second are easy to achieve), but possibly somewhat artificial - you wouldn&amp;#8217;t be so impressed if they said they were benchmarking a simple "for" loop. However, we should not be too quick to write off such work, and it&amp;#8217;s easy to see that when performance matters, all contributions should be gratefully accepted. Reactive patterns fit naturally with message processing (since an event translates nicely into a message), so if there is a way to process more messages faster we should pay attention.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;Spreadsheets&lt;/strong&gt; Perhaps not really an enterprise use case, but one that everyone in the enterprise can easily relate to, and it nicely captures the philosophy of, and difficulty of implementing FRP. If cell B depends on cell A, and cell C depends on both cells A and B, then how do you propagate changes in A, ensuring that C is updated before any change events are sent to B? If you have a truly active framework to build on, then the answer is "you don&amp;#8217;t care, you just declare the dependencies," and that is really the power of a spreadsheet in a nutshell. It also highlights the difference between FRP and simple event-driven programming&amp;#8201;&amp;#8212;&amp;#8201;it puts the "intelligent" in "intelligent routing".&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;Abstraction Over (A)synchronous Processing&lt;/strong&gt; This is more of an abstract use case, so straying into the territory we should perhaps be avoiding. There is also some (a lot) of overlap between this and the more concrete use cases already mentioned, but hopefully it is still worth some discussion. The basic claim is a familiar (and justifiable) one, that as long as developers are willing to accept an extra layer of abstraction, they can forget about whether the code they are calling is synchronous or asynchronous. Since it costs precious brain cells to deal with asynchronous programming, there could be some useful ideas there. Reactive Programming is not the only approach to this issue, but some of the implementaters of FRP have thought hard enough about this problem that their tools are useful.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This Netflix blog has some really useful concrete examples of real-life use cases: &lt;a href="http://techblog.netflix.com/2013/02/rxjava-netflix-api.html"&gt;Netflix Tech Blog: Functional Reactive in the Netflix API with RxJava&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="comparisons"&gt;&lt;a class="anchor" href="#comparisons"&gt;&lt;/a&gt;Comparisons&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;If you haven&amp;#8217;t been living in a cave since 1970 you will have come across some other concepts that are relevant to Reactive Programming and the kinds of problems people try and solve with it. Here are a few of them with my personal take on their relevance:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;Ruby Event-Machine&lt;/strong&gt; The &lt;a href="https://github.com/eventmachine/eventmachine"&gt;Event Machine&lt;/a&gt; is an abstraction over concurrent programming (usually involving non-blocking IO). Rubyists struggled for a long time to turn a language that was designed for single-threaded scripting into something that you could use to write a server application that a) worked, b) performed well, and c) stayed alive under load. Ruby has had threads for quite some time, but they aren&amp;#8217;t used much and have a bad reputation because they don&amp;#8217;t always perform very well. The alternative, which is ubiquitous now that it has been promoted (in Ruby 1.9) to the core of the language, is &lt;a href="http://www.ruby-doc.org/core-1.9.3/Fiber.html"&gt;Fibers&lt;/a&gt;(sic). The Fiber programming model is sort of a flavour of coroutines (see below), where a single native thread is used to process large numbers of concurrent requests (usually involving IO). The programming model itself is a bit abstract and hard to reason about, so most people use a wrapper, and the Event Machine is the most common. Event Machine doesn&amp;#8217;t necessarily use Fibers (it abstracts those concerns), but it is easy to find examples of code using Event Machine with Fibers in Ruby web apps (e.g. &lt;a href="http://www.igvita.com/2009/05/13/fibers-cooperative-scheduling-in-ruby"&gt;see this article by Ilya Grigorik&lt;/a&gt;, or the &lt;a href="https://github.com/igrigorik/em-http-request/blob/master/examples/fibered-http.rb"&gt;fibered example from em-http-request&lt;/a&gt;).  People do this a lot to get the benefit of scalability that comes from using Event Machine in an I/O intensive application, without the ugly programming model that you get with lots of nested callbacks.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;Actor Model&lt;/strong&gt; Similar to Object Oriented Programming, the Actor Model is a deep thread of Computer Science going back to the 1970s. Actors provide an abstraction over computation (as opposed to data and behaviour) that allows for concurrency as a natural consequence, so in practical terms they can form the basis of a concurrent system. Actors send each other messages, so they are reactive in some sense, and there is a lot of overlap between systems that style themselves as Actors or Reactive. Often the distinction is at the level of their implementation (e.g. &lt;code&gt;Actors&lt;/code&gt; in &lt;a href="http://doc.akka.io/docs/akka/current/java.html"&gt;Akka&lt;/a&gt; can be distributed across processes, and that is a distinguishing feature of that framework).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;Deferred results (Futures)&lt;/strong&gt; Java 1.5 introduced a rich new set of libraries including Doug Lea&amp;#8217;s "java.util.concurrent", and part of that is the concept of a deferred result, encapsulated in a &lt;code&gt;Future&lt;/code&gt;. It&amp;#8217;s a good example of a simple abstraction over an asynchronous pattern, without forcing the implementation to be asynchronous, or use any particular model of asynchronous processing. As the &lt;a href="http://techblog.netflix.com/2013/02/rxjava-netflix-api.html"&gt;Netflix Tech Blog: Functional Reactive in the Netflix API with RxJava&lt;/a&gt; shows nicely, &lt;code&gt;Futures&lt;/code&gt; are great when all you need is concurrent processing of a set of similar tasks, but as soon as any of them want to depend on each other or execute conditionally you get into a form of "nested callback hell". Reactive Programming provides an antidote to that.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;Map-reduce and fork-join&lt;/strong&gt; Abstractions over parallel processing are useful and there are many examples to choose from. Map-reduce and fork-join that have evolved recently in the Java world, driven by massively parallel distributed processing (&lt;a href="http://research.google.com/archive/mapreduce-osdi04.pdf"&gt;MapReduce&lt;/a&gt; and &lt;a href="http://wiki.apache.org/hadoop/MapReduce"&gt;Hadoop&lt;/a&gt;) and by the JDK itself in version 1.7 (&lt;a href="http://gee.cs.oswego.edu/dl/papers/fj.pdf"&gt;Fork-Join&lt;/a&gt;). These are useful abstractions but (like deferred results) they are shallow compared to FRP, which can be used as an abstraction over simple parallel processing, but which reaches beyond that into composability and declarative communication.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;Coroutines&lt;/strong&gt; A &lt;a href="https://en.wikipedia.org/wiki/Coroutines"&gt;"coroutine"&lt;/a&gt; is a generalization of a "subroutine"&amp;#8201;&amp;#8212;&amp;#8201;it has an entry point, and exit point(s) like a subroutine, but when it exits it passes control to another coroutine (not necessarily to its caller), and whatever state it accumulated is kept and remembered for the next time it is called. Coroutines can be used as a building block for higher level features like Actors and Streams. One of the goals of Reactive Programming is to provide the same kind of abstraction over communicating parallel processing agents, so coroutines (if they are available) are a useful building block. There are various flavours of coroutines, some of which are more restrictive than the general case, but more flexible than vanilla subroutines. Fibers (see the discussion on Event Machine) are one flavour, and Generators (familiar in Scala and Python) are another.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="reactive-programming-in-java"&gt;&lt;a class="anchor" href="#reactive-programming-in-java"&gt;&lt;/a&gt;Reactive Programming in Java&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Java is not a "reactive language" in the sense that it doesn&amp;#8217;t support coroutines natively. There are other languages on the JVM (Scala and Clojure) that support reactive models more natively, but Java itself does not until version 9. Java, however, is a powerhouse of enterprise development, and there has been a lot of activity recently in providing Reactive layers on top of the JDK. We only take a very brief look at a few of them here.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="http://www.reactive-streams.org/"&gt;&lt;strong&gt;Reactive Streams&lt;/strong&gt;&lt;/a&gt; is a very low level contract, expressed as a handful of Java interfaces (plus a TCK), but also applicable to other languages. The interfaces express the basic building blocks of &lt;code&gt;Publisher&lt;/code&gt; and &lt;code&gt;Subscriber&lt;/code&gt; with explicit back pressure, forming a common language for interoperable libraries. Reactive Streams have been incorporated into the JDK as &lt;code&gt;java.util.concurrent.Flow&lt;/code&gt; in version 9. The project is a collaboration between engineers from Kaazing, Netflix, Pivotal, Red Hat, Twitter, Typesafe and many others.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="https://github.com/ReactiveX/RxJava/wiki"&gt;&lt;strong&gt;RxJava&lt;/strong&gt;&lt;/a&gt;: Netflix were using reactive patterns internally for some time and then they released the tools they were using under an open source license as &lt;a href="https://github.com/ReactiveX/RxJava/wiki"&gt;Netflix/RxJava&lt;/a&gt; (subsequently re-branded as "ReactiveX/RxJava"). Netflix does a lot of programming in Groovy on top of RxJava, but it is open to Java usage and quite well suited to Java 8 through the use of Lambdas. There is a &lt;a href="https://github.com/ReactiveX/RxJavaReactiveStreams"&gt;bridge to Reactive Streams&lt;/a&gt;. RxJava is a "2nd Generation" library according to David Karnok&amp;#8217;s &lt;a href="http://akarnokd.blogspot.co.uk/2016/03/operator-fusion-part-1.html"&gt;Generations of Reactive&lt;/a&gt; classification.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="https://projectreactor.io/"&gt;&lt;strong&gt;Reactor&lt;/strong&gt;&lt;/a&gt; is a Java framework from the &lt;a href="http://www.gopivotal.com/oss"&gt;Pivotal&lt;/a&gt; open source team (the one that created Spring). It builds directly on Reactive Streams, so there is no need for a bridge. The Reactor IO project provides wrappers around low-level network runtimes like Netty and Aeron. Reactor is a "4th Generation" library according to David Karnok&amp;#8217;s &lt;a href="http://akarnokd.blogspot.co.uk/2016/03/operator-fusion-part-1.html"&gt;Generations of Reactive&lt;/a&gt; classification.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-framework/"&gt;&lt;strong&gt;Spring Framework 5.0&lt;/strong&gt;&lt;/a&gt; (first milestone June 2016) has reactive features built into it, including tools for building HTTP servers and clients. Existing users of Spring in the web tier will find a very familiar programming model using annotations to decorate controller methods to handle HTTP requests, for the most part handing off the dispatching of reactive requests and back pressure concerns to the framework. Spring builds on Reactor, but also exposes APIs that allow its features to be expressed using a choice of libraries (e.g. Reactor or RxJava). Users can choose from Tomcat, Jetty, Netty (via Reactor IO) and Undertow for the server side network stack.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="https://ratpack.io"&gt;&lt;strong&gt;Ratpack&lt;/strong&gt;&lt;/a&gt; is a set of libraries for building high performance services over HTTP. It builds on Netty and implements Reactive Streams for interoperability (so you can use other Reactive Streams implementations higher up the stack, for instance). Spring is supported as a native component, and can be used to provide dependency injection using some simple utility classes. There is also some autoconfiguration so that Spring Boot users can embed Ratpack inside a Spring application, bringing up an HTTP endpoint and listening there instead of using one of the embedded servers supplied directly by Spring Boot.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="http://akka.io/"&gt;&lt;strong&gt;Akka&lt;/strong&gt;&lt;/a&gt; is a toolkit for building applications using the Actor pattern in Scala or Java, with interprocess communication using Akka Streams, and Reactive Streams contracts are built in. Akka is a "3rd Generation" library according to David Karnok&amp;#8217;s &lt;a href="http://akarnokd.blogspot.co.uk/2016/03/operator-fusion-part-1.html"&gt;Generations of Reactive&lt;/a&gt; classification.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="why-now"&gt;&lt;a class="anchor" href="#why-now"&gt;&lt;/a&gt;Why Now?&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;What is driving the rise of Reactive in Enterprise Java? Well, it&amp;#8217;s not (all) just a technology fad&amp;#8201;&amp;#8212;&amp;#8201;people jumping on the bandwagon with the shiny new toys. The driver is efficient resource utilization, or in other words, spending less money on servers and data centres. The promise of Reactive is that you can do more with less, specifically you can process higher loads with fewer threads. This is where the intersection of Reactive and non-blocking, asynchronous I/O comes to the foreground. For the right problem, the effects are dramatic. For the wrong problem, the effects might go into reverse (you actually make things worse). Also remember, even if you pick the right problem, there is no such thing as a free lunch, and Reactive doesn&amp;#8217;t solve the problems for you, it just gives you a toolbox that you can use to implement solutions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="conclusion"&gt;&lt;a class="anchor" href="#conclusion"&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In this article we have taken a very broad and high level look at the Reactive movement, setting it in context in the modern enterprise. There are a number of Reactive libraries or frameworks for the JVM, all under active development. To a large extent they provide similar features, but increasingly, thanks to Reactive Streams, they are interoperable. In the &lt;a href="https://spring.io/blog/2016/06/13/notes-on-reactive-programming-part-ii-writing-some-code"&gt;next article&lt;/a&gt; in the series we will get down to brass tacks and have a look at some actual code samples, to get a better picture of the specifics of what it means to be Reactive and why it matters. We will also devote some time to understanding why the "F" in FRP is important, and how the concepts of back pressure and non-blocking code have a profound impact on programming style. And most importantly, we will help you to make the important decision about when and how to go Reactive, and when to stay put on the older styles and stacks.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content>
+  </entry>
+</feed>

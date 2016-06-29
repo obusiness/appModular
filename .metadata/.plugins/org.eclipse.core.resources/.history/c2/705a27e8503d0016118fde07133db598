@@ -1,0 +1,8 @@
+package com.obusiness.dao;
+
+import com.obusiness.bo.TsEmpUsuarios;
+
+public interface ValidaUsuarioDao {
+	
+	public String validaUsuario(TsEmpUsuarios usuario) throws Exception;
+}

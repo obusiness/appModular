@@ -1,0 +1,519 @@
+package co.com.cotrafa.common;
+
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.faces.component.EditableValueHolder;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+
+import co.com.cotrafa.bo.CriterioConsultaBo;
+import co.com.cotrafa.bo.DominioBo;
+import co.com.cotrafa.bo.EnumTipoPermiso;
+import co.com.cotrafa.bo.EnumValorPermiso;
+import co.com.cotrafa.bo.PatronBo;
+import co.com.cotrafa.bo.PermisoBo;
+import co.com.cotrafa.bo.PermisoBo.PermisoEspecialBo;
+import co.com.cotrafa.bo.ResultadoValidacionBo;
+import co.com.cotrafa.bo.TipoBo;
+import co.com.cotrafa.bo.TipoGenericoBo;
+import co.com.cotrafa.common.error.CotrafaException;
+import co.com.cotrafa.dto.CriteriosConsultaDto;
+import co.com.cotrafa.dto.DominioDto;
+import co.com.cotrafa.dto.ListaTableDto;
+import co.com.cotrafa.dto.ListaTipoDto;
+import co.com.cotrafa.dto.PatronDto;
+import co.com.cotrafa.dto.PermisosDto;
+import co.com.cotrafa.dto.ValoresParametrosGralesDto;
+import co.com.cotrafa.transacciones.ConsultaGenericaService;
+import co.com.cotrafa.transacciones.ListasTipoService;
+import co.com.cotrafa.transacciones.delegate.GeneralDelegate;
+import co.com.cotrafa.transacciones.delegate.ListasTipoDelegate;
+
+public class Utiles {
+
+	/*
+	 * public static Mensajes getInstance() { if (instance == null) instance =
+	 * new Mensajes(); return instance; }
+	 */
+	public static boolean obtenerPermisos(PermisoBo permisoModulo,
+			String tipoPermiso, String bloque, String campo) {
+		
+		if( permisoModulo == null ){
+			return true;
+		}
+
+		String permisoAsignado = EnumValorPermiso.NO_PERMITIDO.toString();
+
+		// Se evalua por tipo de permiso
+		if (EnumTipoPermiso.INSERTAR.toString().equals(tipoPermiso)) {
+			permisoAsignado = (permisoModulo.getInsertar() == null)? "NO" : permisoModulo.getInsertar();
+		} else if (EnumTipoPermiso.ELIMINAR.toString().equals(tipoPermiso)) {
+			permisoAsignado = (permisoModulo.getEliminar() == null)? "NO" : permisoModulo.getEliminar();
+		} else if (EnumTipoPermiso.MODIFICAR.toString().equals(tipoPermiso)) {
+			permisoAsignado = (permisoModulo.getModificar() == null)? "NO" : permisoModulo.getModificar();
+		} else if (EnumTipoPermiso.VISUALIZAR.toString().equals(tipoPermiso)) {
+			permisoAsignado = "SI";
+			/*if( ((permisoModulo.getModificar() == null)? "NO" : permisoModulo.getModificar()).equals("SI") || 
+					((permisoModulo.getInsertar() == null)? "NO" : permisoModulo.getInsertar()).equals("SI") ){
+				permisoAsignado = "SI";
+			}*/
+		}
+
+		// Campos especificados
+		if (campo != null && permisoModulo.getCamposEspeciales() != null){
+			if (permisoModulo.getCamposEspeciales().get(campo) != null && permisoModulo.getCamposEspeciales().get(campo).getModificar() != null){
+				permisoAsignado = permisoModulo.getCamposEspeciales().get(campo).getModificar();
+			}
+		}
+
+		return Boolean.parseBoolean((permisoAsignado.equalsIgnoreCase("SI") ? "False": "True"));
+	}
+
+	/**
+	 * Metodo encargado de colsultar los permisos de cada modulo que se integra en
+	 * la pantalla.
+	 */
+	public static Map<String, PermisoBo> consultarPermisos( String pantalla )  throws CotrafaException{
+		Map<String, PermisoBo> retorno = null;
+		ConsultaGenericaService consultaGenericaService = (ConsultaGenericaService) (new GeneralDelegate("consultaGenericaService")).getService();
+		
+		PermisosDto dto = consultaGenericaService.consultarPermisosPantalla(pantalla);
+		
+		if (dto != null && (dto.getResultado() == null || dto.getResultado().getCodigo() != ResultadoOperacion.EXITO.toNumber())) {
+			//Manejo del Error Faces
+			adicionarError(dto.getResultado().getMensaje());			
+		}
+		retorno = dto.getPermisos();
+
+		return retorno;
+	}	
+	
+	/**
+	 * Permite verificar si un componente se debe visualizar o no
+	 * 
+	 * @param componente
+	 * @return
+	 */
+	public static boolean estadoComponente(PermisoBo permiso, String componente) {
+		Map<String, PermisoEspecialBo> camposOcultos;
+		
+		if( permiso == null ){
+			return false;
+		}		
+
+		camposOcultos = permiso.getCamposEspeciales();
+		
+		String permisoAsignado = "SI";
+
+		if (camposOcultos != null)
+			if (camposOcultos.get(componente) != null)
+				permisoAsignado = camposOcultos.get(componente).getVisualizar();
+
+		if (permisoAsignado == null)
+			permisoAsignado = "SI";
+
+		return Boolean.parseBoolean((permisoAsignado.equalsIgnoreCase("SI") ? "True": "False"));
+	}
+
+	/**
+	 * Metodo encargado de consultar las listas de tipo dominio solicitadas para la pantalla.
+	 * @throws CotrafaException 
+	 */
+	public static Map<String, List<DominioBo>> consultarDominios( String[] descripciones ) throws CotrafaException{
+		Map<String, List<DominioBo>> retorno = null;
+		
+		ListasTipoService listaTipo = (new ListasTipoDelegate()).getService();
+
+		DominioDto lsDto = listaTipo.consultarDominio(descripciones);
+		retorno = lsDto.getListaDominio();
+		
+		return retorno;
+	}
+	
+	/**
+	 * Metodo encargado de consultar las listas de tipo dominio solicitadas para la pantalla.
+	 * @throws CotrafaException 
+	 */
+	public static Map<String, List<TipoBo>> consultarListasTipo(String[] descripciones, String[] otro) throws CotrafaException{
+		Map<String, List<TipoBo>> retorno = null;
+		
+		ListasTipoService listaTipo = (new ListasTipoDelegate()).getService();
+
+		ListaTipoDto lsDto = listaTipo.consultarListasTipo(descripciones,otro);			
+		retorno = lsDto.getListaTipoDato();
+		
+		return retorno;
+	}
+
+	/**
+	 * Metodo encargado de consultar las listas de tipo dominio solicitadas para la pantalla.
+	 * @throws CotrafaException 
+	 */
+	public static Map<String, List<TipoBo>> consultarListasTipo(String[] descripciones, String[] filtro, String[] otro) throws CotrafaException{
+		Map<String, List<TipoBo>> retorno = null;
+		
+		ListasTipoService listaTipo = (new ListasTipoDelegate()).getService();
+		
+		ListaTipoDto lsDto = listaTipo.consultarListasTipo(descripciones,filtro,otro);			
+		retorno = lsDto.getListaTipoDato();
+		
+		return retorno;
+	}
+			
+	/**
+	 * Metodo encargado de consultar las tablas de valores solicitadas para la pantalla.
+	 * @throws CotrafaException 
+	 */
+	public static Map<String, List<TipoGenericoBo>> consultarTablasValores(String[] tablas, String[] filtros) throws CotrafaException{
+		Map<String, List<TipoGenericoBo>> retorno = null;
+		
+		ListasTipoService listaTipo = (new ListasTipoDelegate()).getService();
+
+		ListaTableDto lsDto = listaTipo .consultarListaTable(tablas, filtros);		
+		retorno = lsDto.getListaTableDato();
+		
+		return retorno;
+	}
+	
+	/**
+	 * Metodo encargado de consultar las valores obtenidos para los queries especificados.
+	 * @throws CotrafaException 
+	 */
+	public static Map<String, List<TipoGenericoBo>> consultarQueriesValores( Map<String, ArrayList<String>> queries ) throws CotrafaException{
+		Map<String, List<TipoGenericoBo>> retorno = null;
+		
+		ListasTipoService listaTipo = (new ListasTipoDelegate()).getService();
+
+		ListaTableDto ltipoQuery = listaTipo.consultarListaTipoQuery(queries);
+		retorno = ltipoQuery.getListaTableDato();
+		
+		return retorno;
+	}
+	
+	/**
+	 * 
+	 * @param pantalla
+	 * @return Map<String, List<CriterioConsultaBo>>
+	 * @throws CotrafaException
+	 */
+	public static Map<String, List<CriterioConsultaBo>> obtenerCriteriosConsulta( String pantalla ) throws CotrafaException {
+		Map<String, List<CriterioConsultaBo>> retorno = null;
+		
+		ConsultaGenericaService consultaGenericaService = (ConsultaGenericaService) (new GeneralDelegate("consultaGenericaService")).getService();
+		
+		CriteriosConsultaDto dto = consultaGenericaService.obtenerCriteriosConsulta(pantalla);
+		
+		if (dto != null && dto.getCriteriosConsulta() != null) {
+			List<CriterioConsultaBo> criterios = dto.getCriteriosConsulta();
+			
+			if( criterios != null && criterios.size() > 0 ){
+				retorno = new HashMap<String, List<CriterioConsultaBo>>();
+				for( CriterioConsultaBo criterio : criterios ){
+					retorno.put(criterio.getObjeto(), criterio.getCriterios());
+				}
+			}
+		} else if (dto != null && (dto.getResultado() == null || dto.getResultado().getCodigo() != ResultadoOperacion.EXITO.toNumber())) {			
+			throw new CotrafaException(dto.getResultado());
+		}
+		return retorno;
+	}
+	
+	/**
+	 * 
+	 * @param parametrosGenerales
+	 * @return Map<String, String>
+	 * @throws CotrafaException
+	 */
+	public static Map<String, String> consultarValoresParametrosGenerales( String[] parametrosGenerales ) throws CotrafaException{
+		ListasTipoService listaTipo = (new ListasTipoDelegate()).getService();
+
+		ValoresParametrosGralesDto vlrParametrosGrales = listaTipo.consultarParametrosGenerales(parametrosGenerales);
+		
+		return vlrParametrosGrales.getValoresParametrosGenerales();
+	}
+	
+	/**
+	 * Metodo encargado de consultar las listas de tipo dominio solicitadas para la pantalla.
+	 * @throws CotrafaException 
+	 */
+	public static Map<String, List<PatronBo>> consultarPatrones( String[] descripciones ) throws CotrafaException{
+		Map<String, List<PatronBo>> retorno = null;
+		
+		ListasTipoService listaTipo = (new ListasTipoDelegate()).getService();
+
+		PatronDto lsDto = listaTipo.consultarPatron(descripciones);
+		retorno = lsDto.getListaPatron();
+		
+		return retorno;
+	}
+	
+	public static ResultadoValidacionBo validatePatterns(
+			List<PatronBo> patronesValidacion, String value) {
+
+		/* Objeto para crear el patron */
+		boolean formatoValido; 
+		Pattern patron = null;
+		ResultadoValidacionBo resultado = new ResultadoValidacionBo();
+		String bValido = "NO";
+		List<String> mensajes = new ArrayList<String>();
+
+		/* Obtiene el string que se debe evaluar */
+		String cadenaEvaluar = (String) value;
+
+		/* Se recorre la lista de patrones a evaluar */
+		ListIterator<PatronBo> litr = patronesValidacion.listIterator();
+		while (litr.hasNext()) {
+			PatronBo element = litr.next();
+			patron = Pattern.compile(element.getPatron());
+
+			/* Verifica el patron sobre el valor a evaluar */
+			Matcher matcher = patron.matcher(cadenaEvaluar);
+			formatoValido = matcher.matches();
+			// Se verifica el patron y si este se debe cumplir o no.
+			if (!element.getValorValido().equalsIgnoreCase("SI")
+					&& formatoValido) {
+				bValido = "SI";
+			} else if (element.getValorValido().equalsIgnoreCase("SI")
+					&& formatoValido) {
+				bValido = "NO";
+				if (element.getMensaje() != null) {
+					mensajes.add(element.getMensaje());
+				}
+			}
+			if (!element.getValorValido().equalsIgnoreCase("SI")
+					&& element.getMensaje() != null) {
+				mensajes.add(element.getMensaje());
+			}
+		}
+		resultado.setCumple("SI");  // Por defecto cumple la validación
+		if (bValido.equalsIgnoreCase("SI")) {
+			resultado.setCumple("SI");
+		} else if (mensajes != null ){
+		    resultado.setCumple("NO");	
+			resultado.setMensajes(mensajes);
+		}
+
+		return resultado;
+	}
+
+	
+	/**
+	 * Suma los meses ingresados a la fecha determindad
+	 * @param fecha
+	 * @param meses
+	 * @return Date
+	 */
+	public static Date sumarMesesFecha( Date fecha, int meses ) {
+		Date calculatedDate = null;
+
+        if (fecha != null) {
+            final GregorianCalendar calendar = new GregorianCalendar();
+            calendar.setTime(fecha);
+            calendar.add(Calendar.MONTH, meses);
+            calculatedDate = calendar.getTime();
+        }
+
+        return calculatedDate;		
+	}
+	
+	/**
+	 * 
+	 * @param componentName
+	 */
+	public static void clearComponent( String componentName ){
+		UIComponent uiComponent = FacesContext.getCurrentInstance().getViewRoot().findComponent(componentName);
+		
+		if( uiComponent != null ){
+			clearComponent( uiComponent );
+		}
+	}
+	
+	/**
+	 * 
+	 * @param pComponent
+	 */
+	public static void clearComponent( UIComponent pComponent ) {
+        if ( pComponent instanceof EditableValueHolder ){
+             EditableValueHolder editableValueHolder = (EditableValueHolder) pComponent;
+             editableValueHolder.setSubmittedValue( null );
+             editableValueHolder.setValue( null );
+             editableValueHolder.setValid( true );
+             editableValueHolder.setLocalValueSet( false );
+        }
+        for(UIComponent child : pComponent.getChildren()){
+             clearComponent( child );
+        }
+	}
+	
+	/**
+	 * 
+	 * @param nombreClase
+	 * @param metodoNoAceptacion
+	 * @param render
+	 * @param metodoAceptacion
+	 * @param renderAceptacion
+	 * @param execute
+	 */
+	public static void cargarDatosConfirmacion( String nombreClase, String metodoNoAceptacion, String render, String metodoAceptacion, String renderAceptacion, String execute ){
+		FacesContext context = FacesContext.getCurrentInstance();		
+		MessageException messageException = (MessageException) context.getApplication()
+				.evaluateExpressionGet(context, "#{messageException}", MessageException.class);
+		messageException.setMetodo(metodoNoAceptacion);
+		messageException.setMetodoAceptacion(metodoAceptacion);
+		messageException.setNombreClase(nombreClase);
+		messageException.setRender(render);
+		messageException.setRenderAcepta(renderAceptacion);
+		messageException.setExecute(execute);
+	}
+	
+	/**
+	 * Esta utilidad ordena una lista de cualquier tipo por un atributo determinado.
+	 * 
+	 * @param lista a ordenar
+	 * @param propiedad atributo por el cual se desea realizar el orden
+	 * @throws CotrafaException
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public static void ordenarLista(List lista, final String propiedad)
+			throws CotrafaException {
+
+		Collections.sort(lista, new Comparator() {
+
+			public int compare(Object obj1, Object obj2) {
+
+				Class clase = obj1.getClass();
+				String getter = "get"
+						+ Character.toUpperCase(propiedad.charAt(0))
+						+ propiedad.substring(1);
+				try {
+					Method getPropiedad = clase.getMethod(getter);
+
+					Object propiedad1 = getPropiedad.invoke(obj1);
+					Object propiedad2 = getPropiedad.invoke(obj2);
+
+					if (propiedad1 instanceof Comparable
+							&& propiedad2 instanceof Comparable) {
+						Comparable prop1 = (Comparable) propiedad1;
+						Comparable prop2 = (Comparable) propiedad2;
+						return prop1.compareTo(prop2);
+					}// CASO DE QUE NO SEA COMPARABLE
+					else {
+						if (propiedad1.equals(propiedad2))
+							return 0;
+						else
+							return 1;
+
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return 0;
+			}
+		});
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
+	public static void eliminaElementosRepetidos(
+			List lista, final String propiedad) {
+
+		String getter;
+		String setter;
+
+		try {
+			// Se marcan los elementos repetidos
+			for (int i = 0; i < lista.size(); i++) {
+				for (int j = 0; j < lista.size(); j++) {
+					if (i != j) {
+
+						Class claseLista = lista.get(i).getClass();
+						// Object propiedad1 = getPropiedad.invoke(obj1);
+						getter = "get"
+								+ Character.toUpperCase(propiedad.charAt(0))
+								+ propiedad.substring(1);
+
+						Method getPropiedad = claseLista.getMethod(getter);
+						Object propiedad1 = getPropiedad.invoke(lista.get(i));
+						Object propiedad2 = getPropiedad.invoke(lista.get(j));
+
+						//
+						if (propiedad1.equals(propiedad2)) {
+							setter = "set"
+									+ Character
+											.toUpperCase(propiedad.charAt(0))
+									+ propiedad.substring(1);
+
+							Class claseListaNueva = lista.get(i).getClass();
+							// Method setPropiedad =
+							// claseListaNueva.getMethod(setter, String.class);
+							Method setPropiedad = claseListaNueva.getMethod(
+									setter, propiedad1.getClass());
+
+							Object propiedad3 = setPropiedad.invoke(lista.get(j), "**");
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// Se eliminan los repetidos
+		for (int i = 0; i < lista.size(); i++) {
+			Class claseLista = lista.get(i).getClass();
+			// Object propiedad1 = getPropiedad.invoke(obj1);
+			getter = "get" + Character.toUpperCase(propiedad.charAt(0))
+					+ propiedad.substring(1);
+
+			Method getPropiedad;
+			try {
+				getPropiedad = claseLista.getMethod(getter);
+				Object propiedad1 = getPropiedad.invoke(lista.get(i));
+				if (propiedad1 != null){
+					if (propiedad1.equals("**")) {
+						lista.remove(i);
+						i = 0;
+					}
+				}	
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+
+	public static void adicionarError(String mensaje){
+        FacesContext context = FacesContext.getCurrentInstance();
+		MessageException messageException = (MessageException) context.getApplication()
+				.evaluateExpressionGet(context, "#{messageException}", MessageException.class);
+		messageException.addError(mensaje);		
+	}
+
+	public static void adicionarWarning(String mensaje){
+        FacesContext context = FacesContext.getCurrentInstance();
+		MessageException messageException = (MessageException) context.getApplication()
+				.evaluateExpressionGet(context, "#{messageException}", MessageException.class);
+		messageException.addWarning(mensaje);				
+	}
+
+	public static void adicionarInfo(String mensaje){
+        FacesContext context = FacesContext.getCurrentInstance();
+		MessageException messageException = (MessageException) context.getApplication()
+				.evaluateExpressionGet(context, "#{messageException}", MessageException.class);
+		messageException.addInfo(mensaje);						
+	}
+	
+	
+}

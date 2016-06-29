@@ -1,0 +1,48 @@
+package co.com.obusiness.security;
+
+import java.io.Serializable;
+
+import co.com.cotrafa.common.error.CotrafaException;
+
+/**
+ * Esta clase representa todos las excepciones de negocio que puedan suceder en los servicios
+ * de la aplicacion
+ * @author Copia de SUCURSAL VIRTUAL COTRAFA
+ */
+public class CotrafaSecurityException extends CotrafaException implements Serializable {
+	private static final long serialVersionUID = 1L;
+	/**
+	 * Construye una instancia de la excepcion
+	 * @param message Mensaje de error
+	 */
+	public CotrafaSecurityException(String message) {
+		super(message, message);
+	}
+
+	/**
+	 * Construye una instancia de la excepcion
+	 * @param message Mensaje de error
+	 * @param mensajeUsuario Mensaje para el usuario
+	 */
+	public CotrafaSecurityException(String message, String mensajeUsuario) {
+		super(message, mensajeUsuario);
+	}
+	
+	/**
+	 * Construye una instancia de la excepcion
+	 * @param message Mensaje de error
+	 * @param mensajeUsuario Mensaje para el usuario
+	 * @param causa Causa del error
+	 */
+	public CotrafaSecurityException(String message, String mensajeUsuario, Throwable causa) {
+		super(message, mensajeUsuario, causa);
+	}
+	/**
+	 * Obtiene el mensaje para mostrar al usuario
+	 * @return Mensaje para el usuario o null si no hay
+	 */
+	@Override
+	public String getMensajeUsuario() {
+		return super.getMensajeUsuario();
+	}
+}
