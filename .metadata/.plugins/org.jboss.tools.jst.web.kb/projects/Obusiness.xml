@@ -104,6 +104,7 @@
   <path value="C:/proyectos/appModular/Obusiness/WebContent/WEB-INF/lib/apache-commons-lang.jar"/>
   <path value="C:/proyectos/appModular/Obusiness/WebContent/WEB-INF/lib/jsf-api-2.2.9.jar"/>
   <path value="C:/proyectos/appModular/Obusiness/WebContent/WEB-INF/lib/ojdbc14.jar"/>
+  <path value="C:/proyectos/appModular/Obusiness/WebContent/WEB-INF/lib/bluesky-1.0.10.jar"/>
   <path value="C:/proyectos/appModular/Obusiness/WebContent/WEB-INF/lib/spring-aspects-4.3.0.RELEASE.jar"/>
   <path value="C:/proyectos/appModular/Obusiness/WebContent/WEB-INF/lib/spring-jdbc-4.3.0.RELEASE.jar"/>
   <path value="C:/proyectos/apache-tomcat-7.0.69-windows-x64/apache-tomcat-7.0.69/lib/tomcat-dbcp.jar"/>
@@ -122,6 +123,7 @@
   <path value="C:/proyectos/appModular/Obusiness/WebContent/WEB-INF/lib/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
   <path value="C:/proyectos/appModular/Obusiness/WebContent/WEB-INF/lib/spring-test-4.3.0.RELEASE.jar"/>
   <path value="C:/proyectos/appModular/Obusiness/WebContent/WEB-INF/lib/javassist-3.18.1-GA.jar"/>
+  <path value="C:/proyectos/appModular/Obusiness/WebContent/WEB-INF/lib/bootstrap-1.0.10.jar"/>
   <path value="C:/proyectos/apache-tomcat-7.0.69-windows-x64/apache-tomcat-7.0.69/lib/tomcat-i18n-es.jar"/>
   <path value="C:/proyectos/apache-tomcat-7.0.69-windows-x64/apache-tomcat-7.0.69/lib/catalina.jar"/>
   <path value="C:/proyectos/apache-tomcat-7.0.69-windows-x64/apache-tomcat-7.0.69/lib/catalina-tribes.jar"/>
@@ -156,6 +158,7 @@
   <path value="C:/proyectos/apache-tomcat-7.0.69-windows-x64/apache-tomcat-7.0.69/lib/jsp-api.jar"/>
   <path value="C:/proyectos/apache-tomcat-7.0.69-windows-x64/apache-tomcat-7.0.69/lib/websocket-api.jar"/>
   <path value="C:/proyectos/appModular/Obusiness/WebContent/WEB-INF/lib/jboss-logging-annotations-1.2.0.Beta1.jar"/>
+  <path value="C:/proyectos/appModular/Obusiness/WebContent/WEB-INF/lib/all-themes-1.0.9.jar"/>
   <path value="C:/proyectos/appModular/Obusiness/WebContent/WEB-INF/lib/jsf-impl-2.2.9.jar">
    <libraries>
     <library class="tld">
@@ -221,7 +224,7 @@
   <core validator-id="jboss.jsf.core"/>
   <el>
    <linked-el length="20" name="%3" offset="486" path="%4"/>
-   <linked-el length="20" name="%3" offset="897" path="%5"/>
+   <linked-el length="20" name="%3" offset="896" path="%5"/>
    <linked-el length="21" name="%6" offset="16918" path="%7"/>
    <linked-el length="21" name="%6" offset="16580" path="%7"/>
    <linked-el length="21" name="%6" offset="16243" path="%7"/>
@@ -229,9 +232,9 @@
    <linked-el length="29" name="%8" offset="516" path="%9"/>
    <linked-el length="27" name="%8" offset="900" path="%9"/>
    <linked-el length="29" name="%10" offset="516" path="%9"/>
-   <linked-el length="40" name="%11" offset="1649" path="%5"/>
+   <linked-el length="40" name="%11" offset="1504" path="%5"/>
    <linked-el length="20" name="%12" offset="486" path="%4"/>
-   <linked-el length="20" name="%12" offset="897" path="%5"/>
+   <linked-el length="20" name="%12" offset="896" path="%5"/>
    <linked-el length="21" name="%13" offset="16918" path="%7"/>
    <linked-el length="21" name="%13" offset="16580" path="%7"/>
    <linked-el length="21" name="%13" offset="16243" path="%7"/>

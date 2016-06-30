@@ -16,7 +16,7 @@
     	<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();" />
     	
         <p:layout fullPage="true">
-            <p:layoutUnit id="topPanel" position="north" size="100">NORTH
+            <p:layoutUnit id="topPanel" position="north" size="70" style="border:0">NORTH
                            <h:form>
                 <p:growl id="messages" showDetail="false"/>
 					<p:megaMenu orientation="horizontal" model="#{menuView.model}" />               	                
@@ -24,7 +24,7 @@
             
             </p:layoutUnit>
 
-            <p:layoutUnit position="center">
+            <p:layoutUnit position="center" style="border:0">
                 <h:form id="frmContent">
 					<ui:insert name="content">Put default content here, if any.</ui:insert>
 				</h:form>

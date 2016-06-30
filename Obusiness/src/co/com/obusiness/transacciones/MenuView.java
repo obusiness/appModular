@@ -39,6 +39,7 @@ public class MenuView {
         		DefaultSubMenu secondSubmenu = new DefaultSubMenu();
         		DefaultSubMenu submenu = new DefaultSubMenu(m.getNombre());
         		cargarSubMenu(m, secondSubmenu);
+        		//column = cargarSubMenu(m, secondSubmenu);
             	column.addElement(secondSubmenu);
             	submenu.addElement(column);
         		model.addElement(submenu);
@@ -88,17 +89,17 @@ public class MenuView {
     }
     
     public void cargarSubMenu(Menu m, DefaultSubMenu subMMenu ){
+		DefaultMenuColumn column = new DefaultMenuColumn();
     	
     	for(Menu m1: m.getHijos()){
         	if(m1.getHijos() != null && m1.getHijos().size()>0){
 
-        		DefaultMenuColumn column = new DefaultMenuColumn();
         		DefaultSubMenu secondSubmenu = new DefaultSubMenu(m1.getNombre());
         		DefaultSubMenu submenu = new DefaultSubMenu(m1.getNombre());
         		cargarSubMenu(m1, secondSubmenu);
-        		column.addElement(secondSubmenu);
+
         		submenu.addElement(column);
-        		subMMenu.addElement(submenu);
+        		subMMenu.addElement(secondSubmenu);
 
         	}
         	else{
@@ -110,7 +111,8 @@ public class MenuView {
 
         	}
         }    	
-
+		/*column.addElement(subMMenu);
+		return column;*/
     }
     
     public void cargarMenu(){

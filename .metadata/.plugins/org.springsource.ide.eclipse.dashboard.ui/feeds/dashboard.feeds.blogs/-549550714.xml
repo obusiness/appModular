@@ -5,7 +5,42 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-06-30T12:41:07Z</updated>
+  <updated>2016-06-30T17:15:08Z</updated>
+  <entry>
+    <title>Gradle Dependency Management Plugin 0.6.0 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/30/gradle-dependency-management-plugin-0-6-0-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Andy Wilkinson</name>
+    </author>
+    <id>tag:spring.io,2016-06-30:2539</id>
+    <updated>2016-06-30T17:15:08Z</updated>
+    <content type="html">&lt;p&gt;I am pleased to announce that &lt;a href="https://github.com/spring-gradle-plugins/dependency-management-plugin"&gt;Gradle dependency management plugin&lt;/a&gt; 0.6.0.RELEASE is now available from Maven Central, JCenter, and the &lt;a href="https://plugins.gradle.org/plugin/io.spring.dependency-management"&gt;Gradle Plugin Portal&lt;/a&gt;. &lt;/p&gt;&lt;h3&gt;&lt;a href="#gradle-3-0-compatibility" class="anchor" name="gradle-3-0-compatibility"&gt;&lt;/a&gt;Gradle 3.0 compatibility&lt;/h3&gt;
+&lt;p&gt;This new release is compatible with Gradle 3.0. At the time of writing it&amp;rsquo;s tested against 3.0 M2 and the 0.6.x line will continue to track Gradle 3.0 development to maintain compatibility if at all possible.&lt;/p&gt;&lt;h3&gt;&lt;a href="#finer-control-over-bom-property-overrides" class="anchor" name="finer-control-over-bom-property-overrides"&gt;&lt;/a&gt;Finer control over bom property overrides&lt;/h3&gt;
+&lt;p&gt;Previously, an imported bom&amp;rsquo;s properties could be overridden using project properties. This new release adds support for overriding a property as part of the import. &lt;code&gt;bomProperty&lt;/code&gt; can be used to override properties one at a time (and can be used multiple times to override multiple properties:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint groovy"&gt;dependencyManagement {&#xD;
+    imports {&#xD;
+        mavenBom(&amp;#39;com.example:example-bom:1.2.0&amp;#39;) {&#xD;
+            bomProperty &amp;#39;foo.version&amp;#39;, &amp;#39;1.1.1&amp;#39;&#xD;
+            bomProperty &amp;#39;bar.version&amp;#39;, &amp;#39;2.0.3&amp;#39;&#xD;
+        }&#xD;
+    }&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Alternatively, &lt;code&gt;bomProperties&lt;/code&gt; can be used along with a map of property overrides:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint groovy"&gt;dependencyManagement {&#xD;
+    imports {&#xD;
+        mavenBom(&amp;#39;io.spring.platform:platform-bom:2.0.5.RELEASE&amp;#39;) {&#xD;
+            bomProperties([&#xD;
+                &amp;#39;foo.version&amp;#39;: &amp;#39;1.1.1&amp;#39;,&#xD;
+                &amp;#39;bar.version&amp;#39;: &amp;#39;2.0.3&amp;#39;&#xD;
+            ])&#xD;
+        }&#xD;
+    }&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a href="#learning-more" class="anchor" name="learning-more"&gt;&lt;/a&gt;Learning more&lt;/h2&gt;
+&lt;p&gt;For more information about how the plugin can improve your Gradle builds, please read the &lt;a href="https://spring.io/blog/2015/02/23/better-dependency-management-for-gradle"&gt;introductory blog post&lt;/a&gt;.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Spring Session 1.2.1 Released</title>
     <link rel="alternate" href="https://spring.io/blog/2016/06/30/spring-session-1-2-1-released" />
@@ -1173,59 +1208,5 @@ A good rule of thumb is "&lt;strong&gt;never call an extractor&lt;/strong&gt;". 
   &lt;li&gt;want &lt;a href="http://blog.schneider-electric.com/industrial-software/2016/06/03/basics-mqtt-messaging-protocol-internet-things/"&gt;a quick introduction to MQTT&lt;/a&gt;?&lt;/li&gt;
   &lt;li&gt;this blog on &lt;a href="https://blog.codecentric.de/en/2016/06/spring-boot-apache-cxf-testing-soap-webservices/"&gt;developing document-centric JAX-WS SOAP-based services with Spring Boot and CXF is interesting&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>Introducing Spring Cloud Cloud Foundry Service Broker</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/06/07/introducing-spring-cloud-cloud-foundry-service-broker" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Scott Frederick</name>
-    </author>
-    <id>tag:spring.io,2016-05-27:2512</id>
-    <updated>2016-06-07T18:57:27Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;I am pleased to announce the newest addition to the Spring Cloud family. &lt;a href="http://cloud.spring.io/spring-cloud-cloudfoundry-service-broker/"&gt;Spring Cloud Cloud Foundry Service Broker&lt;/a&gt; is a framework for building &lt;a href="http://docs.cloudfoundry.org/services"&gt;service brokers&lt;/a&gt; for the &lt;a href="https://www.cloudfoundry.org"&gt;Cloud Foundry&lt;/a&gt; platform.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="cloud-foundry-service-brokers"&gt;&lt;a class="anchor" href="#cloud-foundry-service-brokers"&gt;&lt;/a&gt;Cloud Foundry service brokers&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Service brokers provide a means to extend Cloud Foundry with managed services that can be consumed by applications deployed to the platform. Managed services typically expose some sort of resource to an application, such as a database or other persistent store, a messaging system, or other supporting infrastructure. Service brokers publish a catalog of services and service plans, manage the provisioning and de-provisioning of service instances, and provide connection details and credentials for an application to consume the resource. Service brokers are registered to Cloud Foundry and communicate with the platform using a well-defined &lt;a href="http://docs.cloudfoundry.org/services/api.html"&gt;Service Broker REST API&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Spring Cloud Cloud Foundry Service Broker implements the full service broker REST API as Spring MVC endpoints. This allows a service broker author to focus on the logic necessary to manage the backing resources without having to worry about implementing the broker API semantics.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="some-history"&gt;&lt;a class="anchor" href="#some-history"&gt;&lt;/a&gt;Some history&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Shortly after Spring Boot was released, &lt;a href="https://twitter.com/spgreenberg"&gt;Steve Greenberg&lt;/a&gt; developed the &lt;a href="https://github.com/cloudfoundry-community/spring-boot-cf-service-broker"&gt;spring-boot-cf-service-broker&lt;/a&gt; project and contributed it to the Cloud Foundry community. In the subsequent months, many &lt;a href="https://github.com/cloudfoundry-community/spring-boot-cf-service-broker/graphs/contributors"&gt;contributors&lt;/a&gt; helped add features, fix bugs, and keep pace with the service broker API. Unfortunately, the contributors couldn&amp;#8217;t commit to keeping the project up to date on a consistent basis since it was a "side project" for everyone involved.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The Spring Cloud team offered to take ownership and commit to keeping the project up-to-date, and Steve graciously agreed to allow the project to be moved under the Spring Cloud umbrella. The move to Spring Cloud includes changes to the project&amp;#8217;s packaging structure and Maven coordinates, along with some cleanup and rationalization of the interfaces that need to be implemented by service broker authors.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="the-path-forward"&gt;&lt;a class="anchor" href="#the-path-forward"&gt;&lt;/a&gt;The path forward&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Spring Cloud Cloud Foundry Service Broker will track the service broker API evolution and add support for the latest broker API features, allowing developers to quickly react to changes in the API. Of course, contributions are welcomed and encouraged. Since there are no interdependencies with other Spring Cloud projects, Spring Cloud Cloud Foundry Service Broker won&amp;#8217;t be part of the Spring Cloud &lt;a href="http://projects.spring.io/spring-cloud/#release-trains"&gt;release trains&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;A few release candidates have already been published for the project. Users of the previous project have tested these RCs and provided feedback. With this introduction, Spring Cloud Cloud Foundry Service Broker will be GA with version 1.0.0.RELEASE.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="get-involved"&gt;&lt;a class="anchor" href="#get-involved"&gt;&lt;/a&gt;Get involved&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;To get started, view the &lt;a href="http://cloud.spring.io/spring-cloud-cloudfoundry-service-broker/"&gt;project page&lt;/a&gt; and the &lt;a href="https://github.com/spring-cloud/spring-cloud-cloudfoundry-service-broker"&gt;documentation&lt;/a&gt;. Provide feedback via GitHub &lt;a href="https://github.com/spring-cloud/spring-cloud-cloudfoundry-service-broker/issues"&gt;issues&lt;/a&gt; or contribute via &lt;a href="https://github.com/spring-cloud/spring-cloud-cloudfoundry-service-broker/pulls"&gt;pull requests&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</content>
   </entry>
 </feed>

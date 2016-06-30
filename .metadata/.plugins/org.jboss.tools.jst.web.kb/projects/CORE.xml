@@ -2,8 +2,8 @@
 <kb-project>
  <depends-on-projects/>
  <used-by-projects>
-  <project name="Security"/>
   <project name="Obusiness"/>
+  <project name="Security"/>
  </used-by-projects>
  <paths>
   <path value="C:/proyectos/apache-tomcat-7.0.69-windows-x64/apache-tomcat-7.0.69/lib/tomcat-util.jar"/>
