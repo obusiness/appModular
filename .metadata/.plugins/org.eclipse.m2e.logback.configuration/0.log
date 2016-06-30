@@ -1,0 +1,6 @@
+2016-06-28 13:46:44,747 [Worker-73] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/spring-core/4.3.0.RELEASE/spring-core-4.3.0.RELEASE-sources.jar
+2016-06-28 13:46:46,028 [Worker-73] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/spring-core/4.3.0.RELEASE/spring-core-4.3.0.RELEASE-sources.jar
+2016-06-29 11:15:08,440 [Worker-136] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/primefaces/primefaces/6.0/primefaces-6.0-sources.jar
+2016-06-29 11:15:14,856 [Worker-136] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/primefaces/primefaces/6.0/primefaces-6.0-sources.jar
+2016-06-29 11:50:12,298 [Worker-140] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/sun/faces/jsf-impl/2.2.9/jsf-impl-2.2.9-sources.jar
+2016-06-29 11:50:15,135 [Worker-140] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/sun/faces/jsf-impl/2.2.9/jsf-impl-2.2.9-sources.jar

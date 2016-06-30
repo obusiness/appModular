@@ -221,39 +221,44 @@
   <core validator-id="jboss.jsf.core"/>
   <el>
    <linked-el length="20" name="%3" offset="486" path="%4"/>
-   <linked-el length="21" name="%5" offset="16918" path="%6"/>
-   <linked-el length="21" name="%5" offset="16580" path="%6"/>
-   <linked-el length="21" name="%5" offset="16243" path="%6"/>
-   <linked-el length="22" name="%7" offset="695" path="%8"/>
-   <linked-el length="29" name="%7" offset="516" path="%8"/>
-   <linked-el length="27" name="%7" offset="900" path="%8"/>
-   <linked-el length="29" name="%9" offset="516" path="%8"/>
-   <linked-el length="20" name="%10" offset="486" path="%4"/>
-   <linked-el length="21" name="%11" offset="16918" path="%6"/>
-   <linked-el length="21" name="%11" offset="16580" path="%6"/>
-   <linked-el length="21" name="%11" offset="16243" path="%6"/>
-   <linked-el length="22" name="%12" offset="695" path="%8"/>
-   <linked-el length="29" name="%12" offset="516" path="%8"/>
-   <linked-el length="27" name="%12" offset="900" path="%8"/>
+   <linked-el length="20" name="%3" offset="897" path="%5"/>
+   <linked-el length="21" name="%6" offset="16918" path="%7"/>
+   <linked-el length="21" name="%6" offset="16580" path="%7"/>
+   <linked-el length="21" name="%6" offset="16243" path="%7"/>
+   <linked-el length="22" name="%8" offset="695" path="%9"/>
+   <linked-el length="29" name="%8" offset="516" path="%9"/>
+   <linked-el length="27" name="%8" offset="900" path="%9"/>
+   <linked-el length="29" name="%10" offset="516" path="%9"/>
+   <linked-el length="40" name="%11" offset="1649" path="%5"/>
+   <linked-el length="20" name="%12" offset="486" path="%4"/>
+   <linked-el length="20" name="%12" offset="897" path="%5"/>
+   <linked-el length="21" name="%13" offset="16918" path="%7"/>
+   <linked-el length="21" name="%13" offset="16580" path="%7"/>
+   <linked-el length="21" name="%13" offset="16243" path="%7"/>
+   <linked-el length="22" name="%14" offset="695" path="%9"/>
+   <linked-el length="29" name="%14" offset="516" path="%9"/>
+   <linked-el length="27" name="%14" offset="900" path="%9"/>
   </el>
  </validation>
  <aliases>
   <alias
    path="/Obusiness/src/co/com/obusiness/transacciones/MenuView.java" value="%3"/>
-  <alias path="menuView" value="%10"/>
-  <alias path="loginBB" value="%12"/>
-  <alias path="messageException" value="%5"/>
+  <alias path="/Obusiness/WebContent/template.xhtml" value="%5"/>
+  <alias path="resource" value="%11"/>
+  <alias path="menuView" value="%12"/>
+  <alias path="loginBB" value="%14"/>
+  <alias path="messageException" value="%6"/>
   <alias
-   path="/Obusiness/src/co/com/obusiness/transacciones/LoginBB.java" value="%7"/>
+   path="/Obusiness/src/co/com/obusiness/transacciones/LoginBB.java" value="%8"/>
   <alias path="/Obusiness/WebContent/menu.xhtml" value="%4"/>
-  <alias path="/Obusiness/WebContent/login.xhtml" value="%8"/>
-  <alias path="/CORE/src/co/com/obusiness/entidades/TsEmpUsuarios.java" value="%9"/>
+  <alias path="/Obusiness/WebContent/login.xhtml" value="%9"/>
+  <alias path="/CORE/src/co/com/obusiness/entidades/TsEmpUsuarios.java" value="%10"/>
   <alias path="co.com.obusiness.transacciones.LoginBB" value="%1"/>
   <alias
    path="\Obusiness\src\co\com\obusiness\transacciones\LoginBB.java" value="%2"/>
-  <alias path="/Obusiness/src/co/com/obusiness/common/Utiles.java" value="%6"/>
+  <alias path="/Obusiness/src/co/com/obusiness/common/Utiles.java" value="%7"/>
   <alias
-   path="/Obusiness/src/co/com/obusiness/common/MessageException.java" value="%11"/>
+   path="/Obusiness/src/co/com/obusiness/common/MessageException.java" value="%13"/>
   <alias path="/Obusiness/WebContent/WEB-INF/faces-config.xml" value="%0"/>
  </aliases>
  <includes/>

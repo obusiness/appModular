@@ -13,22 +13,26 @@
 
     </h:head>
     <h:body>
+    	<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();" />
+    	
         <p:layout fullPage="true">
             <p:layoutUnit id="topPanel" position="north" size="100">NORTH
                            <h:form>
                 <p:growl id="messages" showDetail="false"/>
-					<ui:insert name="menu">menu default content here, if any.</ui:insert>	                	                
+					<p:megaMenu orientation="horizontal" model="#{menuView.model}" />               	                
                 </h:form>
             
             </p:layoutUnit>
-            <p:layoutUnit position="west" size="200">
-             </p:layoutUnit>
+
             <p:layoutUnit position="center">
                 <h:form id="frmContent">
 					<ui:insert name="content">Put default content here, if any.</ui:insert>
 				</h:form>
             </p:layoutUnit>
-            <p:layoutUnit position="south" size="60">SOUTH</p:layoutUnit>
+            
         </p:layout>
+        <p:dialog modal="true" widgetVar="statusDialog" showHeader="false" draggable="false" closable="false" resizable="false" visible="false" position="center" maximizable="false" minimizable="false" >
+        <p:graphicImage value="#{resource['images/ajax-loader.gif']}" />
+    </p:dialog>
     </h:body>
 </html>

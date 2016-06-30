@@ -47,7 +47,7 @@ public class MenuView {
         	}
         	else{
         		DefaultMenuItem item = new DefaultMenuItem(m.getNombre());
-                item.setUrl("http://www.primefaces.org");
+                item.setUrl(m.getUrl());
                 item.setIcon("ui-icon-home");
                 //DefaultSubMenu submenu = new DefaultSubMenu(m.getNombre());
                 model.addElement(item);
@@ -103,7 +103,7 @@ public class MenuView {
         	}
         	else{
         		DefaultMenuItem item = new DefaultMenuItem(m1.getNombre());
-                item.setUrl("http://www.primefaces.org");
+                item.setUrl(m1.getUrl());
                 item.setIcon("ui-icon-home");
                 //DefaultSubMenu submenu = new DefaultSubMenu(m.getNombre());
                 subMMenu.addElement(item);
@@ -131,9 +131,9 @@ public class MenuView {
     	opcion1.setId(2);
     	opcion1.setIdPadre(1);
     	opcion1.setNombre("opcion1.2");
-    	opcion1.setUrl(""); 
+    	opcion1.setUrl("opcion1.xhtml"); 
     	
-    	opcion4.setId(7);
+    	/*opcion4.setId(7);
     	opcion4.setIdPadre(2);
     	opcion4.setNombre("opcion4.2");
     	opcion4.setUrl(""); 
@@ -146,7 +146,7 @@ public class MenuView {
     	opcion4.setUrl("");     	
     	hijos2.add(opcion4); 
     	
-    	opcion1.setHijos(hijos2);
+    	opcion1.setHijos(hijos2);*/
     	
     	hijos.add(opcion1);
     	
@@ -154,7 +154,7 @@ public class MenuView {
     	opcion1.setId(3);
     	opcion1.setIdPadre(1);
     	opcion1.setNombre("opcion1.3");
-    	opcion1.setUrl("");    	
+    	opcion1.setUrl("opcion2.xhtml");    	
     	hijos.add(opcion1);    	
     	
     	opcion.setHijos(hijos);
@@ -170,7 +170,7 @@ public class MenuView {
     	opcion1.setId(4);
     	opcion1.setIdPadre(2);
     	opcion1.setNombre("opcion2.2");
-    	opcion1.setUrl("");    	
+    	opcion1.setUrl("opcion3.xhtml");    	
     	hijos.add(opcion1);
     	
     	opcion1 = new Menu();
