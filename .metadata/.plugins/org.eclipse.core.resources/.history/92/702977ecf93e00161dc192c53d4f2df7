@@ -16,8 +16,8 @@
         <p:password value="#{loginBB.password}" id="password" required="true"
            label="password" />
         <f:facet name="footer">
-          <p:commandButton id="loginButton" value="Login" action="#{loginBB.validaUsuario}"
-              update="mensajes"
+          <p:commandButton id="loginButton" value="Login" action="menu.xhtml"
+             actionListener="#{loginBB.validaUsuario}" update="mensajes"
               />
         </f:facet>
       </h:panelGrid>

@@ -43,7 +43,7 @@ public class LoginBB implements Serializable  {
 			//autenticacion.autenticar();
 			ValidaUsuarioService informacionLaboralService = (new ValidaUsuarioServiceDelegate()).getService();
 			TsEmpUsuariosId usuarioId = new TsEmpUsuariosId();
-			usuarioId.setId(1);
+			usuarioId.setId(2);
 			usuarioId.setIdEmpresa(1);
 			usuario.setId(usuarioId);
 			String respuesta = informacionLaboralService.validaUsuario(usuario);

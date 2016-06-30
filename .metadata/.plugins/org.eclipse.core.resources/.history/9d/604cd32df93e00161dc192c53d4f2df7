@@ -31,7 +31,7 @@ public class LoginBB implements Serializable  {
 
 	
 	
-	public String validaUsuario(){
+	public void validaUsuario(ActionEvent event){
 		FacesMessage msg = null;
 		//msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenid@", usuario.getUsuario());
 		
@@ -54,9 +54,7 @@ public class LoginBB implements Serializable  {
 				msg = new FacesMessage(FacesMessage.SEVERITY_INFO, respuesta+"Bienvenid@", usuario.getUsuario());
 			}
 			else {
-			msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, respuesta+"No cnccgBienvenid@", usuario.getUsuario());
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-			return "login";
+			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, respuesta+"No cnccgBienvenid@", usuario.getUsuario());
 			}
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 		} catch (Exception e1) {
@@ -66,7 +64,7 @@ public class LoginBB implements Serializable  {
 			e1.printStackTrace();
 		}
 
-		return "menu";
+		
 		
 	}
 
